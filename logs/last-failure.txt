@@ -1,6 +1,6 @@
 # CI failure log
 run: 
-44089559285
+44109599875
 
 --- build.log tail 150 ---
 -- Up-to-date: C:/krita-dev/_install/share/locale/hi
@@ -266,7 +266,7 @@ Add new data to archive: 491 folders, 4486 files, 677923982 bytes (647 MiB)
 
 
 Files read from disk: 4486
-Archive size: 249638532 bytes (239 MiB)
+Archive size: 249638761 bytes (239 MiB)
 Everything is Ok
 ## INFO: 
 ## INFO: Packaging debug info...
@@ -298,10 +298,11 @@ Everything is Ok
 
 --- installer-console.log tail 150 ---
 pkg dir exists: True  -> C:\krita-dev/dist/ReveriePaint
-pkg bin: True
 iss exists: True
 iss rewritten as UTF-8 with BOM
 using iscc: C:\Program Files (x86)\Inno Setup 6\ISCC.exe
+chinese isl missing, downloading -> C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl
+isl download exit: 0 size: 14
 Inno Setup 6 Command-Line Compiler
 Copyright (C) 1997-2026 Jordan Russell. All rights reserved.
 Portions Copyright (C) 2000-2026 Martijn Laan. All rights reserved.
@@ -340,7 +341,7 @@ Preparing Setup program executable
 Determining language code pages
 Parsing [Languages] section, line 35
    Reading file: C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl
-Error on line 35 in D:\a\ReveriePaint-Windows\ReveriePaint-Windows\windows\installer\reveriepaint.iss: Couldn't open include file "C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl": The system cannot find the file specified.
+Error on line 1 in C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl: Text is not inside a section.
 Compile aborted.
 iscc exit: 2
 --- windows/out ---
