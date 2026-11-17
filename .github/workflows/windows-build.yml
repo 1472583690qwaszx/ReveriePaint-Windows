@@ -9,9 +9,12 @@ on:
         default: 'v6.0.4'
   push:
     branches: [main]
+    paths-ignore:
+      - 'logs/**'
+      - '**.md'
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   KRITA_ROOT: C:\krita-dev
@@ -92,7 +95,11 @@ jobs:
         shell: pwsh
         run: |
           pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/03-build.ps1 -Root $env:KRITA_ROOT -Jobs 4
-          if ($LASTEXITCODE -ne 0) { throw ('03 failed: ' + $LASTEXITCODE) }
+          if ($LASTEXITCODE -ne 0) {
+            $log = $env:KRITA_ROOT + '/build.log'
+            if (Test-Path $log) { Get-Content $log -Tail 80 }
+            throw ('03 failed: ' + $LASTEXITCODE)
+          }
 
       - name: 04 stage portable package
         shell: pwsh
@@ -113,6 +120,23 @@ jobs:
           & $iscc ('/DDistDir=' + $pkg) 'windows\installer\reveriepaint.iss'
           if ($LASTEXITCODE -ne 0) { throw ('iscc failed: ' + $LASTEXITCODE) }
 
+      - name: Publish failure log
+        if: failure()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force logs | Out-Null
+          $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, 'step: ' + $env:GITHUB_JOB, '')
+          $log = $env:KRITA_ROOT + '/build.log'
+          if (Test-Path $log) { $out += (Get-Content $log -Tail 300) }
+          $pkglog = $env:KRITA_ROOT + '/dist/package_complete.log'
+          if (Test-Path $pkglog) { $out += '--- package_complete.log ---'; $out += (Get-Content $pkglog -Tail 120) }
+          $out | Set-Content 'logs/last-failure.txt' -Encoding UTF8
+          git config user.email 'ci@users.noreply.github.com'
+          git config user.name 'CI'
+          git add logs/last-failure.txt
+          git commit -m ('ci: failure log run ' + $env:GITHUB_RUN_ID)
+          git push
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -121,5 +145,5 @@ jobs:
             C:\krita-dev\dist\ReveriePaint.zip
             windows\out\*.exe
             C:\krita-dev\build.log
-          if-no-files-found: warn
+          if-no-files-found: ignore
           retention-days: 14
