@@ -68,7 +68,7 @@ jobs:
           'kit: extracted and checksum verified'
 
       - name: Upstream assets and license
-        shell: pwwh
+        shell: pwsh
         run: |
           git clone --depth 1 https://github.com/LanRhyme/ReveriePaint.git ($env:GITHUB_WORKSPACE + '/upstream')
           if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
@@ -103,10 +103,14 @@ jobs:
       - name: Installer (Inno Setup)
         shell: pwsh
         run: |
+          $pkg = $env:KRITA_ROOT + '/dist/ReveriePaint'
+          if (-not (Test-Path ($env:KRITA_ROOT + '/dist/ReveriePaint.zip'))) {
+            Compress-Archive -Path $pkg -DestinationPath ($env:KRITA_ROOT + '/dist/ReveriePaint.zip')
+          }
           choco install innosetup --no-progress -y
           $iscc = 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe'
           if (-not (Test-Path $iscc)) { $iscc = (Get-Command iscc.exe).Source }
-          & $iscc ('/DDistDir=' + $env:KRITA_ROOT + '\dist\ReveriePaint') 'windows\installer\reveriepaint.iss'
+          & $iscc ('/DDistDir=' + $pkg) 'windows\installer\reveriepaint.iss'
           if ($LASTEXITCODE -ne 0) { throw ('iscc failed: ' + $LASTEXITCODE) }
 
       - uses: actions/upload-artifact@v4
