@@ -1,0 +1,121 @@
+name: Windows build and installer
+
+on:
+  workflow_dispatch:
+    inputs:
+      krita_tag:
+        description: 'Krita tag'
+        required: false
+        default: 'v6.0.4'
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  KRITA_ROOT: C:\krita-dev
+  LLVM_MINGW: C:\deps\llvm-mingw-20251118-ucrt-x86_64
+  NINJA_DIR: C:\deps\Ninja
+  CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
+  KIT_URL: https://aka.doubaocdn.com/s/kx0D3fFXH1
+  KIT_SHA256: f02e45288d0f86be45963d9d0f4596f60b29ab6a21124b64dbac38bfb0a558e3
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          architecture: x64
+
+      - name: Toolchain (llvm-mingw 20251118 / Ninja / CMake 3.31)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $ProgressPreference = 'SilentlyContinue'
+          New-Item -ItemType Directory -Force C:/deps | Out-Null
+          if (-not (Test-Path ($env:LLVM_MINGW + '/bin/clang++.exe'))) {
+            Invoke-WebRequest -Uri 'https://github.com/mstorsjo/llvm-mingw/releases/download/20251118/llvm-mingw-20251118-ucrt-x86_64.zip' -OutFile ($env:RUNNER_TEMP + '/llvm.zip')
+            Expand-Archive ($env:RUNNER_TEMP + '/llvm.zip') -DestinationPath 'C:/deps' -Force
+          }
+          if (-not (Test-Path ($env:NINJA_DIR + '/ninja.exe'))) {
+            Invoke-WebRequest -Uri 'https://github.com/ninja-build/ninja/releases/latest/download/ninja-win.zip' -OutFile ($env:RUNNER_TEMP + '/ninja.zip')
+            New-Item -ItemType Directory -Force $env:NINJA_DIR | Out-Null
+            Expand-Archive ($env:RUNNER_TEMP + '/ninja.zip') -DestinationPath $env:NINJA_DIR -Force
+          }
+          if (-not (Test-Path ($env:CMAKE_HOME + '/bin/cmake.exe'))) {
+            Invoke-WebRequest -Uri 'https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-windows-x86_64.zip' -OutFile ($env:RUNNER_TEMP + '/cmake.zip')
+            Expand-Archive ($env:RUNNER_TEMP + '/cmake.zip') -DestinationPath 'C:/deps' -Force
+          }
+          ($env:CMAKE_HOME + '/bin') | Out-File -FilePath $env:GITHUB_PATH -Append
+          $env:NINJA_DIR | Out-File -FilePath $env:GITHUB_PATH -Append
+          & ($env:CMAKE_HOME + '/bin/cmake.exe') --version
+          & ($env:NINJA_DIR + '/ninja.exe') --version
+
+      - name: Port kit (repo copy or signed zip)
+        shell: pwsh
+        run: |
+          if (Test-Path 'windows/scripts/03-build.ps1') { 'kit: already in repo'; exit 0 }
+          Invoke-WebRequest -Uri $env:KIT_URL -OutFile ($env:RUNNER_TEMP + '/kit.zip')
+          $h = (Get-FileHash ($env:RUNNER_TEMP + '/kit.zip') -Algorithm SHA256).Hash.ToLower()
+          if ($h -ne $env:KIT_SHA256) { throw ('kit hash mismatch: ' + $h) }
+          Expand-Archive ($env:RUNNER_TEMP + '/kit.zip') -DestinationPath $env:GITHUB_WORKSPACE -Force
+          'kit: extracted and checksum verified'
+
+      - name: Upstream assets and license
+        shell: pwwh
+        run: |
+          git clone --depth 1 https://github.com/LanRhyme/ReveriePaint.git ($env:GITHUB_WORKSPACE + '/upstream')
+          if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
+          Copy-Item ($env:GITHUB_WORKSPACE + '/upstream/LICENSE') ($env:GITHUB_WORKSPACE + '/LICENSE') -Force
+
+      - name: 01 bootstrap source and dependencies
+        shell: pwsh
+        run: |
+          $tag = '${{ inputs.krita_tag }}'
+          if (-not $tag) { $tag = 'v6.0.4' }
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag $tag -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python
+          if ($LASTEXITCODE -ne 0) { throw ('01 failed: ' + $LASTEXITCODE) }
+
+      - name: 02 apply patches
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT
+          if ($LASTEXITCODE -ne 0) { throw ('02 failed: ' + $LASTEXITCODE) }
+
+      - name: 03 build and install
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/03-build.ps1 -Root $env:KRITA_ROOT -Jobs 4
+          if ($LASTEXITCODE -ne 0) { throw ('03 failed: ' + $LASTEXITCODE) }
+
+      - name: 04 stage portable package
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/04-stage-portable.ps1 -Root $env:KRITA_ROOT -LlvmMingw $env:LLVM_MINGW -AssetSource ($env:GITHUB_WORKSPACE + '/upstream/app/src/main/assets')
+          if ($LASTEXITCODE -ne 0) { throw ('04 failed: ' + $LASTEXITCODE) }
+
+      - name: Installer (Inno Setup)
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          $iscc = 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe'
+          if (-not (Test-Path $iscc)) { $iscc = (Get-Command iscc.exe).Source }
+          & $iscc ('/DDistDir=' + $env:KRITA_ROOT + '\dist\ReveriePaint') 'windows\installer\reveriepaint.iss'
+          if ($LASTEXITCODE -ne 0) { throw ('iscc failed: ' + $LASTEXITCODE) }
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ReveriePaint-Windows
+          path: |
+            C:\krita-dev\dist\ReveriePaint.zip
+            windows\out\*.exe
+            C:\krita-dev\build.log
+          if-no-files-found: warn
+          retention-days: 14
