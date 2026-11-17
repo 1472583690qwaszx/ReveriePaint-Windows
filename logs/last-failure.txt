@@ -1,6 +1,6 @@
 # CI failure log
 run: 
-44070885434
+44089559285
 
 --- build.log tail 150 ---
 -- Up-to-date: C:/krita-dev/_install/share/locale/hi
@@ -175,67 +175,6 @@ cldr-license.txt
 gettext-license.txt
 iconv-license.txt
 MakeinstallerNsis.cmake
---- package_complete.log tail 60 ---
-## 2026-11-17 12:54:08,602 INFO: Compiler looks like Clang
-## 2026-11-17 12:54:08,602 INFO: Toolchain looks like llvm-mingw
-## 2026-11-17 12:54:08,602 INFO: 
-## 2026-11-17 12:54:08,602 INFO: Trying to guess target architecture...
-## 2026-11-17 12:54:08,703 INFO: Possible LLVM objdump, trying to detect architecture...
-## 2026-11-17 12:54:08,704 INFO: Possible LLVM objdump, trying to detect architecture...
-## 2026-11-17 12:54:08,704 INFO: -- C:\krita-dev\_install\bin\krita.exe:	file format coff-x86-64
-## 2026-11-17 12:54:08,704 INFO: Target looks like x86_64
-## 2026-11-17 12:54:08,704 INFO: 
-## 2026-11-17 12:54:08,704 INFO: Testing for objcopy...
-## 2026-11-17 12:54:08,763 INFO: 
-## 2026-11-17 12:54:08,763 INFO: Testing for strip...
-## 2026-11-17 12:54:08,819 INFO: 
-## 2026-11-17 12:54:08,820 INFO: Trying to guess Qt version...
-## 2026-11-17 12:54:08,820 INFO:     Found Qt6
-## 2026-11-17 12:54:08,820 INFO: 
-## 2026-11-17 12:54:08,820 INFO: Creating base directories...
-## 2026-11-17 12:54:08,836 INFO: 
-## 2026-11-17 12:54:08,836 INFO: Copying GCC libraries...
-## 2026-11-17 12:54:08,864 INFO: No ASAN was found in the Krita binary, skipping its packaging...
-## 2026-11-17 12:54:08,875 INFO: 
-## 2026-11-17 12:54:08,875 INFO: Copying files...
-## 2026-11-17 12:54:08,877 INFO: Copying all DLLs except Qt5/Qt6 * from bin/
-## 2026-11-17 12:54:09,555 INFO: Copying all DLLs from lib/ (deps)
-## 2026-11-17 12:54:14,058 INFO: Run: windeployqt.exe --qmldir C:\krita-dev\krita\plugins\dockers\textproperties -gui -core -core5compat -openglwidgets -svgwidgets -opengl -concurrent -network -printsupport -svg -xml -sql -qml -quick -quickwidgets C:\krita-dev\dist\ReveriePaint\bin\krita.exe C:\krita-dev\dist\ReveriePaint\bin\krita.dll
-## 2026-11-17 12:54:18,356 INFO: 
-## 2026-11-17 12:54:18,356 INFO: Deleting python cache...
-## 2026-11-17 12:54:18,393 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\__pycache__
-## 2026-11-17 12:54:18,395 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\bundle\__pycache__
-## 2026-11-17 12:54:18,397 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\bundle\packages\__pycache__
-## 2026-11-17 12:54:18,401 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\__pycache__
-## 2026-11-17 12:54:18,404 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\distinfo\__pycache__
-## 2026-11-17 12:54:18,405 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\__pycache__
-## 2026-11-17 12:54:18,407 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\__pycache__
-## 2026-11-17 12:54:18,408 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\code\__pycache__
-## 2026-11-17 12:54:18,409 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\code\backends\__pycache__
-## 2026-11-17 12:54:18,411 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\formatters\__pycache__
-## 2026-11-17 12:54:18,412 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\parser\__pycache__
-## 2026-11-17 12:54:18,414 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\parser\ply\__pycache__
-## 2026-11-17 12:54:18,415 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\resolver\__pycache__
-## 2026-11-17 12:54:18,415 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\module\__pycache__
-## 2026-11-17 12:54:18,419 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\tools\__pycache__
-## 2026-11-17 12:54:18,432 INFO: Deleting unnecessary Python packages
-## 2026-11-17 12:54:18,530 INFO: 
-## 2026-11-17 12:54:18,530 INFO: Packaging stripped binaries...
-## 2026-11-17 12:54:18,530 INFO: Run: C:\ProgramData\Chocolatey\bin\7z.exe a -tzip ReveriePaint.zip C:\krita-dev\dist\ReveriePaint\ -xr!*.debug
-## 2026-11-17 12:54:40,453 INFO: 
-## 2026-11-17 12:54:40,453 INFO: Packaging debug info...
-## 2026-11-17 12:54:40,454 INFO: Run: C:\ProgramData\Chocolatey\bin\7z.exe a -tzip ReveriePaint-dbg.zip -r C:\krita-dev\dist\ReveriePaint\*.debug
-## 2026-11-17 12:54:41,195 INFO: 
-## 2026-11-17 12:54:41,196 INFO: Krita packaged as ReveriePaint.zip
-## 2026-11-17 12:54:41,196 INFO: Debug info packaged as ReveriePaint-dbg.zip
-## 2026-11-17 12:54:41,196 INFO: Packaging dir is C:\krita-dev\dist\ReveriePaint
-## 2026-11-17 12:54:41,196 INFO: NOTE: Do not create installer with packaging dir. Extract from
-## 2026-11-17 12:54:41,196 INFO:       ReveriePaint.zip instead
-## 2026-11-17 12:54:41,196 INFO: and do _not_ run krita inside the extracted directory because it will
-## 2026-11-17 12:54:41,196 INFO:        create extra unnecessary files.
-
-## 2026-11-17 12:54:41,196 INFO: Please remember to actually test the package before releasing it.
-
 --- stage-console.log tail 120 ---
 Updating FontFamilyDelegate.qml.
 Updating GroupButton.qml.
@@ -327,7 +266,7 @@ Add new data to archive: 491 folders, 4486 files, 677923982 bytes (647 MiB)
 
 
 Files read from disk: 4486
-Archive size: 249638729 bytes (239 MiB)
+Archive size: 249638532 bytes (239 MiB)
 Everything is Ok
 ## INFO: 
 ## INFO: Packaging debug info...
@@ -357,3 +296,51 @@ Everything is Ok
 
 ## INFO: Please remember to actually test the package before releasing it.
 
+--- installer-console.log tail 150 ---
+pkg dir exists: True  -> C:\krita-dev/dist/ReveriePaint
+pkg bin: True
+iss exists: True
+iss rewritten as UTF-8 with BOM
+using iscc: C:\Program Files (x86)\Inno Setup 6\ISCC.exe
+Inno Setup 6 Command-Line Compiler
+Copyright (C) 1997-2026 Jordan Russell. All rights reserved.
+Portions Copyright (C) 2000-2026 Martijn Laan. All rights reserved.
+Portions Copyright (C) 2001-2004 Alex Yackimoff. All rights reserved.
+https://www.innosetup.com
+
+Compiler engine version: Inno Setup 6.7.1
+Non-commercial use only
+
+Preprocessing
+   Reading file: C:\Program Files (x86)\Inno Setup 6\ISPPBuiltins.iss
+Parsing [Setup] section, line 16
+Parsing [Setup] section, line 17
+Parsing [Setup] section, line 18
+Parsing [Setup] section, line 19
+Parsing [Setup] section, line 20
+Parsing [Setup] section, line 21
+Parsing [Setup] section, line 22
+Parsing [Setup] section, line 23
+Parsing [Setup] section, line 24
+Parsing [Setup] section, line 25
+Parsing [Setup] section, line 26
+Parsing [Setup] section, line 27
+Parsing [Setup] section, line 28
+Parsing [Setup] section, line 29
+Parsing [Setup] section, line 30
+Parsing [Setup] section, line 31
+Creating output directory: D:\a\ReveriePaint-Windows\ReveriePaint-Windows\windows\out
+Reading file (LicenseFile)
+Reading file (WizardImageFile)
+Reading file (WizardSmallImageFile)
+Preparing Setup program executable
+   Verification successful
+   Updating icons (Setup.e32)
+   Updating version info (Setup.e32)
+Determining language code pages
+Parsing [Languages] section, line 35
+   Reading file: C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl
+Error on line 35 in D:\a\ReveriePaint-Windows\ReveriePaint-Windows\windows\installer\reveriepaint.iss: Couldn't open include file "C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl": The system cannot find the file specified.
+Compile aborted.
+iscc exit: 2
+--- windows/out ---
