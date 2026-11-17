@@ -22,8 +22,8 @@ env:
   NINJA_DIR: C:\deps\Ninja
   CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
   KRITA_DEPS_BRANCH: transition.now/qt6
-  KIT_URL: https://aka.doubaocdn.com/s/W3VVmxwHo9
-  KIT_SHA256: 4e55d2fc3f283984d1ac60828080b46c5d240c6d4060473bb49e21e5fe0e57d9
+  KIT_URL: https://aka.doubaocdn.com/s/GmPXtOP3pd
+  KIT_SHA256: 11157abc95a3c72333cdc39074d6a008831f9f605e37e19dfbf1a8217ace7f5f
 
 jobs:
   windows:
@@ -136,10 +136,6 @@ jobs:
           New-Item -ItemType Directory -Force logs | Out-Null
           $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, '')
           if (Test-Path ($env:KRITA_ROOT + '/build-rc.txt')) { $out += '--- build-rc ---'; $out += (Get-Content ($env:KRITA_ROOT + '/build-rc.txt')) }
-          foreach ($d in @('C:','D:')) {
-            $disk = Get-CimInstance Win32_LogicalDisk -Filter ("DeviceID='" + $d + "'")
-            if ($disk) { $out += ('{0} free {1} GB' -f $d, [math]::Round($disk.FreeSpace/1GB,1)) }
-          }
           $log = $env:KRITA_ROOT + '/build.log'
           if (Test-Path $log) { $out += '--- build.log tail 300 ---'; $out += (Get-Content $log -Tail 300) }
           if (Test-Path ($env:KRITA_ROOT + '/_install')) {
