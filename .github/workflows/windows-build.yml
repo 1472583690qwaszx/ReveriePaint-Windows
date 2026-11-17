@@ -32,6 +32,63 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Preflight (Inno Setup + Chinese isl)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          New-Item -ItemType Directory -Force logs | Out-Null
+          function Log([string]$m) { Write-Host $m; Add-Content -Path 'logs/preflight-console.log' -Value $m -Encoding utf8 }
+          $cands = @(
+            'C:\Program Files (x86)\Inno Setup 6\ISCC.exe',
+            'C:\Program Files\Inno Setup 6\ISCC.exe',
+            'C:\ProgramData\Chocolatey\bin\ISCC.exe')
+          $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $iscc) {
+            Log 'iscc not preinstalled, running choco install innosetup'
+            & choco install innosetup --no-progress -y 2>&1 | ForEach-Object { Log ([string]$_) }
+            Log ('choco exit: ' + $LASTEXITCODE)
+            $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
+          }
+          if (-not $iscc) {
+            Log 'choco path failed, direct install from jrsoftware'
+            $exe = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
+            & curl.exe -sSL --max-time 180 -o $exe 'https://jrsoftware.org/download.php/is.exe'
+            Log ('download exit: ' + $LASTEXITCODE + ' size: ' + (Get-Item $exe -ErrorAction SilentlyContinue).Length)
+            Start-Process -FilePath $exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/SP-' -Wait
+            $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
+            if (-not $iscc) { $iscc = (Get-ChildItem 'C:\Program Files*\Inno Setup*\ISCC.exe' -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }
+          }
+          Log ('iscc: ' + $iscc)
+          if (-not $iscc) { Log 'FATAL: iscc unavailable, installer will be skipped'; exit 1 }
+          $langIsl = Join-Path (Split-Path $iscc) 'Languages\ChineseSimplified.isl'
+          $urls = @(
+            'https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/ChineseSimplified.isl',
+            'https://raw.githubusercontent.com/kira-96/Inno-Setup-Chinese-Simplified-Translation/master/ChineseSimplified.isl')
+          $chineseOk = $false
+          foreach ($u in $urls) {
+            Log ('download isl: ' + $u)
+            & curl.exe -sSL --max-time 60 -o $langIsl $u
+            $sz = (Get-Item $langIsl -ErrorAction SilentlyContinue).Length
+            Log ('isl size: ' + $sz)
+            if ($sz -gt 10000 -and (Select-String -Path $langIsl -Pattern '[LangOptions]' -Quiet)) { $chineseOk = $true; break }
+            Log 'isl rejected, trying next source'
+            Remove-Item $langIsl -Force -ErrorAction SilentlyContinue
+          }
+          Log ('chinese isl usable: ' + $chineseOk)
+          $piss = Join-Path $env:RUNNER_TEMP 'preflight.iss'
+          if ($chineseOk) {
+            $body = "[Setup]`nAppName=Preflight`nAppVersion=1.0`nDefaultDirName={autopf}\Preflight`nOutputDir=.`nOutputBaseFilename=preflight`nCompression=none`n[Languages]`nName: \"chinesesimplified\"; MessagesFile: \"compiler:Languages\ChineseSimplified.isl\"`nName: \"english\"; MessagesFile: \"compiler:Default.isl\"`n"
+          } else {
+            $body = "[Setup]`nAppName=Preflight`nAppVersion=1.0`nDefaultDirName={autopf}\Preflight`nOutputDir=.`nOutputBaseFilename=preflight`nCompression=none`n[Languages]`nName: \"english\"; MessagesFile: \"compiler:Default.isl\"`n"
+          }
+          [System.IO.File]::WriteAllText($piss, $body, (New-Object System.Text.UTF8Encoding($true)))
+          & $iscc $piss 2>&1 | ForEach-Object { Log ([string]$_) }
+          $rc = [int]$LASTEXITCODE
+          Log ('preflight iscc exit: ' + $rc)
+          if ($rc -eq 0 -and $chineseOk) { Set-Content -Path 'windows/installer/.chinese-ok' -Value 'yes' -Encoding utf8; Log 'chinese installer language available' }
+          elseif ($rc -ne 0) { Log 'preflight compile failed - installer step will fall back to English only' }
+          Get-Content 'logs/preflight-console.log' -Tail 25
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
@@ -146,56 +203,21 @@ jobs:
           $iss = Join-Path $env:GITHUB_WORKSPACE 'windows\installer\reveriepaint.iss'
           Log ('iss exists: ' + (Test-Path $iss))
           $txt = Get-Content $iss -Raw
+          if (-not (Test-Path 'windows/installer/.chinese-ok')) {
+            Log 'falling back to English-only installer language'
+            $txt = $txt -replace 'Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"', '; chinese language removed (isl unavailable)'
+          } else {
+            Log 'chinese installer language enabled'
+          }
           [System.IO.File]::WriteAllText($iss, $txt, (New-Object System.Text.UTF8Encoding($true)))
-          Log 'iss rewritten as UTF-8 with BOM'
           $cands = @(
             'C:\Program Files (x86)\Inno Setup 6\ISCC.exe',
             'C:\Program Files\Inno Setup 6\ISCC.exe',
             'C:\ProgramData\Chocolatey\bin\ISCC.exe')
           $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
-          if (-not $iscc) {
-            Log 'no local ISCC, running: choco install innosetup -y'
-            & choco install innosetup --no-progress -y 2>&1 | ForEach-Object { Log ([string]$_) }
-            Log ('choco exit: ' + $LASTEXITCODE)
-            $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
-          }
-          if (-not $iscc) {
-            Log 'choco path failed, installing Inno Setup 6 directly from jrsoftware'
-            $exe = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
-            & curl.exe -sSL --max-time 180 -o $exe 'https://jrsoftware.org/download.php/is.exe'
-            Log ('download exit: ' + $LASTEXITCODE + ' size: ' + (Get-Item $exe -ErrorAction SilentlyContinue).Length)
-            Start-Process -FilePath $exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/SP-' -Wait
-            $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
-            if (-not $iscc) { $iscc = (Get-ChildItem 'C:\Program Files*\Inno Setup*\ISCC.exe' -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }
-          }
-          if (-not $iscc) { Log 'ISCC.exe not found anywhere'; throw 'ISCC.exe not found' }
+          if (-not $iscc) { $iscc = (Get-ChildItem 'C:\Program Files*\Inno Setup*\ISCC.exe' -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }
+          if (-not $iscc) { Log 'ISCC.exe not found (preflight failed?)'; throw 'ISCC.exe not found' }
           Log ('using iscc: ' + $iscc)
-          $islUrl = 'https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/Unofficial/ChineseSimplified.isl'
-          $langIsl = Join-Path (Split-Path $iscc) 'Languages\ChineseSimplified.isl'
-          $localIsl = Join-Path $env:GITHUB_WORKSPACE 'windows\installer\ChineseSimplified.isl'
-          $chineseOk = $false
-          if (Test-Path $langIsl) { $chineseOk = $true; Log ('chinese isl present: ' + $langIsl) }
-          if (-not $chineseOk) {
-            Log ('chinese isl missing, downloading -> ' + $langIsl)
-            & curl.exe -sSL --max-time 60 -o $langIsl $islUrl
-            Log ('isl download exit: ' + $LASTEXITCODE + ' size: ' + ((Get-Item $langIsl -ErrorAction SilentlyContinue).Length))
-            if (Test-Path $langIsl) { $chineseOk = $true }
-          }
-          if (-not $chineseOk) {
-            & curl.exe -sSL --max-time 60 -o $localIsl $islUrl
-            Log ('isl download (local) exit: ' + $LASTEXITCODE + ' size: ' + ((Get-Item $localIsl -ErrorAction SilentlyContinue).Length))
-            if (Test-Path $localIsl) {
-              $chineseOk = $true
-              $t2 = (Get-Content $iss -Raw) -replace 'compiler:Languages\\ChineseSimplified.isl', 'ChineseSimplified.isl'
-              [System.IO.File]::WriteAllText($iss, $t2, (New-Object System.Text.UTF8Encoding($true)))
-              Log 'pointed iss at local chinese isl'
-            }
-          }
-          if (-not $chineseOk) {
-            Log 'chinese isl unavailable, switching installer to English-only'
-            $t2 = (Get-Content $iss -Raw) -replace 'Name: "chinesesimplified"; MessagesFile: "compiler:Languages\\ChineseSimplified.isl"', '; chinese language removed: isl unavailable'
-            [System.IO.File]::WriteAllText($iss, $t2, (New-Object System.Text.UTF8Encoding($true)))
-          }
           & $iscc ('/DDistDir=' + $pkg) $iss 2>&1 | ForEach-Object { Log ([string]$_) }
           $rc = [int]$LASTEXITCODE
           Log ('iscc exit: ' + $rc)
@@ -208,6 +230,7 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
           $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, '')
+          if (Test-Path 'logs/preflight-console.log') { $out += '--- preflight-console.log tail 100 ---'; $out += (Get-Content 'logs/preflight-console.log' -Tail 100) }
           if (Test-Path ($env:KRITA_ROOT + '/build-rc.txt')) { $out += '--- build-rc ---'; $out += (Get-Content ($env:KRITA_ROOT + '/build-rc.txt')) }
           $log = $env:KRITA_ROOT + '/build.log'
           if (Test-Path $log) { $out += '--- build.log tail 150 ---'; $out += (Get-Content $log -Tail 150) }
@@ -231,7 +254,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force artifacts | Out-Null
-          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt','C:\krita-dev\dist\stage-console.log','logs\installer-console.log')) {
+          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt','C:\krita-dev\dist\stage-console.log','logs\installer-console.log','logs\preflight-console.log')) {
             Get-ChildItem $p -ErrorAction SilentlyContinue | Copy-Item -Destination artifacts -Force
           }
           Get-ChildItem artifacts | Select-Object Name, Length
