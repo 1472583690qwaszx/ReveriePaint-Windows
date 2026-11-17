@@ -1,158 +1,8 @@
 # CI failure log
 run: 
-44046876093
+44070885434
 
---- build.log tail 300 ---
--- Installing: C:/krita-dev/_install/bin/krita_version.exe
--- Installing: C:/krita-dev/_install/lib/libkrita.dll.a
--- Installing: C:/krita-dev/_install/bin/krita.dll
--- Installing: C:/krita-dev/_install/share/applications/org.kde.krita.desktop
--- Installing: C:/krita-dev/_install/share/krita/actions/krita.action
--- Installing: C:/krita-dev/_install/share/krita/actions/kritamenu.action
--- Installing: C:/krita-dev/_install/share/metainfo/org.kde.krita.appdata.xml
--- Up-to-date: C:/krita-dev/_install/share/krita/shortcuts
--- Installing: C:/krita-dev/_install/bin/krita.exe
--- Installing: C:/krita-dev/_install/bin/krita.com
--- Installing: C:/krita-dev/_install/MakeinstallerNsis.cmake
--- Installing: C:/krita-dev/_install/installer/installer_krita.nsi
--- Installing: C:/krita-dev/_install/installer/license_gpl-3.0.rtf
--- Installing: C:/krita-dev/_install/installer/include/FileExists2.nsh
--- Installing: C:/krita-dev/_install/installer/include/IsFileInUse.nsh
--- Installing: C:/krita-dev/_install/installer/translations/English.nsh
--- Installing: C:/krita-dev/_install/installer/translations/TradChinese.nsh
--- Installing: C:/krita-dev/_install/installer/translations/SimpChinese.nsh
--- Installing: C:/krita-dev/_install/krita-msix/manifest.xml
--- Installing: C:/krita-dev/_install/krita-msix/build_msix.py
--- Installing: C:/krita-dev/_install/krita-msix/priconfig.xml
--- Installing: C:/krita-dev/_install/krita-msix/pkg
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/fileicon.targetsize-16.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/fileicon.targetsize-24.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/fileicon.targetsize-256.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/fileicon.targetsize-32.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/fileicon.targetsize-48.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/fileicon.targetsize-64.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square150x150Logo.scale-100.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square150x150Logo.scale-125.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square150x150Logo.scale-150.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square150x150Logo.scale-200.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square150x150Logo.scale-400.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square310x310Logo.scale-100.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square310x310Logo.scale-125.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square310x310Logo.scale-150.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square310x310Logo.scale-200.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square310x310Logo.scale-400.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-lightunplated_targetsize-16.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-lightunplated_targetsize-24.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-lightunplated_targetsize-256.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-lightunplated_targetsize-32.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-lightunplated_targetsize-48.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-unplated_targetsize-16.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-unplated_targetsize-24.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-unplated_targetsize-256.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-unplated_targetsize-32.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.altform-unplated_targetsize-48.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.scale-100.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.scale-125.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.scale-150.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.scale-200.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.scale-400.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.targetsize-16.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.targetsize-24.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.targetsize-256.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.targetsize-32.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square44x44Logo.targetsize-48.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square71x71Logo.scale-100.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square71x71Logo.scale-125.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square71x71Logo.scale-150.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square71x71Logo.scale-200.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Square71x71Logo.scale-400.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/StoreLogo.scale-100.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/StoreLogo.scale-125.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/StoreLogo.scale-150.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/StoreLogo.scale-200.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/StoreLogo.scale-400.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Wide310x150Logo.scale-100.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Wide310x150Logo.scale-125.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Wide310x150Logo.scale-150.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Wide310x150Logo.scale-200.png
--- Installing: C:/krita-dev/_install/krita-msix/pkg/Assets/Wide310x150Logo.scale-400.png
--- Up-to-date: C:/krita-dev/_install/share/locale
--- Up-to-date: C:/krita-dev/_install/share/locale/af
--- Up-to-date: C:/krita-dev/_install/share/locale/af/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/af/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/ar
--- Up-to-date: C:/krita-dev/_install/share/locale/ar/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/ar/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/be
--- Up-to-date: C:/krita-dev/_install/share/locale/be/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/be/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/bg
--- Up-to-date: C:/krita-dev/_install/share/locale/bg/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/bg/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/br
--- Up-to-date: C:/krita-dev/_install/share/locale/br/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/br/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/bs
--- Up-to-date: C:/krita-dev/_install/share/locale/bs/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/bs/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/ca
--- Up-to-date: C:/krita-dev/_install/share/locale/ca/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/ca/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/ca@valencia
--- Up-to-date: C:/krita-dev/_install/share/locale/ca@valencia/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/ca@valencia/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/cs
--- Up-to-date: C:/krita-dev/_install/share/locale/cs/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/cs/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/cy
--- Up-to-date: C:/krita-dev/_install/share/locale/cy/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/cy/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/da
--- Up-to-date: C:/krita-dev/_install/share/locale/da/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/da/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/de
--- Up-to-date: C:/krita-dev/_install/share/locale/de/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/de/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/el
--- Up-to-date: C:/krita-dev/_install/share/locale/el/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/el/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/en_GB
--- Up-to-date: C:/krita-dev/_install/share/locale/en_GB/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/en_GB/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/eo
--- Up-to-date: C:/krita-dev/_install/share/locale/eo/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/eo/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/es
--- Up-to-date: C:/krita-dev/_install/share/locale/es/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/es/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/et
--- Up-to-date: C:/krita-dev/_install/share/locale/et/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/et/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/eu
--- Up-to-date: C:/krita-dev/_install/share/locale/eu/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/eu/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/fa
--- Up-to-date: C:/krita-dev/_install/share/locale/fa/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/fa/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/fi
--- Up-to-date: C:/krita-dev/_install/share/locale/fi/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/fi/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/fr
--- Up-to-date: C:/krita-dev/_install/share/locale/fr/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/fr/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/fy
--- Up-to-date: C:/krita-dev/_install/share/locale/fy/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/fy/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/ga
--- Up-to-date: C:/krita-dev/_install/share/locale/ga/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/ga/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/gl
--- Up-to-date: C:/krita-dev/_install/share/locale/gl/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/gl/LC_MESSAGES/krita.mo
--- Up-to-date: C:/krita-dev/_install/share/locale/he
--- Up-to-date: C:/krita-dev/_install/share/locale/he/LC_MESSAGES
--- Installing: C:/krita-dev/_install/share/locale/he/LC_MESSAGES/krita.mo
+--- build.log tail 150 ---
 -- Up-to-date: C:/krita-dev/_install/share/locale/hi
 -- Up-to-date: C:/krita-dev/_install/share/locale/hi/LC_MESSAGES
 -- Installing: C:/krita-dev/_install/share/locale/hi/LC_MESSAGES/krita.mo
@@ -325,63 +175,185 @@ cldr-license.txt
 gettext-license.txt
 iconv-license.txt
 MakeinstallerNsis.cmake
---- package_complete.log ---
-## 2026-11-17 10:04:02,261 INFO: 7-Zip: C:\ProgramData\Chocolatey\bin\7z.exe
-## 2026-11-17 10:04:02,261 INFO: mingw-w64: C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin
-## 2026-11-17 10:04:02,261 INFO: Krita src: C:\krita-dev\krita
-## 2026-11-17 10:04:02,261 INFO: Deps install dir: C:\krita-dev\_install
-## 2026-11-17 10:04:02,261 INFO: Krita install dir: C:\krita-dev\_install
-## 2026-11-17 10:04:02,261 INFO: Package name is ReveriePaint
-## 2026-11-17 10:04:02,261 INFO: Packaging dir is C:\krita-dev\dist\ReveriePaint
+--- package_complete.log tail 60 ---
+## 2026-11-17 12:54:08,602 INFO: Compiler looks like Clang
+## 2026-11-17 12:54:08,602 INFO: Toolchain looks like llvm-mingw
+## 2026-11-17 12:54:08,602 INFO: 
+## 2026-11-17 12:54:08,602 INFO: Trying to guess target architecture...
+## 2026-11-17 12:54:08,703 INFO: Possible LLVM objdump, trying to detect architecture...
+## 2026-11-17 12:54:08,704 INFO: Possible LLVM objdump, trying to detect architecture...
+## 2026-11-17 12:54:08,704 INFO: -- C:\krita-dev\_install\bin\krita.exe:	file format coff-x86-64
+## 2026-11-17 12:54:08,704 INFO: Target looks like x86_64
+## 2026-11-17 12:54:08,704 INFO: 
+## 2026-11-17 12:54:08,704 INFO: Testing for objcopy...
+## 2026-11-17 12:54:08,763 INFO: 
+## 2026-11-17 12:54:08,763 INFO: Testing for strip...
+## 2026-11-17 12:54:08,819 INFO: 
+## 2026-11-17 12:54:08,820 INFO: Trying to guess Qt version...
+## 2026-11-17 12:54:08,820 INFO:     Found Qt6
+## 2026-11-17 12:54:08,820 INFO: 
+## 2026-11-17 12:54:08,820 INFO: Creating base directories...
+## 2026-11-17 12:54:08,836 INFO: 
+## 2026-11-17 12:54:08,836 INFO: Copying GCC libraries...
+## 2026-11-17 12:54:08,864 INFO: No ASAN was found in the Krita binary, skipping its packaging...
+## 2026-11-17 12:54:08,875 INFO: 
+## 2026-11-17 12:54:08,875 INFO: Copying files...
+## 2026-11-17 12:54:08,877 INFO: Copying all DLLs except Qt5/Qt6 * from bin/
+## 2026-11-17 12:54:09,555 INFO: Copying all DLLs from lib/ (deps)
+## 2026-11-17 12:54:14,058 INFO: Run: windeployqt.exe --qmldir C:\krita-dev\krita\plugins\dockers\textproperties -gui -core -core5compat -openglwidgets -svgwidgets -opengl -concurrent -network -printsupport -svg -xml -sql -qml -quick -quickwidgets C:\krita-dev\dist\ReveriePaint\bin\krita.exe C:\krita-dev\dist\ReveriePaint\bin\krita.dll
+## 2026-11-17 12:54:18,356 INFO: 
+## 2026-11-17 12:54:18,356 INFO: Deleting python cache...
+## 2026-11-17 12:54:18,393 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\__pycache__
+## 2026-11-17 12:54:18,395 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\bundle\__pycache__
+## 2026-11-17 12:54:18,397 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\bundle\packages\__pycache__
+## 2026-11-17 12:54:18,401 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\__pycache__
+## 2026-11-17 12:54:18,404 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\distinfo\__pycache__
+## 2026-11-17 12:54:18,405 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\__pycache__
+## 2026-11-17 12:54:18,407 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\__pycache__
+## 2026-11-17 12:54:18,408 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\code\__pycache__
+## 2026-11-17 12:54:18,409 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\code\backends\__pycache__
+## 2026-11-17 12:54:18,411 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\formatters\__pycache__
+## 2026-11-17 12:54:18,412 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\parser\__pycache__
+## 2026-11-17 12:54:18,414 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\parser\ply\__pycache__
+## 2026-11-17 12:54:18,415 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\resolver\__pycache__
+## 2026-11-17 12:54:18,415 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\module\__pycache__
+## 2026-11-17 12:54:18,419 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\tools\__pycache__
+## 2026-11-17 12:54:18,432 INFO: Deleting unnecessary Python packages
+## 2026-11-17 12:54:18,530 INFO: 
+## 2026-11-17 12:54:18,530 INFO: Packaging stripped binaries...
+## 2026-11-17 12:54:18,530 INFO: Run: C:\ProgramData\Chocolatey\bin\7z.exe a -tzip ReveriePaint.zip C:\krita-dev\dist\ReveriePaint\ -xr!*.debug
+## 2026-11-17 12:54:40,453 INFO: 
+## 2026-11-17 12:54:40,453 INFO: Packaging debug info...
+## 2026-11-17 12:54:40,454 INFO: Run: C:\ProgramData\Chocolatey\bin\7z.exe a -tzip ReveriePaint-dbg.zip -r C:\krita-dev\dist\ReveriePaint\*.debug
+## 2026-11-17 12:54:41,195 INFO: 
+## 2026-11-17 12:54:41,196 INFO: Krita packaged as ReveriePaint.zip
+## 2026-11-17 12:54:41,196 INFO: Debug info packaged as ReveriePaint-dbg.zip
+## 2026-11-17 12:54:41,196 INFO: Packaging dir is C:\krita-dev\dist\ReveriePaint
+## 2026-11-17 12:54:41,196 INFO: NOTE: Do not create installer with packaging dir. Extract from
+## 2026-11-17 12:54:41,196 INFO:       ReveriePaint.zip instead
+## 2026-11-17 12:54:41,196 INFO: and do _not_ run krita inside the extracted directory because it will
+## 2026-11-17 12:54:41,196 INFO:        create extra unnecessary files.
 
-## 2026-11-17 10:04:02,262 INFO: 
-## 2026-11-17 10:04:02,262 INFO: Trying to guess compiler version...
-## 2026-11-17 10:04:02,406 INFO: -- clang version 21.1.6 (https://github.com/llvm/llvm-project.git a832a5222e489298337fbb5876f8dcaf072c5cca)
-## 2026-11-17 10:04:02,406 INFO: Compiler looks like Clang
-## 2026-11-17 10:04:02,407 INFO: Toolchain looks like llvm-mingw
-## 2026-11-17 10:04:02,407 INFO: 
-## 2026-11-17 10:04:02,407 INFO: Trying to guess target architecture...
-## 2026-11-17 10:04:02,472 INFO: Possible LLVM objdump, trying to detect architecture...
-## 2026-11-17 10:04:02,472 INFO: Possible LLVM objdump, trying to detect architecture...
-## 2026-11-17 10:04:02,472 INFO: -- C:\krita-dev\_install\bin\krita.exe:	file format coff-x86-64
-## 2026-11-17 10:04:02,472 INFO: Target looks like x86_64
-## 2026-11-17 10:04:02,472 INFO: 
-## 2026-11-17 10:04:02,472 INFO: Testing for objcopy...
-## 2026-11-17 10:04:02,515 INFO: 
-## 2026-11-17 10:04:02,516 INFO: Testing for strip...
-## 2026-11-17 10:04:02,557 INFO: 
-## 2026-11-17 10:04:02,557 INFO: Trying to guess Qt version...
-## 2026-11-17 10:04:02,557 INFO:     Found Qt6
-## 2026-11-17 10:04:02,558 INFO: 
-## 2026-11-17 10:04:02,558 INFO: Creating base directories...
-## 2026-11-17 10:04:02,559 INFO: 
-## 2026-11-17 10:04:02,559 INFO: Copying GCC libraries...
-## 2026-11-17 10:04:02,579 INFO: No ASAN was found in the Krita binary, skipping its packaging...
-## 2026-11-17 10:04:02,585 INFO: 
-## 2026-11-17 10:04:02,585 INFO: Copying files...
-## 2026-11-17 10:04:02,587 INFO: Copying all DLLs except Qt5/Qt6 * from bin/
-## 2026-11-17 10:04:03,023 INFO: Copying all DLLs from lib/ (deps)
-## 2026-11-17 10:04:07,034 INFO: Run: windeployqt.exe --qmldir C:\krita-dev\krita\plugins\dockers\textproperties -gui -core -core5compat -openglwidgets -svgwidgets -opengl -concurrent -network -printsupport -svg -xml -sql -qml -quick -quickwidgets C:\krita-dev\dist\ReveriePaint\bin\krita.exe C:\krita-dev\dist\ReveriePaint\bin\krita.dll
-## 2026-11-17 10:04:10,759 INFO: 
-## 2026-11-17 10:04:10,759 INFO: Deleting python cache...
-## 2026-11-17 10:04:10,800 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\__pycache__
-## 2026-11-17 10:04:10,802 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\bundle\__pycache__
-## 2026-11-17 10:04:10,804 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\pyqtbuild\bundle\packages\__pycache__
-## 2026-11-17 10:04:10,808 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\__pycache__
-## 2026-11-17 10:04:10,812 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\distinfo\__pycache__
-## 2026-11-17 10:04:10,813 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\__pycache__
-## 2026-11-17 10:04:10,815 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\__pycache__
-## 2026-11-17 10:04:10,817 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\code\__pycache__
-## 2026-11-17 10:04:10,818 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\code\backends\__pycache__
-## 2026-11-17 10:04:10,819 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\outputs\formatters\__pycache__
-## 2026-11-17 10:04:10,821 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\parser\__pycache__
-## 2026-11-17 10:04:10,822 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\parser\ply\__pycache__
-## 2026-11-17 10:04:10,823 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\generator\resolver\__pycache__
-## 2026-11-17 10:04:10,824 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\module\__pycache__
-## 2026-11-17 10:04:10,828 DEBUG: Deleting Python cache C:\krita-dev\dist\ReveriePaint\lib\site-packages\sipbuild\tools\__pycache__
-## 2026-11-17 10:04:10,843 INFO: Deleting unnecessary Python packages
-## 2026-11-17 10:04:10,944 INFO: 
-## 2026-11-17 10:04:10,944 INFO: Splitting debug info from binaries...
-## 2026-11-17 10:04:10,944 DEBUG: Splitting debug info of bin\krita.exe
-## 2026-11-17 10:04:11,048 DEBUG: Splitting debug info of bin\krita.com
-## 2026-11-17 10:04:11,152 DEBUG: Splitting debug info of bin\kritarunner.exe
+## 2026-11-17 12:54:41,196 INFO: Please remember to actually test the package before releasing it.
+
+--- stage-console.log tail 120 ---
+Updating FontFamilyDelegate.qml.
+Updating GroupButton.qml.
+Updating InformingTextInput.qml.
+Updating IntParseSpinBox.qml.
+Updating IntSliderSpinBox.qml.
+Updating kritaqmlcomponents.qmltypes.
+Updating OptionButtonStrip.qml.
+Updating PopupBase.qml.
+Updating qmldir.
+Updating ResourceDelegateBase.qml.
+Updating ResourcePopup.qml.
+Updating ResourceView.qml.
+Updating TabButtonBase.qml.
+Updating ThemedControl.qml.
+Updating ToolSeparatorBase.qml.
+Updating ToolTipBase.qml.
+Updating WindowFocusChecker.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/+Fusion.
+Updating TabButtonBase.qml.
+Updating ToolSeparatorBase.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/+qquickwidget.
+Updating PopupBase.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/+qt5.
+Updating WindowFocusChecker.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/angleselector.
+Updating AngleGauge.qml.
+Updating AngleSelectorUtil.js.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/overlays.
+Updating SliderOverlay.qml.
+Updating WarningOverlay.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/sliderspinbox.
+Updating SliderSpinBoxContentItem.qml.
+Updating SliderSpinBoxManipulator.qml.
+Updating SliderSpinBoxRangeSwitch.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/spinbox.
+Updating ParseSpinBoxContentItem.qml.
+Creating C:/krita-dev/dist/ReveriePaint/bin/qml/org/krita/components/textinput.
+Updating TextInputWithPrefixAndSuffix.qml.
+Updating TextInputWithSelectionRange.qml.
+Creating qt_ar.qm...
+Creating qt_bg.qm...
+Creating qt_ca.qm...
+Creating qt_cs.qm...
+Creating qt_da.qm...
+Creating qt_de.qm...
+Creating qt_en.qm...
+Creating qt_es.qm...
+Creating qt_fa.qm...
+Creating qt_fi.qm...
+Creating qt_fr.qm...
+Creating qt_gd.qm...
+Creating qt_he.qm...
+Creating qt_hr.qm...
+Creating qt_hu.qm...
+Creating qt_it.qm...
+Creating qt_ja.qm...
+Creating qt_ka.qm...
+Creating qt_kk.qm...
+Creating qt_ko.qm...
+Creating qt_lg.qm...
+Creating qt_lv.qm...
+Creating qt_nl.qm...
+Creating qt_nn.qm...
+Creating qt_pl.qm...
+Creating qt_pt_BR.qm...
+Creating qt_ru.qm...
+Creating qt_sk.qm...
+Creating qt_sv.qm...
+Creating qt_tr.qm...
+Creating qt_uk.qm...
+Creating qt_zh_CN.qm...
+Creating qt_zh_TW.qm...
+## INFO: 
+## INFO: Deleting python cache...
+## INFO: Deleting unnecessary Python packages
+## INFO: 
+## INFO: Packaging stripped binaries...
+## INFO: Run: C:\ProgramData\Chocolatey\bin\7z.exe a -tzip ReveriePaint.zip C:\krita-dev\dist\ReveriePaint\ -xr!*.debug
+
+7-Zip 26.05 (x64) : Copyright (c) 1999-2026 Igor Pavlov : 2026-10-21
+
+Scanning the drive:
+491 folders, 4486 files, 677923982 bytes (647 MiB)
+
+Creating archive: ReveriePaint.zip
+
+Add new data to archive: 491 folders, 4486 files, 677923982 bytes (647 MiB)
+
+
+Files read from disk: 4486
+Archive size: 249638729 bytes (239 MiB)
+Everything is Ok
+## INFO: 
+## INFO: Packaging debug info...
+## INFO: Run: C:\ProgramData\Chocolatey\bin\7z.exe a -tzip ReveriePaint-dbg.zip -r C:\krita-dev\dist\ReveriePaint\*.debug
+
+7-Zip 26.05 (x64) : Copyright (c) 1999-2026 Igor Pavlov : 2026-10-21
+
+Scanning the drive:
+39 folders, 35 files, 12921856 bytes (13 MiB)
+
+Creating archive: ReveriePaint-dbg.zip
+
+Add new data to archive: 39 folders, 35 files, 12921856 bytes (13 MiB)
+
+
+Files read from disk: 35
+Archive size: 3733744 bytes (3647 KiB)
+Everything is Ok
+## INFO: 
+## INFO: Krita packaged as ReveriePaint.zip
+## INFO: Debug info packaged as ReveriePaint-dbg.zip
+## INFO: Packaging dir is C:\krita-dev\dist\ReveriePaint
+## INFO: NOTE: Do not create installer with packaging dir. Extract from
+## INFO:       ReveriePaint.zip instead
+## INFO: and do _not_ run krita inside the extracted directory because it will
+## INFO:        create extra unnecessary files.
+
+## INFO: Please remember to actually test the package before releasing it.
+
