@@ -73,10 +73,29 @@ jobs:
         shell: pwsh
         run: |
           if (Test-Path 'windows/scripts/03-build.ps1') { 'kit: already in repo'; exit 0 }
-          Invoke-WebRequest -Uri $env:KIT_URL -OutFile ($env:RUNNER_TEMP + '/kit.zip')
-          $h = (Get-FileHash ($env:RUNNER_TEMP + '/kit.zip') -Algorithm SHA256).Hash.ToLower()
-          if ($h -ne $env:KIT_SHA256) { throw ('kit hash mismatch: ' + $h) }
-          Expand-Archive ($env:RUNNER_TEMP + '/kit.zip') -DestinationPath $env:GITHUB_WORKSPACE -Force
+          $zip = Join-Path $env:RUNNER_TEMP 'kit.zip'
+          $ok = $false
+          for ($i = 1; $i -le 4; $i++) {
+            'download attempt ' + $i + ' via curl (max 60s)'
+            & curl.exe -sSL --max-time 60 --retry 1 -o $zip $env:KIT_URL
+            "curl exit: $LASTEXITCODE"
+            if (Test-Path $zip) {
+              $h = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+              "sha256: $h"
+              if ($h -eq $env:KIT_SHA256) { $ok = $true; break }
+            }
+            Start-Sleep -Seconds (10 * $i)
+          }
+          if (-not $ok) {
+            'retrying with Invoke-WebRequest'
+            try {
+              Invoke-WebRequest -Uri $env:KIT_URL -OutFile $zip -TimeoutSec 45 -UseBasicParsing
+              $h = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+              if ($h -eq $env:KIT_SHA256) { $ok = $true }
+            } catch { 'iwr failed: ' + $_.Exception.Message }
+          }
+          if (-not $ok) { throw 'port kit download failed (CDN unreachable or hash mismatch)' }
+          Expand-Archive -Path $zip -DestinationPath $env:GITHUB_WORKSPACE -Force
           'kit: extracted and checksum verified'
 
       - name: Upstream assets and license
