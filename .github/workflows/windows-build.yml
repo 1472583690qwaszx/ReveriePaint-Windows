@@ -143,7 +143,6 @@ jobs:
           function Log([string]$m) { Write-Host $m; Add-Content -Path 'logs/installer-console.log' -Value $m -Encoding utf8 }
           $pkg = $env:KRITA_ROOT + '/dist/ReveriePaint'
           Log ('pkg dir exists: ' + (Test-Path $pkg) + '  -> ' + $pkg)
-          if (Test-Path $pkg) { Log ('pkg bin: ' + (Test-Path ($pkg + '/bin/krita.exe'))) }
           $iss = Join-Path $env:GITHUB_WORKSPACE 'windows\installer\reveriepaint.iss'
           Log ('iss exists: ' + (Test-Path $iss))
           $txt = Get-Content $iss -Raw
@@ -171,6 +170,32 @@ jobs:
           }
           if (-not $iscc) { Log 'ISCC.exe not found anywhere'; throw 'ISCC.exe not found' }
           Log ('using iscc: ' + $iscc)
+          $islUrl = 'https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/Unofficial/ChineseSimplified.isl'
+          $langIsl = Join-Path (Split-Path $iscc) 'Languages\ChineseSimplified.isl'
+          $localIsl = Join-Path $env:GITHUB_WORKSPACE 'windows\installer\ChineseSimplified.isl'
+          $chineseOk = $false
+          if (Test-Path $langIsl) { $chineseOk = $true; Log ('chinese isl present: ' + $langIsl) }
+          if (-not $chineseOk) {
+            Log ('chinese isl missing, downloading -> ' + $langIsl)
+            & curl.exe -sSL --max-time 60 -o $langIsl $islUrl
+            Log ('isl download exit: ' + $LASTEXITCODE + ' size: ' + ((Get-Item $langIsl -ErrorAction SilentlyContinue).Length))
+            if (Test-Path $langIsl) { $chineseOk = $true }
+          }
+          if (-not $chineseOk) {
+            & curl.exe -sSL --max-time 60 -o $localIsl $islUrl
+            Log ('isl download (local) exit: ' + $LASTEXITCODE + ' size: ' + ((Get-Item $localIsl -ErrorAction SilentlyContinue).Length))
+            if (Test-Path $localIsl) {
+              $chineseOk = $true
+              $t2 = (Get-Content $iss -Raw) -replace 'compiler:Languages\\ChineseSimplified.isl', 'ChineseSimplified.isl'
+              [System.IO.File]::WriteAllText($iss, $t2, (New-Object System.Text.UTF8Encoding($true)))
+              Log 'pointed iss at local chinese isl'
+            }
+          }
+          if (-not $chineseOk) {
+            Log 'chinese isl unavailable, switching installer to English-only'
+            $t2 = (Get-Content $iss -Raw) -replace 'Name: "chinesesimplified"; MessagesFile: "compiler:Languages\\ChineseSimplified.isl"', '; chinese language removed: isl unavailable'
+            [System.IO.File]::WriteAllText($iss, $t2, (New-Object System.Text.UTF8Encoding($true)))
+          }
           & $iscc ('/DDistDir=' + $pkg) $iss 2>&1 | ForEach-Object { Log ([string]$_) }
           $rc = [int]$LASTEXITCODE
           Log ('iscc exit: ' + $rc)
