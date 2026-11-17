@@ -59,7 +59,7 @@ jobs:
             if (-not $iscc) { $iscc = (Get-ChildItem 'C:\Program Files*\Inno Setup*\ISCC.exe' -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }
           }
           Log ('iscc: ' + $iscc)
-          if (-not $iscc) { Log 'FATAL: iscc unavailable, installer will be skipped'; exit 1 }
+          if (-not $iscc) { Log 'FATAL: iscc unavailable'; exit 1 }
           $langIsl = Join-Path (Split-Path $iscc) 'Languages\ChineseSimplified.isl'
           $urls = @(
             'https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/ChineseSimplified.isl',
@@ -70,23 +70,29 @@ jobs:
             & curl.exe -sSL --max-time 60 -o $langIsl $u
             $sz = (Get-Item $langIsl -ErrorAction SilentlyContinue).Length
             Log ('isl size: ' + $sz)
-            if ($sz -gt 10000 -and (Select-String -Path $langIsl -Pattern '[LangOptions]' -Quiet)) { $chineseOk = $true; break }
+            if ($sz -gt 10000 -and (Select-String -Path $langIsl -Pattern 'LangOptions' -Quiet)) { $chineseOk = $true; break }
             Log 'isl rejected, trying next source'
             Remove-Item $langIsl -Force -ErrorAction SilentlyContinue
           }
           Log ('chinese isl usable: ' + $chineseOk)
           $piss = Join-Path $env:RUNNER_TEMP 'preflight.iss'
-          if ($chineseOk) {
-            $body = "[Setup]`nAppName=Preflight`nAppVersion=1.0`nDefaultDirName={autopf}\Preflight`nOutputDir=.`nOutputBaseFilename=preflight`nCompression=none`n[Languages]`nName: \"chinesesimplified\"; MessagesFile: \"compiler:Languages\ChineseSimplified.isl\"`nName: \"english\"; MessagesFile: \"compiler:Default.isl\"`n"
-          } else {
-            $body = "[Setup]`nAppName=Preflight`nAppVersion=1.0`nDefaultDirName={autopf}\Preflight`nOutputDir=.`nOutputBaseFilename=preflight`nCompression=none`n[Languages]`nName: \"english\"; MessagesFile: \"compiler:Default.isl\"`n"
-          }
-          [System.IO.File]::WriteAllText($piss, $body, (New-Object System.Text.UTF8Encoding($true)))
+          $lines = @(
+            '[Setup]',
+            'AppName=Preflight',
+            'AppVersion=1.0',
+            'DefaultDirName={autopf}\Preflight',
+            'OutputDir=.',
+            'OutputBaseFilename=preflight',
+            'Compression=none',
+            '[Languages]')
+          if ($chineseOk) { $lines += 'Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"' }
+          $lines += 'Name: "english"; MessagesFile: "compiler:Default.isl"'
+          [System.IO.File]::WriteAllLines($piss, $lines, (New-Object System.Text.UTF8Encoding($true)))
           & $iscc $piss 2>&1 | ForEach-Object { Log ([string]$_) }
           $rc = [int]$LASTEXITCODE
           Log ('preflight iscc exit: ' + $rc)
-          if ($rc -eq 0 -and $chineseOk) { Set-Content -Path 'windows/installer/.chinese-ok' -Value 'yes' -Encoding utf8; Log 'chinese installer language available' }
-          elseif ($rc -ne 0) { Log 'preflight compile failed - installer step will fall back to English only' }
+          if ($rc -eq 0 -and $chineseOk) { Set-Content -Path 'logs/chinese-ok.txt' -Value 'yes' -Encoding utf8; Log 'chinese installer language available' }
+          if ($rc -ne 0) { Log 'preflight compile failed - installer falls back to English only' }
           Get-Content 'logs/preflight-console.log' -Tail 25
 
       - uses: actions/setup-python@v5
@@ -203,9 +209,9 @@ jobs:
           $iss = Join-Path $env:GITHUB_WORKSPACE 'windows\installer\reveriepaint.iss'
           Log ('iss exists: ' + (Test-Path $iss))
           $txt = Get-Content $iss -Raw
-          if (-not (Test-Path 'windows/installer/.chinese-ok')) {
+          if (-not (Test-Path 'logs/chinese-ok.txt')) {
             Log 'falling back to English-only installer language'
-            $txt = $txt -replace 'Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"', '; chinese language removed (isl unavailable)'
+            $txt = $txt.Replace('Name: "chinesesimplified"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"', '; chinese language removed (isl unavailable)')
           } else {
             Log 'chinese installer language enabled'
           }
