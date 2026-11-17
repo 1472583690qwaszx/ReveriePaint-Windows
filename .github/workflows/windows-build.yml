@@ -22,8 +22,8 @@ env:
   NINJA_DIR: C:\deps\Ninja
   CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
   KRITA_DEPS_BRANCH: transition.now/qt6
-  KIT_URL: https://aka.doubaocdn.com/s/xJWukwp9sQ
-  KIT_SHA256: cc074c7de12aa790af3a78b921a009bff5224dd6382c2f54bd7b3d96c442cb82
+  KIT_URL: https://aka.doubaocdn.com/s/W3VVmxwHo9
+  KIT_SHA256: 4e55d2fc3f283984d1ac60828080b46c5d240c6d4060473bb49e21e5fe0e57d9
 
 jobs:
   windows:
@@ -36,6 +36,14 @@ jobs:
         with:
           python-version: '3.13'
           architecture: x64
+
+      - name: Disk headroom
+        shell: pwsh
+        run: |
+          foreach ($d in @('C:','D:')) {
+            $disk = Get-CimInstance Win32_LogicalDisk -Filter ("DeviceID='" + $d + "'")
+            if ($disk) { "{0} free {1} GB / total {2} GB" -f $d, [math]::Round($disk.FreeSpace/1GB,1), [math]::Round($disk.Size/1GB,1) }
+          }
 
       - name: Toolchain (llvm-mingw 20251118 / Ninja / CMake 3.31)
         shell: pwsh
@@ -95,10 +103,10 @@ jobs:
       - name: 03 build and install
         shell: pwsh
         run: |
-          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/03-build.ps1 -Root $env:KRITA_ROOT -Jobs 4
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/03-build.ps1 -Root $env:KRITA_ROOT -Jobs 4 -Config Release
           if ($LASTEXITCODE -ne 0) {
             $log = $env:KRITA_ROOT + '/build.log'
-            if (Test-Path $log) { Get-Content $log -Tail 80 }
+            if (Test-Path $log) { Get-Content $log -Tail 200 }
             throw ('03 failed: ' + $LASTEXITCODE)
           }
 
@@ -127,8 +135,17 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
           $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, '')
+          if (Test-Path ($env:KRITA_ROOT + '/build-rc.txt')) { $out += '--- build-rc ---'; $out += (Get-Content ($env:KRITA_ROOT + '/build-rc.txt')) }
+          foreach ($d in @('C:','D:')) {
+            $disk = Get-CimInstance Win32_LogicalDisk -Filter ("DeviceID='" + $d + "'")
+            if ($disk) { $out += ('{0} free {1} GB' -f $d, [math]::Round($disk.FreeSpace/1GB,1)) }
+          }
           $log = $env:KRITA_ROOT + '/build.log'
-          if (Test-Path $log) { $out += (Get-Content $log -Tail 300) }
+          if (Test-Path $log) { $out += '--- build.log tail 300 ---'; $out += (Get-Content $log -Tail 300) }
+          if (Test-Path ($env:KRITA_ROOT + '/_install')) {
+            $out += '--- _install 顶层 ---'
+            $out += (Get-ChildItem ($env:KRITA_ROOT + '/_install') -Name | Select-Object -First 60)
+          }
           $pkglog = $env:KRITA_ROOT + '/dist/package_complete.log'
           if (Test-Path $pkglog) { $out += '--- package_complete.log ---'; $out += (Get-Content $pkglog -Tail 120) }
           $out | Set-Content 'logs/last-failure.txt' -Encoding UTF8
@@ -138,13 +155,20 @@ jobs:
           git commit -m ('ci: failure log run ' + $env:GITHUB_RUN_ID)
           git push
 
+      - name: Collect artifacts into workspace
+        if: always()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force artifacts | Out-Null
+          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt')) {
+            Get-ChildItem $p -ErrorAction SilentlyContinue | Copy-Item -Destination artifacts -Force
+          }
+          Get-ChildItem artifacts | Select-Object Name, Length
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ReveriePaint-Windows
-          path: |
-            C:\krita-dev\dist\ReveriePaint.zip
-            windows\out\*.exe
-            C:\krita-dev\build.log
-          if-no-files-found: ignore
+          path: artifacts/**
+          if-no-files-found: warn
           retention-days: 14
