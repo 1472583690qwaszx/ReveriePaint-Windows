@@ -138,15 +138,44 @@ jobs:
       - name: Installer (Inno Setup)
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Continue'
+          New-Item -ItemType Directory -Force logs | Out-Null
+          function Log([string]$m) { Write-Host $m; Add-Content -Path 'logs/installer-console.log' -Value $m -Encoding utf8 }
           $pkg = $env:KRITA_ROOT + '/dist/ReveriePaint'
-          if (-not (Test-Path ($env:KRITA_ROOT + '/dist/ReveriePaint.zip'))) {
-            Compress-Archive -Path $pkg -DestinationPath ($env:KRITA_ROOT + '/dist/ReveriePaint.zip')
+          Log ('pkg dir exists: ' + (Test-Path $pkg) + '  -> ' + $pkg)
+          if (Test-Path $pkg) { Log ('pkg bin: ' + (Test-Path ($pkg + '/bin/krita.exe'))) }
+          $iss = Join-Path $env:GITHUB_WORKSPACE 'windows\installer\reveriepaint.iss'
+          Log ('iss exists: ' + (Test-Path $iss))
+          $txt = Get-Content $iss -Raw
+          [System.IO.File]::WriteAllText($iss, $txt, (New-Object System.Text.UTF8Encoding($true)))
+          Log 'iss rewritten as UTF-8 with BOM'
+          $cands = @(
+            'C:\Program Files (x86)\Inno Setup 6\ISCC.exe',
+            'C:\Program Files\Inno Setup 6\ISCC.exe',
+            'C:\ProgramData\Chocolatey\bin\ISCC.exe')
+          $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
+          if (-not $iscc) {
+            Log 'no local ISCC, running: choco install innosetup -y'
+            & choco install innosetup --no-progress -y 2>&1 | ForEach-Object { Log ([string]$_) }
+            Log ('choco exit: ' + $LASTEXITCODE)
+            $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
           }
-          choco install innosetup --no-progress -y
-          $iscc = 'C:/Program Files (x86)/Inno Setup 6/ISCC.exe'
-          if (-not (Test-Path $iscc)) { $iscc = (Get-Command iscc.exe).Source }
-          & $iscc ('/DDistDir=' + $pkg) 'windows\installer\reveriepaint.iss'
-          if ($LASTEXITCODE -ne 0) { throw ('iscc failed: ' + $LASTEXITCODE) }
+          if (-not $iscc) {
+            Log 'choco path failed, installing Inno Setup 6 directly from jrsoftware'
+            $exe = Join-Path $env:RUNNER_TEMP 'innosetup.exe'
+            & curl.exe -sSL --max-time 180 -o $exe 'https://jrsoftware.org/download.php/is.exe'
+            Log ('download exit: ' + $LASTEXITCODE + ' size: ' + (Get-Item $exe -ErrorAction SilentlyContinue).Length)
+            Start-Process -FilePath $exe -ArgumentList '/VERYSILENT','/SUPPRESSMSGBOXES','/NORESTART','/SP-' -Wait
+            $iscc = $cands | Where-Object { Test-Path $_ } | Select-Object -First 1
+            if (-not $iscc) { $iscc = (Get-ChildItem 'C:\Program Files*\Inno Setup*\ISCC.exe' -ErrorAction SilentlyContinue | Select-Object -First 1).FullName }
+          }
+          if (-not $iscc) { Log 'ISCC.exe not found anywhere'; throw 'ISCC.exe not found' }
+          Log ('using iscc: ' + $iscc)
+          & $iscc ('/DDistDir=' + $pkg) $iss 2>&1 | ForEach-Object { Log ([string]$_) }
+          $rc = [int]$LASTEXITCODE
+          Log ('iscc exit: ' + $rc)
+          if ($rc -ne 0) { Get-Content 'logs/installer-console.log' -Tail 40; throw ('iscc failed: ' + $rc) }
+          Get-ChildItem 'windows\out' -ErrorAction SilentlyContinue | Select-Object Name, Length | Format-Table | Out-String | ForEach-Object { Log $_ }
 
       - name: Publish failure log
         if: failure()
@@ -161,10 +190,10 @@ jobs:
             $out += '--- _install 顶层 ---'
             $out += (Get-ChildItem ($env:KRITA_ROOT + '/_install') -Name | Select-Object -First 60)
           }
-          $pkglog = $env:KRITA_ROOT + '/dist/package_complete.log'
-          if (Test-Path $pkglog) { $out += '--- package_complete.log tail 60 ---'; $out += (Get-Content $pkglog -Tail 60) }
           $stlog = $env:KRITA_ROOT + '/dist/stage-console.log'
           if (Test-Path $stlog) { $out += '--- stage-console.log tail 120 ---'; $out += (Get-Content $stlog -Tail 120) }
+          if (Test-Path 'logs/installer-console.log') { $out += '--- installer-console.log tail 150 ---'; $out += (Get-Content 'logs/installer-console.log' -Tail 150) }
+          if (Test-Path 'windows/out') { $out += '--- windows/out ---'; $out += (Get-ChildItem 'windows/out' -Name) }
           $out | Set-Content 'logs/last-failure.txt' -Encoding UTF8
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
@@ -177,7 +206,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force artifacts | Out-Null
-          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt','C:\krita-dev\dist\stage-console.log')) {
+          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt','C:\krita-dev\dist\stage-console.log','logs\installer-console.log')) {
             Get-ChildItem $p -ErrorAction SilentlyContinue | Copy-Item -Destination artifacts -Force
           }
           Get-ChildItem artifacts | Select-Object Name, Length
