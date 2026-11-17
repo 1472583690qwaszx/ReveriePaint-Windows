@@ -1,0 +1,47 @@
+# CI failure log
+run: 
+44026768209
+step: 
+windows
+
+-- The CXX compiler identification is GNU 15.2.0
+-- The C compiler identification is GNU 15.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/mingw64/bin/c++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/mingw64/bin/cc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Using CMake version: 3.31.6
+-- Krita version: 6.0.4
+-- Branding selected: Beta
+-- Found Python: C:/hostedtoolcache/windows/Python/3.13.17/x64/python3.exe (found suitable version "3.13.17", minimum required is "3.8") found components: Development Interpreter Development.Module Development.Embed
+-- FindPythonLibrary: TRUE
+-- Python system site-packages directory: C:\hostedtoolcache\windows\Python\3.13.17\x64\Lib\site-packages
+-- Krita site-packages directories for SIP v4: C:\krita-dev\_install\lib\krita-python-libs
+-- Krita site-packages directories for SIP v5+: C:\krita-dev\_install\lib\python3.13\site-packages
+CMake Warning at cmake/modules/FindPythonLibrary.cmake:68 (message):
+  CMAKE_PREFIX_PATH variable is not set, we might NOT be able to detect SIP
+  modules
+Call Stack (most recent call first):
+  CMakeLists.txt:448 (find_package)
+
+
+-- Found PythonLibrary: C:/hostedtoolcache/windows/Python/3.13.17/x64/libs/python313.lib (Required is at least version "3.8")
+-- Performing Test CAN_USE_PYTHON_LIBS
+-- Performing Test CAN_USE_PYTHON_LIBS - Success
+CMake Error at CMakeLists.txt:468 (find_package):
+  Could not find a configuration file for package "ECM" that is compatible
+  with requested version "6.0".
+
+  The following configuration files were considered but not accepted:
+
+    C:/krita-dev/_install/share/ECM/cmake/ECMConfig.cmake, version: 5.101.0
+
+
+
+-- Configuring incomplete, errors occurred!
