@@ -21,8 +21,9 @@ env:
   LLVM_MINGW: C:\deps\llvm-mingw-20251118-ucrt-x86_64
   NINJA_DIR: C:\deps\Ninja
   CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
-  KIT_URL: https://aka.doubaocdn.com/s/kx0D3fFXH1
-  KIT_SHA256: f02e45288d0f86be45963d9d0f4596f60b29ab6a21124b64dbac38bfb0a558e3
+  KRITA_DEPS_BRANCH: transition.now/qt6
+  KIT_URL: https://aka.doubaocdn.com/s/xJWukwp9sQ
+  KIT_SHA256: cc074c7de12aa790af3a78b921a009bff5224dd6382c2f54bd7b3d96c442cb82
 
 jobs:
   windows:
@@ -82,7 +83,7 @@ jobs:
         run: |
           $tag = '${{ inputs.krita_tag }}'
           if (-not $tag) { $tag = 'v6.0.4' }
-          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag $tag -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag $tag -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python
           if ($LASTEXITCODE -ne 0) { throw ('01 failed: ' + $LASTEXITCODE) }
 
       - name: 02 apply patches
@@ -125,7 +126,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
-          $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, 'step: ' + $env:GITHUB_JOB, '')
+          $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, '')
           $log = $env:KRITA_ROOT + '/build.log'
           if (Test-Path $log) { $out += (Get-Content $log -Tail 300) }
           $pkglog = $env:KRITA_ROOT + '/dist/package_complete.log'
