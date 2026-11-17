@@ -22,8 +22,8 @@ env:
   NINJA_DIR: C:\deps\Ninja
   CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
   KRITA_DEPS_BRANCH: transition.now/qt6
-  KIT_URL: https://aka.doubaocdn.com/s/GmPXtOP3pd
-  KIT_SHA256: 11157abc95a3c72333cdc39074d6a008831f9f605e37e19dfbf1a8217ace7f5f
+  KIT_URL: https://aka.doubaocdn.com/s/WqkxbDnv9Q
+  KIT_SHA256: 048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
 
 jobs:
   windows:
@@ -137,13 +137,15 @@ jobs:
           $out = @('# CI failure log', 'run: ' + $env:GITHUB_RUN_ID, '')
           if (Test-Path ($env:KRITA_ROOT + '/build-rc.txt')) { $out += '--- build-rc ---'; $out += (Get-Content ($env:KRITA_ROOT + '/build-rc.txt')) }
           $log = $env:KRITA_ROOT + '/build.log'
-          if (Test-Path $log) { $out += '--- build.log tail 300 ---'; $out += (Get-Content $log -Tail 300) }
+          if (Test-Path $log) { $out += '--- build.log tail 150 ---'; $out += (Get-Content $log -Tail 150) }
           if (Test-Path ($env:KRITA_ROOT + '/_install')) {
             $out += '--- _install 顶层 ---'
             $out += (Get-ChildItem ($env:KRITA_ROOT + '/_install') -Name | Select-Object -First 60)
           }
           $pkglog = $env:KRITA_ROOT + '/dist/package_complete.log'
-          if (Test-Path $pkglog) { $out += '--- package_complete.log ---'; $out += (Get-Content $pkglog -Tail 120) }
+          if (Test-Path $pkglog) { $out += '--- package_complete.log tail 60 ---'; $out += (Get-Content $pkglog -Tail 60) }
+          $stlog = $env:KRITA_ROOT + '/dist/stage-console.log'
+          if (Test-Path $stlog) { $out += '--- stage-console.log tail 120 ---'; $out += (Get-Content $stlog -Tail 120) }
           $out | Set-Content 'logs/last-failure.txt' -Encoding UTF8
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
@@ -156,7 +158,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force artifacts | Out-Null
-          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt')) {
+          foreach ($p in @('C:\krita-dev\dist\*.zip','windows\out\*.exe','C:\krita-dev\build.log','C:\krita-dev\build-rc.txt','C:\krita-dev\dist\stage-console.log')) {
             Get-ChildItem $p -ErrorAction SilentlyContinue | Copy-Item -Destination artifacts -Force
           }
           Get-ChildItem artifacts | Select-Object Name, Length
