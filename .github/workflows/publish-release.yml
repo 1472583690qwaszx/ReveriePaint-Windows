@@ -1,0 +1,40 @@
+name: Publish release (reuse built artifacts)
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Run id to copy artifacts from'
+        required: false
+        default: '44133559747'
+  push:
+    paths:
+      - '.github/workflows/publish-release.yml'
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts from build run
+        uses: actions/download-artifact@v4
+        with:
+          name: ReveriePaint-Windows
+          path: artifacts
+          run-id: ${{ inputs.run_id || 44133559747 }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish as release asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ls -la artifacts
+          TAG="win-$(date -u +%Y%m%d-%H%M)"
+          FILES=$(ls artifacts/*.exe artifacts/*.zip 2>/dev/null || true)
+          echo "files to publish: $FILES"
+          gh release create "$TAG" $FILES \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "ReveriePaint Windows $TAG" \
+            --notes "Krita 6.0.4 桌面外壳 + PyKrita 原生插件；产物复用构建 run ${{ inputs.run_id || 44133559747 }}。"
