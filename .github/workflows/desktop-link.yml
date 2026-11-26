@@ -1,0 +1,171 @@
+name: Desktop Link (engine dll)
+
+# 链接阶段：先真的把 Krita 库 build+install 出来，再把 43 个 TU 的 .o 链成 reverie_core.dll。
+# 单轮 60~120 分钟（Krita 全量构建占大头），日志写入 logs/ 回传仓库。
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'desktop-port/**'
+      - 'windows/**'
+      - '.github/workflows/desktop-link.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: desktop-link-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  KRITA_ROOT: C:/krita-dev
+  UPSTREAM_TAG: v1.11.0
+  LLVM_MINGW: C:/deps/llvm-mingw-20251118-ucrt-x86_64
+  NINJA_DIR: C:/deps/Ninja
+  CMAKE_HOME: C:/deps/cmake-3.31.6-windows-x86_64
+  KRITA_DEPS_BRANCH: transition.now/qt6
+  KIT_URL: https://aka.doubaocdn.com/s/n3IQw6uQ4V
+  KIT_SHA256: 048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
+
+jobs:
+  link:
+    runs-on: windows-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache toolchain
+        uses: actions/cache@v4
+        with:
+          path: C:/deps
+          key: deps-${{ runner.os }}-llvm20251118-cmake3316-ninja
+
+      - name: Disk headroom
+        shell: pwsh
+        run: |
+          foreach ($d in @('C:','D:')) {
+            $disk = Get-CimInstance Win32_LogicalDisk -Filter ("DeviceID='" + $d + "'")
+            if ($disk) { "{0} free {1} GB / total {2} GB" -f $d, [math]::Round($disk.FreeSpace/1GB,1), [math]::Round($disk.Size/1GB,1) }
+          }
+
+      - name: Toolchain
+        shell: pwsh
+        run: |
+          $ProgressPreference = 'SilentlyContinue'
+          New-Item -ItemType Directory -Force 'C:/deps' | Out-Null
+          if (-not (Test-Path ($env:LLVM_MINGW + '/bin/clang++.exe'))) {
+            Invoke-WebRequest -Uri 'https://github.com/mstorsjo/llvm-mingw/releases/download/20251118/llvm-mingw-20251118-ucrt-x86_64.zip' -OutFile ($env:RUNNER_TEMP + '/llvm.zip')
+            Expand-Archive ($env:RUNNER_TEMP + '/llvm.zip') -DestinationPath 'C:/deps' -Force
+          }
+          if (-not (Test-Path ($env:NINJA_DIR + '/ninja.exe'))) {
+            Invoke-WebRequest -Uri 'https://github.com/ninja-build/ninja/releases/latest/download/ninja-win.zip' -OutFile ($env:RUNNER_TEMP + '/ninja.zip')
+            New-Item -ItemType Directory -Force $env:NINJA_DIR | Out-Null
+            Expand-Archive ($env:RUNNER_TEMP + '/ninja.zip') -DestinationPath $env:NINJA_DIR -Force
+          }
+          if (-not (Test-Path ($env:CMAKE_HOME + '/bin/cmake.exe'))) {
+            Invoke-WebRequest -Uri 'https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-windows-x86_64.zip' -OutFile ($env:RUNNER_TEMP + '/cmake.zip')
+            Expand-Archive ($env:RUNNER_TEMP + '/cmake.zip') -DestinationPath 'C:/deps' -Force
+          }
+          ($env:CMAKE_HOME + '/bin') | Out-File -FilePath $env:GITHUB_PATH -Append
+          $env:NINJA_DIR | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Port kit (repo copy or signed zip)
+        shell: pwsh
+        run: |
+          if (Test-Path 'windows/scripts/03-build.ps1') { 'kit: already in repo'; exit 0 }
+          $zip = Join-Path $env:RUNNER_TEMP 'kit.zip'
+          $ok = $false
+          for ($i = 1; $i -le 4; $i++) {
+            'download attempt ' + $i
+            & curl.exe -sSL --max-time 60 --retry 1 -o $zip $env:KIT_URL
+            if (Test-Path $zip) {
+              $h = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+              if ($h -eq $env:KIT_SHA256) { $ok = $true; break }
+            }
+            Start-Sleep -Seconds (10 * $i)
+          }
+          if (-not $ok) { throw 'port kit unavailable' }
+          Expand-Archive -Path $zip -DestinationPath $env:GITHUB_WORKSPACE -Force
+          'kit: extracted'
+
+      - name: Krita source and dependencies
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force logs | Out-Null
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag v6.0.4 -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python *>&1 | Tee-Object -FilePath logs/01-bootstrap.txt
+          $rc = $LASTEXITCODE
+          ('01 rc: ' + $rc) | Out-File -FilePath logs/01-bootstrap.txt -Append -Encoding utf8
+          if ($rc -ne 0) { Get-Content logs/01-bootstrap.txt -Tail 40; throw ('01 failed: ' + $rc) }
+
+      - name: Apply patches
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force logs | Out-Null
+          & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt
+          $rc = $LASTEXITCODE
+          ('02 rc: ' + $rc) | Out-File -FilePath logs/apply-patches.txt -Append -Encoding utf8
+          if ($rc -ne 0) { throw ('02 failed: ' + $rc) }
+
+      - name: Build and install Krita
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          New-Item -ItemType Directory -Force logs | Out-Null
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File windows/scripts/03-build.ps1 -Root $env:KRITA_ROOT -Jobs 8 -Config Release *>&1 | Tee-Object -FilePath logs/03-build.txt
+          $rc = $LASTEXITCODE
+          ('03 rc: ' + $rc) | Out-File -FilePath logs/03-build.txt -Append -Encoding utf8
+          if ($rc -ne 0) { Get-Content logs/03-build.txt -Tail 60; throw ('03 failed: ' + $rc) }
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Engine compile (objects)
+        shell: pwsh
+        run: |
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-compile.ps1
+          if ($LASTEXITCODE -ne 0) { throw ('compile failures: ' + $LASTEXITCODE) }
+
+      - name: Link reverie_core.dll
+        shell: pwsh
+        run: |
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-link.ps1
+          if ($LASTEXITCODE -ne 0) { throw ('link failures: ' + $LASTEXITCODE) }
+
+      - name: Publish link report
+        if: always()
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          New-Item -ItemType Directory -Force logs | Out-Null
+          foreach ($n in @('engine-link','engine-compile','03-build','apply-patches','01-bootstrap')) {
+            $p = Join-Path 'logs' ($n + '.txt')
+            if (-not (Test-Path $p)) { Set-Content $p -Value ($n + ' log missing') -Encoding utf8 }
+          }
+          git config user.email 'ci@users.noreply.github.com'
+          git config user.name 'CI'
+          git add -A logs
+          git diff --cached --quiet
+          if ($LASTEXITCODE -ne 0) {
+            git commit -m 'ci: engine link report'
+            for ($i = 1; $i -le 3; $i++) {
+              git pull --rebase --autostash -q
+              git push
+              if ($LASTEXITCODE -eq 0) { 'pushed attempt ' + $i; break }
+              'push attempt ' + $i + ' failed, retry'
+              Start-Sleep -Seconds (5 * $i)
+            }
+          } else { 'logs unchanged, nothing to commit' }
+          exit 0
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: engine-link
+          path: |
+            logs
+            C:/rp/reverie_core.dll
+          if-no-files-found: warn
+          retention-days: 14
