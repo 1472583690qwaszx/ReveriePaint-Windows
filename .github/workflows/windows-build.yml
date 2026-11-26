@@ -12,6 +12,15 @@ on:
     paths-ignore:
       - 'logs/**'
       - '**.md'
+      - 'desktop-port/**'
+      - '.github/workflows/desktop-m1.yml'
+      - '.github/workflows/import-kit.yml'
+      - '.github/workflows/windows-build.yml'
+
+# 同一分支只保留最新一轮，避免并发排队烧构建机时
+concurrency:
+  group: windows-build-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
