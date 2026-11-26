@@ -15,6 +15,11 @@ on:
 permissions:
   contents: write
 
+# 同一分支只保留最新一轮：避免连续推送时两轮并行、日志互相覆盖
+concurrency:
+  group: desktop-m1-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   KRITA_ROOT: C:/krita-dev
   UPSTREAM_TAG: v1.11.0
@@ -158,6 +163,7 @@ jobs:
         if: always()
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
           foreach ($n in @('engine-probe','apply-patches','configure','01-bootstrap','probe-diag')) {
             $p = Join-Path 'logs' ($n + '.txt')
@@ -166,9 +172,18 @@ jobs:
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
           git add -A logs
-          git commit -m 'ci: engine probe report'
-          git pull --rebase --autostash -q
-          git push
+          git diff --cached --quiet
+          if ($LASTEXITCODE -ne 0) {
+            git commit -m 'ci: engine probe report'
+            for ($i = 1; $i -le 3; $i++) {
+              git pull --rebase --autostash -q
+              git push
+              if ($LASTEXITCODE -eq 0) { 'pushed attempt ' + $i; break }
+              'push attempt ' + $i + ' failed, retry'
+              Start-Sleep -Seconds (5 * $i)
+            }
+          } else { 'logs unchanged, nothing to commit' }
+          exit 0
 
       - uses: actions/upload-artifact@v4
         if: always()

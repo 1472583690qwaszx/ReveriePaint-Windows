@@ -42,12 +42,13 @@ if (Test-Path $kf) {
 #   plugins/paintops/libpaintop-> kis_brush_based_paintop_settings.h / kis_brush_option.h
 #   plugins/paintops/defaultpaintops/brush -> kis_brushop.h
 # 因此把 paintops / impex 两棵树（源码目录 + 构建目录）里所有含 .h 的目录都收进 -I。
+$plugDirs = 0
 foreach ($rel in @('plugins/paintops', 'plugins/impex')) {
   foreach ($base in @($src, $build)) {
     $p = Join-Path $base $rel
     if (Test-Path $p) {
       foreach ($d in @(Get-ChildItem -Path $p -Recurse -Filter '*.h' -File -ErrorAction SilentlyContinue | ForEach-Object { $_.DirectoryName } | Sort-Object -Unique)) {
-        if ($incs -notcontains $d) { $incs += $d }
+        if ($incs -notcontains $d) { $incs += $d; $plugDirs++ }
       }
     }
   }
@@ -150,7 +151,15 @@ foreach ($f in $files) {
     }
   }
 }
-$summary = ('probe: ' + $failed + '/' + $files.Count + ' cpp files failed (incs: ' + $wanted.Count + ', src hdr dirs: ' + $srchdr.Count + ', build hdr dirs: ' + $bldhdr.Count + ', qt sub: ' + $qtSub.Count + ')')
+$summary = ('probe: ' + $failed + '/' + $files.Count + ' cpp files failed (incs: ' + $wanted.Count + ', src hdr dirs: ' + $srchdr.Count + ', build hdr dirs: ' + $bldhdr.Count + ', qt sub: ' + $qtSub.Count + ', plug: ' + $plugDirs + ')')
+# 关键头文件是否可解析，直接写进日志首行区，省得靠 incs 数字猜
+$probeHdr = @('kis_brush_based_paintop_settings.h', 'psd_colormode_block.h', 'kis_brushop.h')
+foreach ($h in $probeHdr) {
+  $hit = @($wanted | Where-Object { Test-Path (Join-Path $_.Substring(2) $h) } | Select-Object -First 1)
+  $res = 'MISS'
+  if ($hit.Count -gt 0) { $res = 'OK ' + $hit[0] }
+  $summary = $summary + ' | ' + $h + ': ' + $res
+}
 $lines = @($summary)
 if ($hist.Count -gt 0) {
   $lines += '--- 错误签名 Top 15 ---'
