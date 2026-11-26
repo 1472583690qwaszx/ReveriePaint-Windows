@@ -1,8 +1,8 @@
 name: Desktop M1 (engine compile)
 
-# 专用于 M1：把 ReveriePaint v1.11.0 的原生引擎在 Windows 上做语法级编译验证。
-# - 不重建整棵 Krita（只 configure），单轮约 15 分钟
-# - 探针/补丁/configure 日志写入 logs/ 并提交回仓库，供未登录场景读取
+# 专用于 M1：把 ReveriePaint v1.11.0 的原生引擎在 Windows 上做编译验证。
+# - 探针（-fsyntax-only）+ 真实编译（-c 生成 .o）两段，不重建整棵 Krita（只 configure）
+# - 探针/编译/补丁/configure 日志写入 logs/ 并提交回仓库，供未登录场景读取
 on:
   workflow_dispatch:
   push:
@@ -33,7 +33,7 @@ env:
 jobs:
   probe:
     runs-on: windows-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -159,13 +159,19 @@ jobs:
           & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-probe.ps1
           if ($LASTEXITCODE -ne 0) { throw ('probe failures: ' + $LASTEXITCODE) }
 
+      - name: Engine compile (objects)
+        shell: pwsh
+        run: |
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-compile.ps1
+          if ($LASTEXITCODE -ne 0) { throw ('compile failures: ' + $LASTEXITCODE) }
+
       - name: Publish probe report
         if: always()
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
-          foreach ($n in @('engine-probe','apply-patches','configure','01-bootstrap','probe-diag')) {
+          foreach ($n in @('engine-probe','engine-compile','apply-patches','configure','01-bootstrap','probe-diag')) {
             $p = Join-Path 'logs' ($n + '.txt')
             if (-not (Test-Path $p)) { Set-Content $p -Value ($n + ' log missing') -Encoding utf8 }
           }
