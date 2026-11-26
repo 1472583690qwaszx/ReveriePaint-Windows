@@ -1,6 +1,6 @@
 name: Import port kit into repo
 
-# 一次性把 CDN 上的移植包（windows/ 目录）落进仓库，之后 CI 不再依赖 CDN。
+# 一次性把移植包（windows/ 目录）落进仓库，之后 CI 不再依赖任何 CDN 链接。
 # 触发后自动提交，提交信息带 [skip-import] 防止自我循环。
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
   contents: write
 
 env:
-  KIT_URL: https://aka.doubaocdn.com/s/WqkxbDnv9Q
+  KIT_URL: https://aka.doubaocdn.com/s/n3IQw6uQ4V
   KIT_SHA256: 048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
 
 jobs:
