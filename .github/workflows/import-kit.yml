@@ -1,0 +1,52 @@
+name: Import port kit into repo
+
+# 一次性把 CDN 上的移植包（windows/ 目录）落进仓库，之后 CI 不再依赖 CDN。
+# 触发后自动提交，提交信息带 [skip-import] 防止自我循环。
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-kit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  KIT_URL: https://aka.doubaocdn.com/s/WqkxbDnv9Q
+  KIT_SHA256: 048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check whether kit is already committed
+        id: check
+        run: |
+          if [ -f windows/scripts/03-build.ps1 ]; then
+            echo "skip=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download, verify and commit kit
+        if: steps.check.outputs.skip == 'no'
+        run: |
+          set -e
+          curl -sSL --max-time 240 -o /tmp/kit.zip "$KIT_URL"
+          echo "$KIT_SHA256  /tmp/kit.zip" | sha256sum -c -
+          unzip -q /tmp/kit.zip -d .
+          ls windows
+          git config user.email 'ci@users.noreply.github.com'
+          git config user.name 'CI'
+          git add windows
+          git commit -m 'chore: 移植脚本入库，CI 不再依赖 CDN [skip-import]'
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash || true
+            if git push; then break; fi
+            sleep 5
+          done
