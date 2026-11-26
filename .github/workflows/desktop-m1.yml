@@ -81,8 +81,12 @@ jobs:
       - name: Krita source and dependencies
         shell: pwsh
         run: |
-          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag v6.0.4 -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python -ProgressPreference SilentlyContinue
-          if ($LASTEXITCODE -ne 0) { throw ('01 failed: ' + $LASTEXITCODE) }
+          New-Item -ItemType Directory -Force logs | Out-Null
+          $env:POWERSHELL_TELEMETRY_OPTOUT = '1'
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag v6.0.4 -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python *>&1 | Tee-Object -FilePath logs/01-bootstrap.txt
+          $rc = $LASTEXITCODE
+          ('01 rc: ' + $rc) | Out-File -FilePath logs/01-bootstrap.txt -Append -Encoding utf8
+          if ($rc -ne 0) { Get-Content logs/01-bootstrap.txt -Tail 40; throw ('01 failed: ' + $rc) }
 
       - name: Patch precheck diagnostics
         shell: pwsh
@@ -100,12 +104,7 @@ jobs:
           $out += (& git -C $k config --list --show-origin 2>&1 | Select-String -Pattern 'autocrlf|eol|safecrlf' | ForEach-Object { ([string]$_).Trim() })
           $out += '--- head ---'
           $out += (& git -C $k rev-parse HEAD 2>&1)
-          $out += '--- index entry ---'
-          $idx = (& git -C $k ls-files -s $target 2>&1)
-          $out += $idx
-          $sha = ($idx -split ' ')[1]
-          $out += ('blob type: ' + (& git -C $k cat-file -t $sha 2>&1))
-          $out += '--- env.bat ---'
+          $out += '--- env and install ---'
           $out += ('env.bat exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT 'env.bat')))
           $out += ('_install exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install')))
           $out += ('QtCore dir: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install\include\QtCore')))
@@ -214,14 +213,9 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
-          if (-not (Test-Path 'logs/engine-probe.txt')) {
-            Set-Content 'logs/engine-probe.txt' -Value 'probe not reached (earlier step failed)' -Encoding utf8
-          }
-          if (-not (Test-Path 'logs/apply-patches.txt')) {
-            Set-Content 'logs/apply-patches.txt' -Value 'apply log missing' -Encoding utf8
-          }
-          if (-not (Test-Path 'logs/configure.txt')) {
-            Set-Content 'logs/configure.txt' -Value 'configure log missing' -Encoding utf8
+          foreach ($n in @('engine-probe','apply-patches','configure','01-bootstrap')) {
+            $p = Join-Path 'logs' ($n + '.txt')
+            if (-not (Test-Path $p)) { Set-Content $p -Value ($n + ' log missing') -Encoding utf8 }
           }
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
