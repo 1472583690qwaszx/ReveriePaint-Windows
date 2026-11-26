@@ -82,7 +82,7 @@ foreach ($f in $files) {
   $idx++
   $obj = Join-Path $objDir (('{0:D2}' -f $idx) + '-' + $f.BaseName + '.o')
   $sw = [System.Diagnostics.Stopwatch]::StartNew()
-  $out = & $clang ('@' + $rsp) ($f.FullName.Replace($bs, '/')) ('-o ' + $obj.Replace($bs, '/')) 2>&1
+  $out = & $clang ('@' + $rsp) ($f.FullName.Replace($bs, '/')) '-o' ($obj.Replace($bs, '/')) 2>&1
   $sw.Stop()
   $sec = [int]($sw.Elapsed.TotalSeconds)
   if ($LASTEXITCODE -ne 0) {
