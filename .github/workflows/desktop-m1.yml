@@ -177,6 +177,14 @@ jobs:
           foreach ($d in $bldhdr) { if ($incs -notcontains $d) { $incs += $d } }
           $qtSub = @(Get-ChildItem -Path $qt -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })
           foreach ($d in $qtSub) { if ($incs -notcontains $d) { $incs += $d } }
+          # KDE 框架装在 include/KF6/<Framework>/ 下（例如 Ki18n/klocalizedstring.h），二级目录也要进 -I
+          $kf = Join-Path $qt 'KF6'
+          if (Test-Path $kf) {
+            if ($incs -notcontains $kf) { $incs += $kf }
+            foreach ($d in @(Get-ChildItem -Path $kf -Directory -ErrorAction SilentlyContinue)) {
+              if ($incs -notcontains $d.FullName) { $incs += $d.FullName }
+            }
+          }
           foreach ($j in @('include', 'include/win32')) {
             $p = Join-Path $env:JAVA_HOME $j
             if ((Test-Path $p) -and ($incs -notcontains $p)) { $incs += $p }
@@ -189,6 +197,17 @@ jobs:
           # clang 的 @response 解析按 Windows 规则处理反斜杠：D:/a/x 原样有效，运行时统一转正斜杠
           $flagsText = (($flags | ForEach-Object { ([string]$_).Replace($bs, '/') }) -join ([string][char]10))
           [System.IO.File]::WriteAllText($rsp, $flagsText, (New-Object System.Text.UTF8Encoding($false)))
+          $diag = @('--- probe diag ---', ('JAVA_HOME=' + $env:JAVA_HOME))
+          $dgTime = Join-Path $rp 'dg-time.cpp'
+          Set-Content -Path $dgTime -Value @('#include <time.h>', 'int main(){ struct timespec dg_ts; (void)dg_ts; return 0; }') -Encoding utf8
+          $dgJni = Join-Path $rp 'dg-jni.cpp'
+          Set-Content -Path $dgJni -Value @('#include <jni.h>', 'JNIEnv* dg_env; jobject dg_obj;') -Encoding utf8
+          foreach ($d in @($dgTime, $dgJni)) {
+            $o = & $clang ('@' + $rsp) ($d.Replace($bs, '/')) 2>&1
+            $diag += ('[' + (Split-Path $d -Leaf) + '] rc=' + $LASTEXITCODE)
+            $diag += @($o | Select-Object -First 12 | ForEach-Object { ([string]$_).Trim() })
+          }
+          $diag | Out-File -FilePath 'logs/probe-diag.txt' -Encoding utf8
           $skip = @('ReverieCrashHandler.cpp')
           $files = @(Get-ChildItem (Join-Path $eng '*.cpp') | Where-Object { $skip -notcontains $_.Name } | Sort-Object Name)
           $failed = 0
@@ -224,7 +243,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
-          foreach ($n in @('engine-probe','apply-patches','configure','01-bootstrap')) {
+          foreach ($n in @('engine-probe','apply-patches','configure','01-bootstrap','probe-diag')) {
             $p = Join-Path 'logs' ($n + '.txt')
             if (-not (Test-Path $p)) { Set-Content $p -Value ($n + ' log missing') -Encoding utf8 }
           }

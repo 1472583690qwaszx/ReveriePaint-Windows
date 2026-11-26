@@ -12,6 +12,7 @@
 #error "reverie_prelude.h is C++ only"
 #endif
 
+#include <sys/types.h>
 #include <time.h>
 #include <wchar.h>
 #include <cstddef>
