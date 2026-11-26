@@ -1,53 +1,157 @@
-root: C:\krita-dev
-bat: C:\krita-dev\reverie-configure.bat exists=True
-build: C:\krita-dev\b_krita exists=True
-env.bat: C:\krita-dev\env.bat exists=True
 --- bat content ---
-@echo on
+@echo off
 call "C:\krita-dev\env.bat"
 cd /d "C:\krita-dev\b_krita"
-cmake --version
-cmake "C:\krita-dev\krita" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=C:\krita-dev\_install -DBUILD_WITH_QT6=ON -DALLOW_UNSTABLE=QT6 -DKRITA_ENABLE_PCH=OFF -DHIDE_SAFE_ASSERTS=OFF -DKRITA_USE_SURFACE_COLOR_MANAGEMENT_API=OFF -DBUILD_TESTING=OFF -DCMAKE_C_COMPILER=C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\clang.exe -DCMAKE_CXX_COMPILER=C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\clang++.exe -DCMAKE_RC_COMPILER=C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\windres.exe
-if errorlevel 1 exit /b 31
-exit /b 0
---- configure.log tail 120 ---
+cmake "C:/krita-dev/krita" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=C:/krita-dev/_install -DBUILD_WITH_QT6=ON -DALLOW_UNSTABLE=QT6 -DKRITA_ENABLE_PCH=OFF -DHIDE_SAFE_ASSERTS=OFF -DKRITA_USE_SURFACE_COLOR_MANAGEMENT_API=OFF -DBUILD_TESTING=OFF -DCMAKE_C_COMPILER=C:/deps/llvm-mingw-20251118-ucrt-x86_64/bin/clang.exe -DCMAKE_CXX_COMPILER=C:/deps/llvm-mingw-20251118-ucrt-x86_64/bin/clang++.exe -DCMAKE_RC_COMPILER=C:/deps/llvm-mingw-20251118-ucrt-x86_64/bin/windres.exe
+exit /b %errorlevel%
+--- configure.log tail 150 ---
+    * plugins-metadata-KisExifTest
+    * plugins-paintops-defaultpaintops-brush-KisBrushOpTest
+    * plugins-tools-basictools-MoveStrokeTest
+    * plugins-tools-tool_transform2-TransformStrokeStrategyTest
+    * plugins-tools-svgtexttool-SvgTextCursorTest
+-- The following features have been enabled:
 
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows>call "C:\krita-dev\env.bat" 
-cmake version 3.31.6
+ * Dr. Mingw, Enable the Dr. Mingw crash handler
+ * Linker Security Flags, Enable DEP (NX), ASLR and high-entropy ASLR linker flags
+ * Lock free hash table, Use lock free hash table instead of blocking.
+ * Limit long tests, Run long running unittests in a limited quick mode
+ * Enable updaters, Enable updaters/update notifications.
+ * Unstable features allowed, QT6
+ * Qt: Unbalanced Enter/Leave patch, Krita will disable internal workarounds for unbalanced Enter/Leave
+ * Qt: Unbalanced KeyPress/KeyRelease in non-latin layout patch, Krita will disable internal workarounds for unbalanced KeyPress/KeyRelease events
+ * Qt: Compressed updates patch, Krita will compress the screen updates to the maximum FPS of available displays
 
-CMake suite maintained and supported by Kitware (kitware.com/cmake).
--- The CXX compiler identification is Clang 21.1.6
--- The C compiler identification is Clang 21.1.6
-CMake Error at C:/krita-dev/b_krita/CMakeFiles/3.31.6/CMakeRCCompiler.cmake:1 (set):
-  Syntax error in cmake code at
+-- The following OPTIONAL packages have been found:
 
-    C:/krita-dev/b_krita/CMakeFiles/3.31.6/CMakeRCCompiler.cmake:1
+ * PythonLibrary (required version >= 3.8), Python Library, <https://www.python.org>
+   Required by the Krita PyQt plugin
+ * Qt6WidgetsTools (required version >= 6.11.3)
+ * Qt6Xml (required version >= 6.0.0)
+ * Qt6PrintSupport (required version >= 6.0.0)
+ * Qt6Svg (required version >= 6.0.0)
+ * Qt6Test (required version >= 6.0.0)
+ * Qt6Concurrent (required version >= 6.0.0)
+ * Qt6Sql (required version >= 6.0.0)
+ * Qt6Core5Compat (required version >= 6.0.0)
+ * Qt6OpenGL (required version >= 6.0.0)
+ * Qt6OpenGLWidgets (required version >= 6.0.0)
+ * Qt6SvgWidgets (required version >= 6.0.0)
+ * Qt6QmlTools (required version >= 6.11.3)
+ * Qt6QuickTools (required version >= 6.11.3)
+ * Qt6Quick (required version >= 6.0.0), QtQuick, <https://www.qt.io/>
+   Optionally used for the touch gui for Krita
+ * Qt6QuickWidgets (required version >= 6.0.0), QtQuickWidgets, <https://www.qt.io/>
+   Optionally used for the touch gui for Krita
+ * Qt6QuickControls2 (required version >= 6.0.0), QtQuickControls, <https://www.qt.io/>
+   Optionally used for the touch gui for Krita
+ * WebP (required version >= 1.2.0), <https://developers.google.com/speed/webp>
+   Required by the WebP plugin
+ * KSeExpr (required version >= 6.0.0.0), <https://invent.kde.org/graphics/kseexpr>
+   Required by the SeExpr generator layer
+ * OpenEXR, A library for handling OpenEXR high dynamic-range image files, <https://www.openexr.com/>
+ * JPEG, Free library for JPEG image compression. Note that libjpeg8 is NOT supported., <https://www.libjpeg-turbo.org>
+   Required by the Krita JPEG filter
+ * libjpeg-turbo (required version >= 2.1.3), libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, AVX2, Neon, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, Arm, and PowerPC systems, as well as progressive JPEG compression on x86 and x86-64 systems., <https://www.libjpeg-turbo.org>
+   Required by the Krita JPEG and TIFF filters
+ * GIF, Library for loading and saving gif files., <http://giflib.sourceforge.net/>
+   Required by the Krita GIF filter
+ * HEIF (required version >= 1.11.0), Library for loading and saving heif files., <https://github.com/strukturag/libheif>
+   Required by the Krita HEIF filter
+ * OpenJPEG (required version >= 2.3.0), Library for loading and saving jp2000 files., <https://www.openjpeg.org/>
+   Required by the Krita JP2000 filter
+ * JPEGXL (required version >= 0.7.0), JPEG XL is a royalty-free raster-graphics file format that supports both lossy and lossless compression and is experimentally supported by Chrome, Firefox, and Edge., <https://github.com/libjxl/libjxl>
+   Required by the Krita JPEG-XL filter
+ * FFTW3, A fast, free C FFT library, <http://www.fftw.org/>
+   Required by the Krita for fast convolution operators and some G'Mic features
+ * OpenColorIO (required version >= 2.0.0), The OpenColorIO Library, <https://www.opencolorio.org>
+   Required by the Krita LUT docker
+ * Mlt7, Media Lovin' Toolkit (Multimedia Framework), <https://mltframework.org/>
+   Required to do audio/video synchronization and processing. No MLT = No Audio! 
+ * LibMyPaint (required version >= 1.4.0), MyPaint brush engine API for C/C++
+   Required for the MyPaint brush engine
+ * Poppler, A PDF rendering library, <https://poppler.freedesktop.org/>
+   Required by the Krita PDF filter.
+ * Qt6CoreTools (required version >= 6.11.3)
+ * Qt6GuiTools (required version >= 6.11.3)
+ * KDcrawQt6 (required version >= 5.0.0), A thread-safe wrapper around libraw, <https://invent.kde.org/graphics/libkdcraw>
+   Needed for reading RAW files
+ * IcoTool, Executable that converts a collection of PNG files into a Windows icon file, <https://www.nongnu.org/icoutils/>
 
-  when parsing string
+-- The following RECOMMENDED packages have been found:
 
-    C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\windres.exe
+ * GSL, <https://www.gnu.org/software/gsl>
+   Required by Krita's Transform tool.
 
-  Invalid character escape '\d'.
-Call Stack (most recent call first):
-  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-GNU.cmake:165 (enable_language)
-  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-Clang.cmake:250 (__windows_compiler_gnu)
-  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-Clang.cmake:260 (__windows_compiler_clang_base)
-  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-Clang-CXX.cmake:3 (__windows_compiler_clang)
-  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/CMakeCXXInformation.cmake:48 (include)
-  CMakeLists.txt:9 (project)
+-- The following REQUIRED packages have been found:
 
+ * Python (required version >= 3.8)
+ * ECM (required version >= 6.0)
+ * KF6WidgetsAddons (required version >= 6.0.0)
+ * KF6Completion (required version >= 6.0.0)
+ * KF6CoreAddons (required version >= 6.0.0)
+ * KF6GuiAddons (required version >= 6.0.0)
+ * Gettext
+ * KF6I18n (required version >= 6.0.0)
+ * KF6ItemViews (required version >= 6.0.0)
+ * KF6Config (required version >= 6.25.0)
+ * KF6ColorScheme (required version >= 6.0.0)
+ * KF6 (required version >= 6.0.0)
+ * Qt6GuiPrivate
+ * Qt6CorePrivate
+ * PNG
+ * boost_headers (required version == 1.90.0)
+ * Boost (required version >= 1.69), Boost provides free peer-reviewed portable C++ source libraries., <https://www.boost.org>
+ * Immer
+ * Zug
+ * Lager
+ * TIFF, TIFF Library and Utilities, <http://www.libtiff.org>
+   Required by the Krita TIFF filter
+ * SDL2, Simple DirectMedia Layer 2, <https://www.libsdl.org/>
+   Required for MLT to render audio buffers. Required **only** when MLT is found on the system.
+ * Eigen3 (required version >= 5), C++ template library for linear algebra, <http://eigen.tuxfamily.org>
+ * LibExiv2 (required version >= 0.16), Image metadata support, <http://www.exiv2.org>
+ * LCMS2 (required version >= 2.4), LittleCMS Color management engine, <http://www.littlecms.com>
+   Will be used for color management and is necessary for Krita
+ * xsimd (required version >= 14), C++ wrappers for SIMD intrinsics, <https://github.com/xtensor-stack/xsimd>
+   Required by Krita for vectorization
+ * ZLIB, Compression library, <https://www.zlib.net/>
+   Required by Krita's PNG and PSD support
+ * QUAZIP (required version >= 0.6), A library for reading and writing zip files, <https://stachenov.github.io/quazip/>
+   Needed for reading and writing KRA and ORA files
+ * Freetype (required version >= 2.11.0), A library for rendering glyphs, <https://download.savannah.gnu.org/releases/freetype>
+   Needed for rendering text vector shapes.
+ * HarfBuzz (required version >= 2.7.4), OpenType text shaping engine, <https://harfbuzz.github.io>
+   Needed for rendering text vector shapes.
+ * Fontconfig (required version >= 2.13.1)
+   Needed for getting font file information.
+ * libunibreak (required version >= 5.0), Implementation of the line breaking and word breaking algorithms as described in Unicode Standard Annex 14 and Unicode Standard Annex 29, <https://github.com/adah1972/libunibreak>
+   Needed for rendering text vector shapes.
+ * FriBidi (required version >= 1.0.6), GNU FriBidi, <https://github.com/fribidi/fribidi>
+   Needed by libraqm to perform bidirectional text layout.
+ * Qt6
+ * Threads
 
--- Configuring incomplete, errors occurred!
---- env.bat head ---
-@echo off
-set __OLD_ACTIONS_ORCHESTRATION_ID=%ACTIONS_ORCHESTRATION_ID%
-set __OLD_ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=%ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE%
-set __OLD_ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED=%ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED%
-set __OLD_AGENT_TOOLSDIRECTORY=%AGENT_TOOLSDIRECTORY%
-set __OLD_ALLUSERSPROFILE=%ALLUSERSPROFILE%
-set __OLD_ANDROID_HOME=%ANDROID_HOME%
-set __OLD_ANDROID_NDK=%ANDROID_NDK%
-set __OLD_ANDROID_NDK_HOME=%ANDROID_NDK_HOME%
-set __OLD_ANDROID_NDK_LATEST_HOME=%ANDROID_NDK_LATEST_HOME%
-set __OLD_ANDROID_NDK_ROOT=%ANDROID_NDK_ROOT%
-set __OLD_ANDROID_SDK_ROOT=%ANDROID_SDK_ROOT%
+-- The following features have been disabled:
+
+ * Hide safe asserts, Don't show message box for "safe" asserts, just ignore them automatically and dump a message to the terminal.
+ * Install benchmarks, Install benchmarks into the installation root to make them packagable
+ * Crash on safe asserts, Crash unconditionally whenever a "safe" assert happens. Useful for running unittests
+ * Foundation Build, A Foundation build is a binary release build that can package some extra things like color themes. Linux distributions that build and install Krita into a default system location should not define this option to true.
+ * Enable Broken Tests, Runs broken test when "make test" is invoked (use -DKRITA_ENABLE_BROKEN_TESTS=ON to enable).
+ * Build Qt Designer plugins, Builds Qt Designer plugins for Krita widgets (use -DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON to enable).
+ * Precompiled Headers, precompiled headers make build process faster on some systems
+ * ASAN address sanitizer, crash Krita if it violates address access rules (-DECM_ENABLE_SANITIZERS=address)
+ * Enable per-surface color management API, adds support for an independent color space management for the canvas
+
+-- The following OPTIONAL packages have not been found:
+
+ * Qt6WaylandClient (required version >= 6.0.0)
+ * SIP (required version >= 4.19.13), Support for generating SIP Python bindings, <https://github.com/Python-SIP/sip>
+   Required by the Krita PyQt plugin
+ * PyQt6 (required version >= 6.7.0), Python bindings for Qt6., <https://www.riverbankcomputing.com/software/pyqt/download>
+   Required by the Krita PyQt plugin
+
+-- Configuring done (27.6s)
+-- Generating done (11.8s)
+-- Build files have been written to: C:/krita-dev/b_krita
