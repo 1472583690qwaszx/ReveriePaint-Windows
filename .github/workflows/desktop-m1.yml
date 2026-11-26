@@ -87,26 +87,11 @@ jobs:
           ('01 rc: ' + $rc) | Out-File -FilePath logs/01-bootstrap.txt -Append -Encoding utf8
           if ($rc -ne 0) { Get-Content logs/01-bootstrap.txt -Tail 40; throw ('01 failed: ' + $rc) }
 
-      - name: Patch precheck diagnostics
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = 'Continue'
-          New-Item -ItemType Directory -Force logs | Out-Null
-          $f = 'logs/apply-patches.txt'
-          $k = Join-Path $env:KRITA_ROOT 'krita'
-          $patch = Join-Path $env:GITHUB_WORKSPACE 'windows\patches\krita\0002-fix-roundmarker-KisMarkerPainter.patch'
-          $out = @()
-          $out += ('env.bat exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT 'env.bat')))
-          $out += ('_install exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install')))
-          $out += ('QtCore dir: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install\include\QtCore')))
-          $out += ('apply --check: ' + (& git -C $k apply --check --whitespace=nowarn $patch 2>&1))
-          $out | Tee-Object -FilePath $f
-
       - name: Apply patches
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
-          & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt -Append
+          & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt
           $rc = $LASTEXITCODE
           ('02 rc: ' + $rc) | Out-File -FilePath logs/apply-patches.txt -Append -Encoding utf8
           if ($rc -ne 0) { throw ('02 failed: ' + $rc) }
@@ -148,11 +133,8 @@ jobs:
           & cmd /c $batPath 2>&1 | Tee-Object -FilePath $cfg | Out-Null
           $rc = $LASTEXITCODE
           'configure exit: ' + $rc
-          $hdr = @()
-          $hdr += '--- bat content ---'
-          if (Test-Path $batPath) { $hdr += (Get-Content $batPath) }
-          $hdr += '--- configure.log tail 150 ---'
-          if (Test-Path $cfg) { $hdr += (Get-Content $cfg -Tail 150) }
+          $hdr = @('--- configure.log tail 60 ---')
+          if (Test-Path $cfg) { $hdr += (Get-Content $cfg -Tail 60) }
           $hdr | Out-File -FilePath 'logs/configure.txt' -Encoding utf8
           if (-not (Test-Path (Join-Path $build 'CMakeCache.txt'))) {
             throw 'configure did not produce CMakeCache.txt'
@@ -167,14 +149,14 @@ jobs:
           $log = 'logs/engine-probe.txt'
           $root = $env:KRITA_ROOT
           $qt = Join-Path $root '_install\include'
+          $build = Join-Path $root 'b_krita'
+          $src = Join-Path $root 'krita'
           $rp = 'C:\rp'
           git clone --filter=blob:none --sparse --depth 1 --branch $env:UPSTREAM_TAG https://github.com/LanRhyme/ReveriePaint.git $rp
           if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
           git -C $rp sparse-checkout set app/src/main/cpp
           if ($LASTEXITCODE -ne 0) { throw 'sparse checkout failed' }
           $eng = Join-Path $rp 'app\src\main\cpp'
-          $src = Join-Path $root 'krita'
-          $build = Join-Path $root 'b_krita'
           $shim = Join-Path $env:GITHUB_WORKSPACE 'desktop-port\engine\include'
           $clang = Join-Path $env:LLVM_MINGW 'bin\clang++.exe'
           $incs = @(
@@ -184,9 +166,10 @@ jobs:
             (Join-Path $src 'libs\brush'), (Join-Path $src 'libs\color'), (Join-Path $src 'libs\command'),
             (Join-Path $src 'libs\impex'), (Join-Path $src 'libs\metadata'), (Join-Path $src 'libs\store'),
             (Join-Path $src 'libs\resources'), (Join-Path $src 'libs\psd'), (Join-Path $src 'libs\widgets'),
-            (Join-Path $build 'libs'), (Join-Path $build 'libs\image'), (Join-Path $build 'libs\pigment'),
             $qt, (Join-Path $qt 'QtCore'), (Join-Path $qt 'QtGui'), (Join-Path $qt 'QtWidgets'), (Join-Path $qt 'QtConcurrent'),
             (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include\win32'))
+          $genIncs = @(Get-ChildItem -Path $build -Recurse -Filter '*export*.h' -File -ErrorAction SilentlyContinue | ForEach-Object { $_.DirectoryName } | Sort-Object -Unique)
+          foreach ($g in $genIncs) { if ($incs -notcontains $g) { $incs += $g } }
           $flags = @('-std=c++17', '-fsyntax-only', '-w', '-fms-extensions')
           foreach ($i in $incs) { if (Test-Path $i) { $flags += ('-I' + $i) } }
           $files = Get-ChildItem (Join-Path $eng '*.cpp') | Sort-Object Name
@@ -202,11 +185,12 @@ jobs:
               $report += ($errs | ForEach-Object { ([string]$_).Trim() })
             }
           }
-          $summary = ('probe: ' + $failed + '/' + $files.Count + ' cpp files failed')
+          $summary = ('probe: ' + $failed + '/' + $files.Count + ' cpp files failed (gen includes: ' + $genIncs.Count + ')')
           Set-Content -Path $log -Value $summary -Encoding utf8
           $summary
           $report | Select-Object -First 400 | Out-File -FilePath $log -Append -Encoding utf8
           $report | Select-Object -First 30
+          if ($failed -gt 0) { throw ('probe failures: ' + $failed) }
 
       - name: Publish probe report
         if: always()
