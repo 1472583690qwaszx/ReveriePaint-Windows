@@ -1,3 +1,42 @@
+--- git version ---
+git version 2.56.1.windows.1
+--- eol config ---
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+--- head ---
+e7e52a72ed37ecaf9ffaa2fab836b7c2f5539d1f
+--- gitattributes ---
+# Windows batch files must be in CRLF to not make cmd.exe freak out
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Make sure Windows .lnk shortcuts are binary
+*.lnk binary
+
+# Patch files must be checked out in CRLF on Windows for patch to work
+*.patch text=auto
+*.diff text=auto
+--- index entry ---
+100644 7713b0dbfacb305447d696c8fe503784838cc6fa 0	libs/image/kis_marker_painter.cpp
+blob type: blob
+--- working file bytes ---
+CRLF pairs: 156 / bytes: 4692
+--- file lines 88-96 ---
+[]
+[        // qreal fadePos =]
+[        //     value1 < 0 || value2 < 0 ?]
+[        //     qMax(-value1, -value2) : value3;]
+[        qreal fadePos = value3;]
+[]
+[        const quint8 srcAlpha = fadePos > 0 ? quint8((1.0 - fadePos) * 255.0) : 255;]
+[        const quint8 dstAlpha = cs->opacityU8(it.rawData());]
+[]
+--- apply --check --3way ---
+error: patch failed: libs/image/kis_marker_painter.cpp:92
+Falling back to direct application...
+error: patch failed: libs/image/kis_marker_painter.cpp:92
+error: libs/image/kis_marker_painter.cpp: patch does not apply
+--- apply --check plain ---
+--- status ---
 
 == 源码状态检查
   [OK]   HEAD = e7e52a7
