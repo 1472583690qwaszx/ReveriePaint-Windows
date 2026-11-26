@@ -1,175 +1,118 @@
-probe: 40/44 cpp files failed (incs: 306, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
+probe: 29/44 cpp files failed (incs: 306, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
 --- 错误签名 Top 15 ---
-[84x] template argument for template type parameter must be a type
-[57x] unknown type name 'JNIEXPORT'
-[51x] expected ';' after top level declarator
-[28x] out-of-line definition of 'isZeroValueClampedFuzzy' does not match any declaration in 'KoColorSpaceMaths<double>'
-[28x] out-of-line definition of 'isUnitValueClampedFuzzy' does not match any declaration in 'KoColorSpaceMaths<double>'
-[28x] expected ';' at end of declaration list
-[28x] expected ')'
-[28x] out-of-line definition of 'isUnsafeAsDivisor' does not match any declaration in 'KoColorSpaceMaths<double>'
-[28x] out-of-line definition of 'isZeroValueFuzzy' does not match any declaration in 'KoColorSpaceMaths<double>'
-[28x] out-of-line definition of 'isUnitValueFuzzy' does not match any declaration in 'KoColorSpaceMaths<double>'
-[28x] block pointer to non-function type is invalid
-[28x] blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-[28x] expected expression
-[27x] out-of-line definition of 'isUnitValueFuzzy' does not match any declaration in 'KoColorSpaceMaths<float>'
-[27x] out-of-line definition of 'isHalfValueFuzzy' does not match any declaration in 'KoColorSpaceMaths<double>'
-### reverie_jni_animation.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_brush.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_collab.cpp
-C:/rp/app/src/main/cpp/reverie_jni_collab.cpp:16:23: error: unknown type name 'JNIEnv'
-C:/rp/app/src/main/cpp/reverie_jni_collab.cpp:16:36: error: unknown type name 'jstring'; did you mean 'QString'?
-C:/rp/app/src/main/cpp/reverie_jni_collab.cpp:18:9: error: invalid argument type 'QString' to unary expression
+[551x] use of undeclared identifier 'assert'
 ### reverie_jni_core.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_filters.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_io.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_layers.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_panel.cpp
-C:/rp/app/src/main/cpp/reverie_jni_panel.cpp:18:1: error: unknown type name 'JNIEXPORT'
-C:/rp/app/src/main/cpp/reverie_jni_panel.cpp:18:18: error: expected ';' after top level declarator
-C:/rp/app/src/main/cpp/reverie_jni_panel.cpp:27:1: error: unknown type name 'JNIEXPORT'
-### reverie_jni_selection.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
-### reverie_jni_snapshot.cpp
-C:/rp/app/src/main/cpp/reverie_jni_snapshot.cpp:68:1: error: unknown type name 'JNIEXPORT'
-C:/rp/app/src/main/cpp/reverie_jni_snapshot.cpp:68:15: error: expected ';' after top level declarator
-C:/rp/app/src/main/cpp/reverie_jni_snapshot.cpp:79:1: error: unknown type name 'JNIEXPORT'
-### reverie_jni_tools.cpp
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreAdjustment.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreAnimation.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreBrush.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreCollab.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
-### ReverieCoreColorSpaceHook.cpp
-C:/rp/app/src/main/cpp/ReverieCoreColorSpaceHook.cpp:142:57: error: use of undeclared identifier '_SC_PAGESIZE'
-1 error generated.
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreDocument.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreFilterKernels.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreFilterPlugins.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreFilterPreview.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreFilterPreviewFx.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreFilterRegistry.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreFilters.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreGenerators.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreIccData.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreInstance.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreIO.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreLayerIO.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreLayerOps.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreLayers.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreMiscTools.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCorePanel.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCorePatternFill.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreRender.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreSelection.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreSelectionLasso.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreSelectionTools.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreStroke.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieCoreTransform.cpp
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:44: error: expected ')'
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:37: error: blocks support disabled - compile with -fblocks or pick a deployment target that supports them
-C:/krita-dev/krita/libs/pigment/KoColorSpaceMaths.h:236:41: error: block pointer to non-function type is invalid
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
+C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
 ### ReverieMaskingBrushRenderer.cpp
 C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
 C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
