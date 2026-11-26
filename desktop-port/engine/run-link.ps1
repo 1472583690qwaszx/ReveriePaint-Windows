@@ -70,12 +70,13 @@ if ($undef.Count -gt 0) {
 $summary += '--- linker output tail 60 ---'
 $summary += @($lo | Select-Object -Last 60 | ForEach-Object { ([string]$_).Trim() })
 if (Test-Path $out) {
-  $summary += '--- implib 里的导出符号（前 20）---'
+  $summary += '--- implib exports (first 20) ---'
   $nm = Join-Path $env:LLVM_MINGW 'bin/llvm-nm.exe'
   if (Test-Path $nm) {
-    $sy = & $nm '--defined-only' $outImplib 2>&1
-    $summary += @($sy | Where-Object { ([string]$_) -match 'Java_com_reverie' } | Select-Object -First 20 | ForEach-Object { ([string]$_).Trim() })
-    $summary += ('Java_ exports: ' + @($sy | Where-Object { ([string]$_ -match 'Java_com_reverie' }).Count))
+    $sy = @(& $nm '--defined-only' $outImplib 2>&1)
+    $matched = @($sy | Where-Object { ([string]$_) -match 'Java_com_reverie' })
+    $summary += @($matched | Select-Object -First 20 | ForEach-Object { ([string]$_).Trim() })
+    $summary += ('Java_ exports: ' + $matched.Count)
   }
 }
 Set-Content -Path $log -Value $summary -Encoding utf8
