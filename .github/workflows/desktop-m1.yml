@@ -2,7 +2,7 @@ name: Desktop M1 (engine compile)
 
 # 专用于 M1：把 ReveriePaint v1.11.0 的原生引擎在 Windows 上做语法级编译验证。
 # - 不重建整棵 Krita（只 configure），单轮约 15 分钟
-# - 只报告编译错误，不阻塞其它工作流
+# - 探针结果写入 logs/engine-probe.txt 并提交回仓库，供未登录场景读取
 on:
   workflow_dispatch:
   push:
@@ -13,7 +13,7 @@ on:
       - '.github/workflows/desktop-m1.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   KRITA_ROOT: C:/krita-dev
@@ -22,7 +22,7 @@ env:
   NINJA_DIR: C:/deps/Ninja
   CMAKE_HOME: C:/deps/cmake-3.31.6-windows-x86_64
   KRITA_DEPS_BRANCH: transition.now/qt6
-  KIT_URL: https://aka.doubaocdn.com/s/WqkxbDnv9Q
+  KIT_URL: https://aka.doubaocdn.com/s/n3IQw6uQ4V
   KIT_SHA256: 048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
 
 jobs:
@@ -123,7 +123,7 @@ jobs:
         run: |
           $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
-          $log = 'logs/engine-probe.log'
+          $log = 'logs/engine-probe.txt'
           $rp = 'C:/rp'
           git clone --filter=blob:none --sparse --depth 1 --branch $env:UPSTREAM_TAG https://github.com/LanRhyme/ReveriePaint.git $rp
           if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
@@ -159,16 +159,31 @@ jobs:
             }
           }
           $summary = ('probe: ' + $failed + '/' + $files.Count + ' cpp files failed')
-          $summary | Tee-Object -FilePath $log
-          $report | Select-Object -First 400 | Out-File $log -Append -Encoding utf8
-          $report | Select-Object -First 80
+          Set-Content -Path $log -Value $summary -Encoding utf8
+          $summary
+          $report | Select-Object -First 400 | Out-File -FilePath $log -Append -Encoding utf8
+          $report | Select-Object -First 60
+
+      - name: Publish probe report
+        if: always()
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force logs | Out-Null
+          if (-not (Test-Path 'logs/engine-probe.txt')) {
+            Set-Content 'logs/engine-probe.txt' -Value 'probe log missing' -Encoding utf8
+          }
+          git config user.email 'ci@users.noreply.github.com'
+          git config user.name 'CI'
+          git add logs/engine-probe.txt
+          git commit -m 'ci: engine probe report'
+          git push
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: engine-probe
           path: |
-            logs/engine-probe.log
+            logs/engine-probe.txt
             C:/krita-dev/configure.log
           if-no-files-found: warn
           retention-days: 14
