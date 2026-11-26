@@ -8,6 +8,14 @@
 // headers first gives both libc++ and the engine a consistent global namespace.
 #pragma once
 
+// Release-equivalent build: NDEBUG 必须在任何 C/C++ 头之前定义。
+// 起因：Eigen 的 eigen_assert -> assert(x)，而这条 Windows include 链上 assert 标识符
+// 在 Eigen 头展开时已经不可见（551 处 use of undeclared identifier 'assert'）。
+// 定义 NDEBUG 后 Eigen 走 EIGEN_NO_DEBUG 分支，assert 调用整段消失，与 Release 语义一致。
+#ifndef NDEBUG
+#define NDEBUG 1
+#endif
+
 #ifndef __cplusplus
 #error "reverie_prelude.h is C++ only"
 #endif
