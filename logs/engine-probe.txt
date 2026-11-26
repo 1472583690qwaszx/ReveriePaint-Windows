@@ -1,119 +1,87 @@
-probe: 29/44 cpp files failed (incs: 306, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
+probe: 28/44 cpp files failed (incs: 306, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
 --- 错误签名 Top 15 ---
-[551x] use of undeclared identifier 'assert'
+[28x] 'psd_colormode_block.h' file not found
 ### reverie_jni_core.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreAdjustment.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreAnimation.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreBrush.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreCollab.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreDocument.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreFilterKernels.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreFilterPlugins.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreFilterPreview.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreFilterPreviewFx.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreFilterRegistry.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreFilters.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreGenerators.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreIccData.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreInstance.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreIO.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreLayerIO.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreLayerOps.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreLayers.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreMiscTools.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCorePanel.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCorePatternFill.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreRender.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreSelection.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreSelectionLasso.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreSelectionTools.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreStroke.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.
 ### ReverieCoreTransform.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
-### ReverieMaskingBrushRenderer.cpp
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/XprHelper.h:196:50: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:159:3: error: use of undeclared identifier 'assert'
-C:/krita-dev/_install/include/eigen3/Eigen/src/Core/util/Memory.h:227:3: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+1 error generated.

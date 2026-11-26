@@ -1,9 +1,9 @@
 --- probe diag ---
-JAVA_HOME=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.13-100000002.0\x64
+JAVA_HOME=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.13-9.0\x64
 [dg-time.cpp] rc=0
 [dg-jni.cpp] rc=0
 --- jni.h candidates ---
-hit: C:/hostedtoolcache/windows/Java_Temurin-Hotspot_jdk/21.0.13-100000002.0/x64/include/jni.h
+hit: C:/hostedtoolcache/windows/Java_Temurin-Hotspot_jdk/21.0.13-9.0/x64/include/jni.h
 hit: C:/krita-dev/_install/include/libavcodec/jni.h
 [dg-jni -E] rc=0
 # 1 "C:/rp/dg-jni.cpp"
