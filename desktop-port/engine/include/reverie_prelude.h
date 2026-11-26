@@ -21,5 +21,7 @@
 #include <cstring>
 #include <cstdio>
 #include <cmath>
+#include <cassert>
 
 #include <jni.h>
+#include "reverie_win_compat.h"

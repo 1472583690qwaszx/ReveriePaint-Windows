@@ -192,7 +192,18 @@ jobs:
           $wanted = @()
           foreach ($i in $incs) { if (Test-Path $i) { $wanted += ('-I' + $i) } }
           $prelude = Join-Path $shim 'reverie_prelude.h'
-          $flags = @('-std=c++17', '-fsyntax-only', '-w', '-fms-extensions', ('-include ' + $prelude)) + $wanted
+          # jni.h 走绝对路径强制包含：-I 里有几百个目录，可能先命中别的同名头，导致 JNIEnv 空定义
+          $jniForce = Join-Path $rp 'jni-force.h'
+          $jniReal = Join-Path $env:JAVA_HOME 'include/jni.h'
+          if (Test-Path $jniReal) {
+            $jniText = ('#include ' + [char]34 + ($jniReal.Replace($bs, '/')) + [char]34)
+            [System.IO.File]::WriteAllText($jniForce, $jniText, (New-Object System.Text.UTF8Encoding($false)))
+          }
+          # KoColorSpaceMaths.h 里有名为 xor / and / or 的函数，clang 默认会把它们当运算符关键字
+          # （xor 视作 ^ 并尝试解析成 block literal），必须用 -fno-operator-names 关掉替代运算符名
+          $flags = @('-std=c++17', '-fsyntax-only', '-w', '-fms-extensions', '-fno-operator-names')
+          if (Test-Path $jniForce) { $flags += ('-include ' + $jniForce) }
+          $flags += @(('-include ' + $prelude)) + $wanted
           $rsp = Join-Path $rp 'probe.rsp'
           # clang 的 @response 解析按 Windows 规则处理反斜杠：D:/a/x 原样有效，运行时统一转正斜杠
           $flagsText = (($flags | ForEach-Object { ([string]$_).Replace($bs, '/') }) -join ([string][char]10))
@@ -207,6 +218,22 @@ jobs:
             $diag += ('[' + (Split-Path $d -Leaf) + '] rc=' + $LASTEXITCODE)
             $diag += @($o | Select-Object -First 12 | ForEach-Object { ([string]$_).Trim() })
           }
+          $diag += '--- jni.h candidates ---'
+          foreach ($d in @($env:JAVA_HOME, $qt, $shim)) {
+            if (Test-Path $d) {
+              foreach ($h in @(Get-ChildItem -Path $d -Recurse -Filter 'jni.h' -File -ErrorAction SilentlyContinue | Select-Object -First 8)) {
+                $diag += ('hit: ' + $h.FullName.Replace($bs, '/'))
+              }
+            }
+          }
+          # -E 的行标记会直接点出 <jni.h> 实际命中的文件；-fsyntax-only 与 -E 冲突，单独写一份 rsp
+          $rspE = Join-Path $rp 'probe-e.rsp'
+          $flagsE = @('-std=c++17', '-E', '-w') + $wanted
+          $flagsEText = (($flagsE | ForEach-Object { ([string]$_).Replace($bs, '/') }) -join ([string][char]10))
+          [System.IO.File]::WriteAllText($rspE, $flagsEText, (New-Object System.Text.UTF8Encoding($false)))
+          $oE = & $clang ('@' + $rspE) ($dgJni.Replace($bs, '/')) 2>&1
+          $diag += ('[dg-jni -E] rc=' + $LASTEXITCODE)
+          $diag += @($oE | Select-Object -First 16 | ForEach-Object { ([string]$_).Trim() })
           $diag | Out-File -FilePath 'logs/probe-diag.txt' -Encoding utf8
           $skip = @('ReverieCrashHandler.cpp')
           $files = @(Get-ChildItem (Join-Path $eng '*.cpp') | Where-Object { $skip -notcontains $_.Name } | Sort-Object Name)
@@ -221,6 +248,29 @@ jobs:
               $errs = @($out | Where-Object { ([string]$_) -match 'error' } | Select-Object -First 3)
               if ($errs.Count -eq 0) { $errs = @($out | Select-Object -Last 3) }
               $report += ($errs | ForEach-Object { ([string]$_).Trim() })
+              # 第一条 error 定位到 文件:行，把该行前后各 3 行贴进报告，避免只看签名反复猜
+              $first = @($out | Where-Object { ([string]$_) -match '^[A-Za-z]:.*: [0-9]+:[0-9]+: error: ' } | Select-Object -First 1)
+              if ($first.Count -gt 0) {
+                $m = [regex]::Match(([string]$first[0]).Trim(), '^(.*):([0-9]+):[0-9]+: error: ')
+                if ($m.Success) {
+                  $cp = $m.Groups[1].Value
+                  $cl = [int]$m.Groups[2].Value
+                  if (Test-Path -LiteralPath $cp) {
+                    $arr = @(Get-Content -LiteralPath $cp -ErrorAction SilentlyContinue)
+                    $from = $cl - 3
+                    if ($from -lt 1) { $from = 1 }
+                    $to = $cl + 3
+                    if ($to -gt $arr.Count) { $to = $arr.Count }
+                    for ($k = $from; $k -le $to; $k++) {
+                      $mark = '   '
+                      if ($k -eq $cl) { $mark = '>> ' }
+                      $s = [string]$arr[$k - 1]
+                      if ($s.Length -gt 170) { $s = $s.Substring(0, 170) }
+                      $report += ($mark + $k + ': ' + $s)
+                    }
+                  }
+                }
+              }
               foreach ($e in @($out | Where-Object { ([string]$_) -match ': (fatal )?error: ' })) {
                 $norm = (([string]$e).Trim() -replace '^.*?: (fatal error|error): ', '')
                 if ($hist.ContainsKey($norm)) { $hist[$norm]++ } else { $hist[$norm] = 1 }
