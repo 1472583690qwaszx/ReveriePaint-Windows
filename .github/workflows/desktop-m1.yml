@@ -152,6 +152,7 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Continue'
+          $bs = [char]92
           New-Item -ItemType Directory -Force logs | Out-Null
           $log = 'logs/engine-probe.txt'
           $root = $env:KRITA_ROOT
