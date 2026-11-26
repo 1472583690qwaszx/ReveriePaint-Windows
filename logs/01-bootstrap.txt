@@ -22,9 +22,7 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-Updating files:   4% (545/12332)
-Updating files:   5% (617/12332)
-Updating files:   6% (740/12332)
+Updating files:   6% (816/12332)
 Updating files:   7% (864/12332)
 Updating files:   8% (987/12332)
 Updating files:   9% (1110/12332)
@@ -32,18 +30,18 @@ Updating files:  10% (1234/12332)
 Updating files:  11% (1357/12332)
 Updating files:  12% (1480/12332)
 Updating files:  13% (1604/12332)
-Updating files:  13% (1629/12332)
 Updating files:  14% (1727/12332)
 Updating files:  15% (1850/12332)
+Updating files:  15% (1862/12332)
 Updating files:  16% (1974/12332)
 Updating files:  17% (2097/12332)
 Updating files:  18% (2220/12332)
 Updating files:  19% (2344/12332)
 Updating files:  20% (2467/12332)
 Updating files:  21% (2590/12332)
-Updating files:  21% (2687/12332)
 Updating files:  22% (2714/12332)
 Updating files:  23% (2837/12332)
+Updating files:  23% (2947/12332)
 Updating files:  24% (2960/12332)
 Updating files:  25% (3083/12332)
 Updating files:  26% (3207/12332)
@@ -51,13 +49,13 @@ Updating files:  27% (3330/12332)
 Updating files:  28% (3453/12332)
 Updating files:  29% (3577/12332)
 Updating files:  30% (3700/12332)
-Updating files:  30% (3761/12332)
 Updating files:  31% (3823/12332)
 Updating files:  32% (3947/12332)
+Updating files:  32% (4026/12332)
 Updating files:  33% (4070/12332)
-Updating files:  33% (4113/12332)
 Updating files:  34% (4193/12332)
 Updating files:  35% (4317/12332)
+Updating files:  35% (4357/12332)
 Updating files:  36% (4440/12332)
 Updating files:  37% (4563/12332)
 Updating files:  38% (4687/12332)
@@ -65,35 +63,35 @@ Updating files:  39% (4810/12332)
 Updating files:  40% (4933/12332)
 Updating files:  41% (5057/12332)
 Updating files:  42% (5180/12332)
-Updating files:  42% (5210/12332)
 Updating files:  43% (5303/12332)
 Updating files:  44% (5427/12332)
 Updating files:  45% (5550/12332)
 Updating files:  46% (5673/12332)
+Updating files:  46% (5716/12332)
 Updating files:  47% (5797/12332)
 Updating files:  48% (5920/12332)
 Updating files:  49% (6043/12332)
 Updating files:  50% (6166/12332)
 Updating files:  51% (6290/12332)
-Updating files:  51% (6352/12332)
 Updating files:  52% (6413/12332)
+Updating files:  52% (6436/12332)
 Updating files:  53% (6536/12332)
-Updating files:  53% (6601/12332)
 Updating files:  54% (6660/12332)
 Updating files:  55% (6783/12332)
 Updating files:  56% (6906/12332)
 Updating files:  57% (7030/12332)
 Updating files:  58% (7153/12332)
 Updating files:  59% (7276/12332)
+Updating files:  59% (7348/12332)
 Updating files:  60% (7400/12332)
 Updating files:  61% (7523/12332)
 Updating files:  62% (7646/12332)
-Updating files:  62% (7722/12332)
 Updating files:  63% (7770/12332)
 Updating files:  64% (7893/12332)
 Updating files:  65% (8016/12332)
 Updating files:  66% (8140/12332)
 Updating files:  67% (8263/12332)
+Updating files:  67% (8311/12332)
 Updating files:  68% (8386/12332)
 Updating files:  69% (8510/12332)
 Updating files:  70% (8633/12332)
@@ -103,36 +101,34 @@ Updating files:  73% (9003/12332)
 Updating files:  74% (9126/12332)
 Updating files:  75% (9249/12332)
 Updating files:  76% (9373/12332)
-Updating files:  76% (9375/12332)
 Updating files:  77% (9496/12332)
-Updating files:  77% (9569/12332)
+Updating files:  77% (9570/12332)
 Updating files:  78% (9619/12332)
 Updating files:  79% (9743/12332)
 Updating files:  80% (9866/12332)
 Updating files:  81% (9989/12332)
-Updating files:  81% (10045/12332)
 Updating files:  82% (10113/12332)
 Updating files:  83% (10236/12332)
+Updating files:  83% (10288/12332)
 Updating files:  84% (10359/12332)
 Updating files:  85% (10483/12332)
 Updating files:  86% (10606/12332)
 Updating files:  87% (10729/12332)
 Updating files:  88% (10853/12332)
 Updating files:  89% (10976/12332)
+Updating files:  89% (11096/12332)
 Updating files:  90% (11099/12332)
 Updating files:  91% (11223/12332)
 Updating files:  92% (11346/12332)
 Updating files:  93% (11469/12332)
 Updating files:  94% (11593/12332)
 Updating files:  95% (11716/12332)
-Updating files:  95% (11768/12332)
-Updating files:  95% (11788/12332)
 Updating files:  96% (11839/12332)
 Updating files:  97% (11963/12332)
 Updating files:  98% (12086/12332)
-Updating files:  98% (12134/12332)
-Updating files:  98% (12189/12332)
+Updating files:  98% (12129/12332)
 Updating files:  99% (12209/12332)
+Updating files:  99% (12284/12332)
 Updating files: 100% (12332/12332)
 Updating files: 100% (12332/12332), done.
   [OK]   已克隆到 C:\krita-dev\krita
@@ -151,7 +147,7 @@ Collecting idna==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.t
   Downloading idna-3.11-py3-none-any.whl (71 kB)
 Collecting lxml==6.0.2 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 130))
   Downloading lxml-6.0.2-cp312-cp312-win_amd64.whl (4.0 MB)
-     ---------------------------------------- 4.0/4.0 MB 14.1 MB/s  0:00:00
+     ---------------------------------------- 4.0/4.0 MB 34.4 MB/s  0:00:00
 Collecting meson==1.9.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 272))
   Downloading meson-1.9.1-py3-none-any.whl (1.0 MB)
      ---------------------------------------- 1.0/1.0 MB 16.3 MB/s  0:00:00
@@ -177,7 +173,7 @@ Collecting wheel==0.45.1 (from -r C:\krita-dev\krita-deps-management\requirement
   Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
 Collecting setuptools==82.0.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 431))
   Downloading setuptools-82.0.1-py3-none-any.whl (1.0 MB)
-     ---------------------------------------- 1.0/1.0 MB 11.8 MB/s  0:00:00
+     ---------------------------------------- 1.0/1.0 MB 23.3 MB/s  0:00:00
 Installing collected packages: ply, wheel, urllib3, tomli, toml, setuptools, pyyaml, packaging, meson, lxml, idna, charset-normalizer, certifi, requests, requests-toolbelt, python-gitlab
 
 Successfully installed certifi-2026.10.23 charset-normalizer-3.4.4 idna-3.11 lxml-6.0.2 meson-1.9.1 packaging-25.0 ply-3.11 python-gitlab-7.0.0 pyyaml-6.0.3 requests-2.32.5 requests-toolbelt-1.0.0 setuptools-82.0.1 toml-0.10.2 tomli-2.3.0 urllib3-2.5.0 wheel-0.45.1
@@ -511,7 +507,7 @@ version.
 ##
 ##
 ## Building with the following environment variables:
-##    ACTIONS_ORCHESTRATION_ID=dbb6e0d4-3d57-8530-a40d-f5b92e7e0816.probe.__default
+##    ACTIONS_ORCHESTRATION_ID=a5a80745-e739-8fe5-a14c-46950616ec86.probe.__default
 ##    ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=C:\actionarchivecache\
 ##    ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED=1
 ##    AGENT_TOOLSDIRECTORY=C:\hostedtoolcache\windows
@@ -561,17 +557,17 @@ version.
 ##    GITHUB_ACTOR=1472583690qwaszx
 ##    GITHUB_ACTOR_ID=155727973
 ##    GITHUB_API_URL=https://api.github.com
-##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_0b804664-88f9-416d-9248-f70a37803e3f
-##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_0b804664-88f9-416d-9248-f70a37803e3f
+##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
+##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
 ##    GITHUB_BASE_REF=
-##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_0b804664-88f9-416d-9248-f70a37803e3f
+##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
 ##    GITHUB_EVENT_NAME=push
 ##    GITHUB_EVENT_PATH=D:\a\_temp\_github_workflow\event.json
 ##    GITHUB_GRAPHQL_URL=https://api.github.com/graphql
 ##    GITHUB_HEAD_REF=
 ##    GITHUB_JOB=probe
-##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_0b804664-88f9-416d-9248-f70a37803e3f
-##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_0b804664-88f9-416d-9248-f70a37803e3f
+##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
+##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
 ##    GITHUB_REF=refs/heads/main
 ##    GITHUB_REF_NAME=main
 ##    GITHUB_REF_PROTECTED=false
@@ -582,16 +578,16 @@ version.
 ##    GITHUB_REPOSITORY_OWNER_ID=155727973
 ##    GITHUB_RETENTION_DAYS=90
 ##    GITHUB_RUN_ATTEMPT=1
-##    GITHUB_RUN_ID=45882911595
-##    GITHUB_RUN_NUMBER=21
+##    GITHUB_RUN_ID=45890219615
+##    GITHUB_RUN_NUMBER=22
 ##    GITHUB_SERVER_URL=https://github.com
-##    GITHUB_SHA=2c029202c547ab27665fa621f648a2d55dee4fc6
-##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_0b804664-88f9-416d-9248-f70a37803e3f
-##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_0b804664-88f9-416d-9248-f70a37803e3f
+##    GITHUB_SHA=10193e29363cb35b8fa7b4e0df505d940417356e
+##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
+##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_a632ef18-88fe-49c6-aa0a-7e0e78bfc2ed
 ##    GITHUB_TRIGGERING_ACTOR=1472583690qwaszx
 ##    GITHUB_WORKFLOW=Desktop M1 (engine compile)
 ##    GITHUB_WORKFLOW_REF=1472583690qwaszx/ReveriePaint-Windows/.github/workflows/desktop-m1.yml@refs/heads/main
-##    GITHUB_WORKFLOW_SHA=2c029202c547ab27665fa621f648a2d55dee4fc6
+##    GITHUB_WORKFLOW_SHA=10193e29363cb35b8fa7b4e0df505d940417356e
 ##    GITHUB_WORKSPACE=D:\a\ReveriePaint-Windows\ReveriePaint-Windows
 ##    GOROOT_1_25_X64=C:\hostedtoolcache\windows\go\1.25.14\x64
 ##    GOROOT_1_26_X64=C:\hostedtoolcache\windows\go\1.26.11\x64
@@ -642,9 +638,9 @@ version.
 ##    POWERSHELL_DISTRIBUTION_CHANNEL=GitHub-Actions-win25-vs2026
 ##    POWERSHELL_UPDATECHECK=Off
 ##    PROCESSOR_ARCHITECTURE=AMD64
-##    PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 207 Stepping 2, GenuineIntel
-##    PROCESSOR_LEVEL=6
-##    PROCESSOR_REVISION=cf02
+##    PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD
+##    PROCESSOR_LEVEL=25
+##    PROCESSOR_REVISION=0101
 ##    PROGRAMDATA=C:\ProgramData
 ##    PROGRAMFILES=C:\Program Files
 ##    PROGRAMFILES(X86)=C:\Program Files (x86)
@@ -661,11 +657,11 @@ version.
 ##    RTOOLS45_HOME=C:\rtools45
 ##    RUNNER_ARCH=X64
 ##    RUNNER_ENVIRONMENT=github-hosted
-##    RUNNER_NAME=GitHub Actions 1000000050
+##    RUNNER_NAME=GitHub Actions 1000000051
 ##    RUNNER_OS=Windows
 ##    RUNNER_TEMP=D:\a\_temp
 ##    RUNNER_TOOL_CACHE=C:\hostedtoolcache\windows
-##    RUNNER_TRACKING_ID=github_c9c3f0bb-75ed-4ad4-95ce-a7b53315fbb8
+##    RUNNER_TRACKING_ID=github_0d69af5f-c019-4b6f-a8a4-7d86bf29346d
 ##    RUNNER_WORKSPACE=D:\a\ReveriePaint-Windows
 ##    SBT_HOME=C:\Program Files (x86)\sbt\
 ##    SELENIUM_JAR_PATH=C:\selenium\selenium-server.jar

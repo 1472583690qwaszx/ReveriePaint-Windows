@@ -1,87 +1,283 @@
-probe: 28/44 cpp files failed (incs: 306, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
+probe: 28/44 cpp files failed (incs: 311, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
 --- 错误签名 Top 15 ---
-[28x] 'psd_colormode_block.h' file not found
+[28x] 'kis_brush_based_paintop_settings.h' file not found
 ### reverie_jni_core.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreAdjustment.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreAnimation.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreBrush.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreCollab.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreDocument.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreFilterKernels.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreFilterPlugins.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreFilterPreview.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreFilterPreviewFx.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreFilterRegistry.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreFilters.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreGenerators.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreIccData.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreInstance.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreIO.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreLayerIO.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreLayerOps.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreLayers.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreMiscTools.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCorePanel.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCorePatternFill.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreRender.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreSelection.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreSelectionLasso.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreSelectionTools.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreStroke.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
 ### ReverieCoreTransform.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:31:10: fatal error: 'psd_colormode_block.h' file not found
+C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
 1 error generated.
+   39: #include <KisLocalStrokeResources.h>
+   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
+   41: #include <KisRunnableStrokeJobData.h>
+>> 42: #include <kis_brush_based_paintop_settings.h>
+   43: #include <kis_brushop.h>
+   44: #include <kis_gbr_brush.h>
+   45: #include <kis_png_brush.h>
