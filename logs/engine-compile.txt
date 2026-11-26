@@ -1,0 +1,130 @@
+compile: 43/43 cpp files failed, 0 objects built, 0 KB total, flags -O1
+### reverie_jni_animation.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/01-reverie_jni_animation.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_brush.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/02-reverie_jni_brush.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_collab.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/03-reverie_jni_collab.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_core.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/04-reverie_jni_core.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_filters.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/05-reverie_jni_filters.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_io.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/06-reverie_jni_io.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_layers.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/07-reverie_jni_layers.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_panel.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/08-reverie_jni_panel.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_selection.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/09-reverie_jni_selection.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_snapshot.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/10-reverie_jni_snapshot.o': 'Invalid argument'
+1 error generated.
+### reverie_jni_tools.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/11-reverie_jni_tools.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreAdjustment.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/12-ReverieCoreAdjustment.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreAnimation.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/13-ReverieCoreAnimation.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreApi.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/14-ReverieCoreApi.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreBrush.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/15-ReverieCoreBrush.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreColorSpaceHook.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/16-ReverieCoreColorSpaceHook.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreDocument.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/17-ReverieCoreDocument.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreFilterKernels.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/18-ReverieCoreFilterKernels.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreFilterPlugins.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/19-ReverieCoreFilterPlugins.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreFilterPreview.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/20-ReverieCoreFilterPreview.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreFilterPreviewFx.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/21-ReverieCoreFilterPreviewFx.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreFilterRegistry.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/22-ReverieCoreFilterRegistry.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreFilters.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/23-ReverieCoreFilters.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreGenerators.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/24-ReverieCoreGenerators.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreIccData.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/25-ReverieCoreIccData.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreInbetween.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/26-ReverieCoreInbetween.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreInstance.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/27-ReverieCoreInstance.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreIO.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/28-ReverieCoreIO.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreLayerExtras.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/29-ReverieCoreLayerExtras.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreLayerIO.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/30-ReverieCoreLayerIO.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreLayerOps.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/31-ReverieCoreLayerOps.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreLayers.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/32-ReverieCoreLayers.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreMiscTools.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/33-ReverieCoreMiscTools.o': 'Invalid argument'
+1 error generated.
+### ReverieCorePanel.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/34-ReverieCorePanel.o': 'Invalid argument'
+1 error generated.
+### ReverieCorePatternFill.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/35-ReverieCorePatternFill.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreRender.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/36-ReverieCoreRender.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreSelection.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/37-ReverieCoreSelection.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreSelectionLasso.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/38-ReverieCoreSelectionLasso.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreSelectionTools.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/39-ReverieCoreSelectionTools.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreStroke.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/40-ReverieCoreStroke.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreTransform.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/41-ReverieCoreTransform.o': 'Invalid argument'
+1 error generated.
+### ReverieCoreUndoStore.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/42-ReverieCoreUndoStore.o': 'Invalid argument'
+1 error generated.
+### ReverieMaskingBrushRenderer.cpp  (0s)
+error: unable to open output file ' C:/rp/obj/43-ReverieMaskingBrushRenderer.o': 'Invalid argument'
+1 error generated.
