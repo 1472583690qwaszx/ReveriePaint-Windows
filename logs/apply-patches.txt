@@ -29,16 +29,16 @@
   [OK]   10 条补丁全部应用：0002, 0003, 0004, 0005, 0005b, 0008, 0011, 0012, 0015, 0017
 
   提交历史：
-    b0140b3 reverie-port: apply 0017 (网格笔刷 HSV 修复)
-    c55a959 reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
-    4b554fd reverie-port: apply 0012 (事务中止修复)
-    bec3ae2 reverie-port: apply 0011 (Memento SIGABRT 修复)
-    38c7b1b reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
-    dccbd28 reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
-    ad07cb9 reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
-    8769fcd reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
-    8d4ac0d reverie-port: apply 0003 (换页 Swap qFatal 修复)
-    e1e02f0 reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
+    ad67157 reverie-port: apply 0017 (网格笔刷 HSV 修复)
+    9a09f61 reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
+    f1e8705 reverie-port: apply 0012 (事务中止修复)
+    be34dae reverie-port: apply 0011 (Memento SIGABRT 修复)
+    ccae98f reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
+    d3a55b3 reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
+    4237b2a reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
+    226ef5a reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
+    7bb3d83 reverie-port: apply 0003 (换页 Swap qFatal 修复)
+    1f4c042 reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
     e7e52a7 Fix MacOS builds when Python 3.11 is used
 
   [OK]   下一步：.\03-build.ps1

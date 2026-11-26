@@ -1,0 +1,11 @@
+--- probe diag ---
+JAVA_HOME=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.13-100000002.0\x64
+[dg-time.cpp] rc=0
+[dg-jni.cpp] rc=1
+C:/rp/dg-jni.cpp:2:1: error: unknown type name 'JNIEnv'
+2 | JNIEnv* dg_env; jobject dg_obj;
+| ^
+C:/rp/dg-jni.cpp:2:17: error: unknown type name 'jobject'
+2 | JNIEnv* dg_env; jobject dg_obj;
+|                 ^
+2 errors generated.

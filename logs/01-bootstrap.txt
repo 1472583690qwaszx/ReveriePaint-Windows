@@ -22,23 +22,24 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-Updating files:   6% (746/12332)
+Updating files:   5% (648/12332)
+Updating files:   6% (740/12332)
 Updating files:   7% (864/12332)
 Updating files:   8% (987/12332)
 Updating files:   9% (1110/12332)
 Updating files:  10% (1234/12332)
-Updating files:  10% (1242/12332)
 Updating files:  11% (1357/12332)
 Updating files:  12% (1480/12332)
 Updating files:  13% (1604/12332)
 Updating files:  14% (1727/12332)
 Updating files:  15% (1850/12332)
+Updating files:  15% (1859/12332)
 Updating files:  16% (1974/12332)
 Updating files:  17% (2097/12332)
 Updating files:  18% (2220/12332)
 Updating files:  19% (2344/12332)
 Updating files:  20% (2467/12332)
-Updating files:  20% (2474/12332)
+Updating files:  20% (2530/12332)
 Updating files:  21% (2590/12332)
 Updating files:  22% (2714/12332)
 Updating files:  23% (2837/12332)
@@ -47,23 +48,23 @@ Updating files:  25% (3083/12332)
 Updating files:  26% (3207/12332)
 Updating files:  27% (3330/12332)
 Updating files:  28% (3453/12332)
+Updating files:  28% (3513/12332)
 Updating files:  29% (3577/12332)
 Updating files:  30% (3700/12332)
-Updating files:  30% (3813/12332)
 Updating files:  31% (3823/12332)
 Updating files:  32% (3947/12332)
 Updating files:  33% (4070/12332)
 Updating files:  34% (4193/12332)
-Updating files:  34% (4224/12332)
 Updating files:  35% (4317/12332)
 Updating files:  36% (4440/12332)
+Updating files:  36% (4451/12332)
 Updating files:  37% (4563/12332)
 Updating files:  38% (4687/12332)
 Updating files:  39% (4810/12332)
 Updating files:  40% (4933/12332)
 Updating files:  41% (5057/12332)
-Updating files:  41% (5168/12332)
 Updating files:  42% (5180/12332)
+Updating files:  42% (5290/12332)
 Updating files:  43% (5303/12332)
 Updating files:  44% (5427/12332)
 Updating files:  45% (5550/12332)
@@ -71,45 +72,46 @@ Updating files:  46% (5673/12332)
 Updating files:  47% (5797/12332)
 Updating files:  48% (5920/12332)
 Updating files:  49% (6043/12332)
+Updating files:  49% (6103/12332)
 Updating files:  50% (6166/12332)
 Updating files:  51% (6290/12332)
 Updating files:  52% (6413/12332)
-Updating files:  52% (6435/12332)
 Updating files:  53% (6536/12332)
 Updating files:  54% (6660/12332)
+Updating files:  54% (6742/12332)
 Updating files:  55% (6783/12332)
 Updating files:  56% (6906/12332)
 Updating files:  57% (7030/12332)
 Updating files:  58% (7153/12332)
 Updating files:  59% (7276/12332)
-Updating files:  59% (7333/12332)
 Updating files:  60% (7400/12332)
 Updating files:  61% (7523/12332)
 Updating files:  62% (7646/12332)
 Updating files:  63% (7770/12332)
 Updating files:  64% (7893/12332)
 Updating files:  65% (8016/12332)
+Updating files:  65% (8036/12332)
 Updating files:  66% (8140/12332)
-Updating files:  66% (8178/12332)
 Updating files:  67% (8263/12332)
 Updating files:  68% (8386/12332)
 Updating files:  69% (8510/12332)
 Updating files:  70% (8633/12332)
 Updating files:  71% (8756/12332)
+Updating files:  71% (8877/12332)
 Updating files:  72% (8880/12332)
 Updating files:  73% (9003/12332)
 Updating files:  74% (9126/12332)
 Updating files:  75% (9249/12332)
-Updating files:  75% (9302/12332)
 Updating files:  76% (9373/12332)
 Updating files:  77% (9496/12332)
+Updating files:  77% (9613/12332)
 Updating files:  78% (9619/12332)
 Updating files:  79% (9743/12332)
 Updating files:  80% (9866/12332)
 Updating files:  81% (9989/12332)
 Updating files:  82% (10113/12332)
 Updating files:  83% (10236/12332)
-Updating files:  83% (10356/12332)
+Updating files:  83% (10291/12332)
 Updating files:  84% (10359/12332)
 Updating files:  85% (10483/12332)
 Updating files:  86% (10606/12332)
@@ -118,7 +120,7 @@ Updating files:  88% (10853/12332)
 Updating files:  89% (10976/12332)
 Updating files:  90% (11099/12332)
 Updating files:  91% (11223/12332)
-Updating files:  91% (11336/12332)
+Updating files:  91% (11320/12332)
 Updating files:  92% (11346/12332)
 Updating files:  93% (11469/12332)
 Updating files:  94% (11593/12332)
@@ -126,9 +128,9 @@ Updating files:  95% (11716/12332)
 Updating files:  96% (11839/12332)
 Updating files:  97% (11963/12332)
 Updating files:  98% (12086/12332)
-Updating files:  98% (12123/12332)
+Updating files:  98% (12122/12332)
 Updating files:  99% (12209/12332)
-Updating files:  99% (12326/12332)
+Updating files:  99% (12299/12332)
 Updating files: 100% (12332/12332)
 Updating files: 100% (12332/12332), done.
   [OK]   已克隆到 C:\krita-dev\krita
@@ -147,10 +149,10 @@ Collecting idna==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.t
   Downloading idna-3.11-py3-none-any.whl (71 kB)
 Collecting lxml==6.0.2 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 130))
   Downloading lxml-6.0.2-cp312-cp312-win_amd64.whl (4.0 MB)
-     ---------------------------------------- 4.0/4.0 MB 24.0 MB/s  0:00:00
+     ---------------------------------------- 4.0/4.0 MB 59.5 MB/s  0:00:00
 Collecting meson==1.9.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 272))
   Downloading meson-1.9.1-py3-none-any.whl (1.0 MB)
-     ---------------------------------------- 1.0/1.0 MB 24.8 MB/s  0:00:00
+     ---------------------------------------- 1.0/1.0 MB 48.0 MB/s  0:00:00
 Collecting packaging==25.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 276))
   Downloading packaging-25.0-py3-none-any.whl (66 kB)
 Collecting ply==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 280))
@@ -183,7 +185,7 @@ Collecting certvalidator==0.11.1 (from -r C:\krita-dev\krita-deps-management\ci-
   Downloading certvalidator-0.11.1-py2.py3-none-any.whl (31 kB)
 Collecting mscerts==2026.10.27 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 18))
   Downloading mscerts-2026.10.27-py3-none-any.whl (728 kB)
-     ---------------------------------------- 728.3/728.3 kB 7.5 MB/s  0:00:00
+     ---------------------------------------- 728.3/728.3 kB 31.1 MB/s  0:00:00
 Collecting oscrypto==1.3.0 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 22))
   Downloading oscrypto-1.3.0-py2.py3-none-any.whl (194 kB)
 Collecting pefile==2024.8.26 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 28))
@@ -507,7 +509,7 @@ version.
 ##
 ##
 ## Building with the following environment variables:
-##    ACTIONS_ORCHESTRATION_ID=059d1132-28db-836d-8811-0f442348133f.probe.__default
+##    ACTIONS_ORCHESTRATION_ID=42b05634-f213-8078-b5b3-a41d2ba85db3.probe.__default
 ##    ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=C:\actionarchivecache\
 ##    ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED=1
 ##    AGENT_TOOLSDIRECTORY=C:\hostedtoolcache\windows
@@ -536,7 +538,7 @@ version.
 ##    COMMONPROGRAMFILES=C:\Program Files\Common Files
 ##    COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
 ##    COMMONPROGRAMW6432=C:\Program Files\Common Files
-##    COMPUTERNAME=runnervmbpeip
+##    COMPUTERNAME=runnervmop6rv
 ##    COMSPEC=C:\Windows\system32\cmd.exe
 ##    CONDA=C:\Miniconda
 ##    DOTNET_MULTILEVEL_LOOKUP=0
@@ -557,17 +559,17 @@ version.
 ##    GITHUB_ACTOR=1472583690qwaszx
 ##    GITHUB_ACTOR_ID=155727973
 ##    GITHUB_API_URL=https://api.github.com
-##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
-##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
+##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_8c5684dc-523f-4121-b86d-14511cd756f4
+##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_8c5684dc-523f-4121-b86d-14511cd756f4
 ##    GITHUB_BASE_REF=
-##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
+##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_8c5684dc-523f-4121-b86d-14511cd756f4
 ##    GITHUB_EVENT_NAME=push
 ##    GITHUB_EVENT_PATH=D:\a\_temp\_github_workflow\event.json
 ##    GITHUB_GRAPHQL_URL=https://api.github.com/graphql
 ##    GITHUB_HEAD_REF=
 ##    GITHUB_JOB=probe
-##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
-##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
+##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_8c5684dc-523f-4121-b86d-14511cd756f4
+##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_8c5684dc-523f-4121-b86d-14511cd756f4
 ##    GITHUB_REF=refs/heads/main
 ##    GITHUB_REF_NAME=main
 ##    GITHUB_REF_PROTECTED=false
@@ -578,16 +580,16 @@ version.
 ##    GITHUB_REPOSITORY_OWNER_ID=155727973
 ##    GITHUB_RETENTION_DAYS=90
 ##    GITHUB_RUN_ATTEMPT=1
-##    GITHUB_RUN_ID=45857741927
-##    GITHUB_RUN_NUMBER=18
+##    GITHUB_RUN_ID=45867538987
+##    GITHUB_RUN_NUMBER=19
 ##    GITHUB_SERVER_URL=https://github.com
-##    GITHUB_SHA=218608015a4c7a182d9339a26975f9da3f837670
-##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
-##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_505baa0f-5e10-4c0e-a570-cfe10aefeaf6
+##    GITHUB_SHA=f1c2230202e88ad263ca8f03a2d365cfae172960
+##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_8c5684dc-523f-4121-b86d-14511cd756f4
+##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_8c5684dc-523f-4121-b86d-14511cd756f4
 ##    GITHUB_TRIGGERING_ACTOR=1472583690qwaszx
 ##    GITHUB_WORKFLOW=Desktop M1 (engine compile)
 ##    GITHUB_WORKFLOW_REF=1472583690qwaszx/ReveriePaint-Windows/.github/workflows/desktop-m1.yml@refs/heads/main
-##    GITHUB_WORKFLOW_SHA=218608015a4c7a182d9339a26975f9da3f837670
+##    GITHUB_WORKFLOW_SHA=f1c2230202e88ad263ca8f03a2d365cfae172960
 ##    GITHUB_WORKSPACE=D:\a\ReveriePaint-Windows\ReveriePaint-Windows
 ##    GOROOT_1_25_X64=C:\hostedtoolcache\windows\go\1.25.14\x64
 ##    GOROOT_1_26_X64=C:\hostedtoolcache\windows\go\1.26.11\x64
@@ -597,12 +599,12 @@ version.
 ##    HOMEPATH=\Users\runneradmin
 ##    IEWEBDRIVER=C:\SeleniumWebDrivers\IEDriver
 ##    IMAGEOS=win25-vs2026
-##    IMAGEVERSION=20261116.315.1
-##    JAVA_HOME=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-9\x64
+##    IMAGEVERSION=20261123.321.1
+##    JAVA_HOME=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-100000002\x64
 ##    JAVA_HOME_11_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\11.0.33-10\x64
-##    JAVA_HOME_17_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-9\x64
-##    JAVA_HOME_21_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.13-9.0\x64
-##    JAVA_HOME_25_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0\x64
+##    JAVA_HOME_17_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-100000002\x64
+##    JAVA_HOME_21_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.13-100000002.0\x64
+##    JAVA_HOME_25_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-100000002.0\x64
 ##    JAVA_HOME_8_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\8.0.512-9\x64
 ##    KDECI_ALLOW_PACKAGE_OVERRIDE_BY_CACHE=1
 ##    KDECI_BUILD=TRUE
@@ -616,7 +618,7 @@ version.
 ##    KRITA_ROOT=C:/krita-dev
 ##    LLVM_MINGW=C:/deps/llvm-mingw-20251118-ucrt-x86_64
 ##    LOCALAPPDATA=C:\Users\runneradmin\AppData\Local
-##    LOGONSERVER=\\runnervmbpeip
+##    LOGONSERVER=\\runnervmop6rv
 ##    M2=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin
 ##    M2_REPO=C:\ProgramData\m2
 ##    MAVEN_OPTS=-Xms256m
@@ -624,7 +626,7 @@ version.
 ##    NPM_CONFIG_PREFIX=C:\npm\prefix
 ##    NUMBER_OF_PROCESSORS=4
 ##    OS=Windows_NT
-##    PATH=C:\krita-dev\_install\bin;C:\krita-dev\_install\lib;C:\Program Files\PowerShell\7;C:/deps/Ninja;C:/deps/cmake-3.31.6-windows-x86_64/bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.4\bin;C:\Program Files\R\R-4.6.2\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.26.11\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.13\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-9\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\WSL\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\ucrt64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files (x86)\sbt\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin;C:\deps\llvm-mingw-20251118-ucrt-x86_64\x86_64-w64-mingw32\bin;C:\deps\Ninja
+##    PATH=C:\krita-dev\_install\bin;C:\krita-dev\_install\lib;C:\Program Files\PowerShell\7;C:/deps/Ninja;C:/deps/cmake-3.31.6-windows-x86_64/bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.4\bin;C:\Program Files\R\R-4.6.2\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.26.11\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.14\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-100000002\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\WSL\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\ucrt64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files (x86)\sbt\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin;C:\deps\llvm-mingw-20251118-ucrt-x86_64\x86_64-w64-mingw32\bin;C:\deps\Ninja
 ##    PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
 ##    PGBIN=C:\Program Files\PostgreSQL\17\bin
 ##    PGDATA=C:\PostgreSQL\17\data
@@ -657,11 +659,11 @@ version.
 ##    RTOOLS45_HOME=C:\rtools45
 ##    RUNNER_ARCH=X64
 ##    RUNNER_ENVIRONMENT=github-hosted
-##    RUNNER_NAME=GitHub Actions 1000000047
+##    RUNNER_NAME=GitHub Actions 1000000048
 ##    RUNNER_OS=Windows
 ##    RUNNER_TEMP=D:\a\_temp
 ##    RUNNER_TOOL_CACHE=C:\hostedtoolcache\windows
-##    RUNNER_TRACKING_ID=github_5836e972-a93a-4450-b542-e6860eafecaf
+##    RUNNER_TRACKING_ID=github_6c4ee6da-b56d-4ed1-8acd-9f7a826b42b8
 ##    RUNNER_WORKSPACE=D:\a\ReveriePaint-Windows
 ##    SBT_HOME=C:\Program Files (x86)\sbt\
 ##    SELENIUM_JAR_PATH=C:\selenium\selenium-server.jar
@@ -670,8 +672,8 @@ version.
 ##    TEMP=C:\Users\RUNNER~1\AppData\Local\Temp
 ##    TMP=C:\Users\RUNNER~1\AppData\Local\Temp
 ##    UPSTREAM_TAG=v1.11.0
-##    USERDOMAIN=runnervmbpeip
-##    USERDOMAIN_ROAMINGPROFILE=runnervmbpeip
+##    USERDOMAIN=runnervmop6rv
+##    USERDOMAIN_ROAMINGPROFILE=runnervmop6rv
 ##    USERNAME=runneradmin
 ##    USERPROFILE=C:\Users\runneradmin
 ##    VCPKG_INSTALLATION_ROOT=C:\vcpkg
