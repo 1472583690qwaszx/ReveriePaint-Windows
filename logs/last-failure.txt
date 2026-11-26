@@ -1,6 +1,6 @@
 # CI failure log
 run: 
-45816621769
+45822348576
 
 --- preflight-console.log tail 100 ---
 iscc: C:\Program Files (x86)\Inno Setup 6\ISCC.exe
@@ -52,7 +52,26 @@ Creating setup files
    Updating manifest (Setup.exe)
 
 
-Successful compile (1.109 sec). Resulting Setup program filename is:
+Successful compile (1.203 sec). Resulting Setup program filename is:
 D:\a\_temp\preflight.exe
 preflight iscc exit: 0
 chinese installer language available
+--- _install 顶层 ---
+bin
+doc
+etc
+include
+lib
+metatypes
+mkspecs
+modules
+phrasebooks
+plugins
+python
+qml
+sample
+share
+translations
+cldr-license.txt
+gettext-license.txt
+iconv-license.txt
