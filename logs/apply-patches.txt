@@ -20,16 +20,6 @@ e7e52a72ed37ecaf9ffaa2fab836b7c2f5539d1f
 blob type: blob
 --- working file bytes ---
 CRLF pairs: 156 / bytes: 4692
---- file lines 88-96 ---
-[]
-[        // qreal fadePos =]
-[        //     value1 < 0 || value2 < 0 ?]
-[        //     qMax(-value1, -value2) : value3;]
-[        qreal fadePos = value3;]
-[]
-[        const quint8 srcAlpha = fadePos > 0 ? quint8((1.0 - fadePos) * 255.0) : 255;]
-[        const quint8 dstAlpha = cs->opacityU8(it.rawData());]
-[]
 --- apply --check --3way ---
 error: patch failed: libs/image/kis_marker_painter.cpp:92
 Falling back to direct application...
@@ -68,16 +58,16 @@ error: libs/image/kis_marker_painter.cpp: patch does not apply
   [OK]   10 条补丁全部应用：0002, 0003, 0004, 0005, 0005b, 0008, 0011, 0012, 0015, 0017
 
   提交历史：
-    caafc70 reverie-port: apply 0017 (网格笔刷 HSV 修复)
-    4abd45c reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
-    4fcf98c reverie-port: apply 0012 (事务中止修复)
-    908c467 reverie-port: apply 0011 (Memento SIGABRT 修复)
-    1384338 reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
-    c29eed3 reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
-    5cfbfbb reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
-    c0edbbe reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
-    e16c52e reverie-port: apply 0003 (换页 Swap qFatal 修复)
-    9fe9896 reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
+    774c65f reverie-port: apply 0017 (网格笔刷 HSV 修复)
+    8c93440 reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
+    4911896 reverie-port: apply 0012 (事务中止修复)
+    83bb977 reverie-port: apply 0011 (Memento SIGABRT 修复)
+    d437d44 reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
+    8c0441b reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
+    fd2c967 reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
+    fdbebd0 reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
+    01b8563 reverie-port: apply 0003 (换页 Swap qFatal 修复)
+    c9a397c reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
     e7e52a7 Fix MacOS builds when Python 3.11 is used
 
   [OK]   下一步：.\03-build.ps1
