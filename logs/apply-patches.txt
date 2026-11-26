@@ -44,14 +44,41 @@ error: libs/image/kis_marker_painter.cpp: patch does not apply
 
 == 按顺序应用
   → 0002  圆头笔刷 KisMarkerPainter 修复
-  [FAIL] 0002 应用失败，回滚到上一条补丁
-      error: patch failed: libs/image/kis_marker_painter.cpp:92
-      Falling back to direct application...
-      error: patch failed: libs/image/kis_marker_painter.cpp:92
-      error: libs/image/kis_marker_painter.cpp: patch does not apply
+  [OK]   0002 已应用并提交
+  → 0003  换页 Swap qFatal 修复
+  [OK]   0003 已应用并提交
+  → 0004  圆头笔刷边缘 COMPOSITE_OVER
+  [OK]   0004 已应用并提交
+  → 0005  剪切蒙版（PSD 两文件另见 0005b）
+  [OK]   0005 已应用并提交
+  → 0005b  PSD 剪切蒙版读写重基（本工程新增）
+  [OK]   0005b 已应用并提交
+  → 0008  kis_lockless_stack Qt 6.6 构建修复
+  [OK]   0008 已应用并提交
+  → 0011  Memento SIGABRT 修复
+  [OK]   0011 已应用并提交
+  → 0012  事务中止修复
+  [OK]   0012 已应用并提交
+  → 0015  Sketch 笔刷查找表 O(N²)→O(1)
+  [OK]   0015 已应用并提交
+  → 0017  网格笔刷 HSV 修复
+  [OK]   0017 已应用并提交
 
 == 结果
-  [FAIL] 补丁链在 0002 处中断，当前源码树已回到上一条补丁的状态
-  已成功：无
-  排查方式：git -C <krita> status；单条手动试：git apply --3way <patch>
-02 rc: 3
+  [OK]   10 条补丁全部应用：0002, 0003, 0004, 0005, 0005b, 0008, 0011, 0012, 0015, 0017
+
+  提交历史：
+    caafc70 reverie-port: apply 0017 (网格笔刷 HSV 修复)
+    4abd45c reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
+    4fcf98c reverie-port: apply 0012 (事务中止修复)
+    908c467 reverie-port: apply 0011 (Memento SIGABRT 修复)
+    1384338 reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
+    c29eed3 reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
+    5cfbfbb reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
+    c0edbbe reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
+    e16c52e reverie-port: apply 0003 (换页 Swap qFatal 修复)
+    9fe9896 reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
+    e7e52a7 Fix MacOS builds when Python 3.11 is used
+
+  [OK]   下一步：.\03-build.ps1
+02 rc: 0
