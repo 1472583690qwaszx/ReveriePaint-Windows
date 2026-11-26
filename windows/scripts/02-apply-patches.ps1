@@ -5,7 +5,7 @@
 #   .\02-apply-patches.ps1 -Root "C:\krita-dev"
 #   .\02-apply-patches.ps1 -Root "C:\krita-dev" -IncludeExperimental    # 额外打移动端性能实验补丁
 #
-# 规则：每条补丁成功后立即 commit，失败则 reset 回上一条，绝不留下"半条补丁"。
+# 规则：每条补丁成功后立即 commit，失败则 reset 回上一条，绝不留下“半条补丁”。
 
 [CmdletBinding()]
 param(
@@ -84,12 +84,19 @@ foreach ($item in $plan) {
         break
     }
 
-    $gitArgs = @('-C', $kritaDir, 'apply', '--3way', '--whitespace=nowarn')
+    $gitArgs = @('-C', $kritaDir, 'apply', '--whitespace=nowarn')
     foreach ($ex in $item.Exclude) { $gitArgs += "--exclude=$ex" }
     $gitArgs += $patch
+    $gitArgs3w = @('-C', $kritaDir, 'apply', '--3way', '--whitespace=nowarn')
+    foreach ($ex in $item.Exclude) { $gitArgs3w += "--exclude=$ex" }
+    $gitArgs3w += $patch
 
     Write-Host ("  → {0}  {1}" -f $id, $item.Desc)
     $output = & git @gitArgs 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        # 浅克隆 + Windows CRLF 工作树时 --3way 会因为找不到前像 blob 而失败，退回三路合并兜底
+        $output = & git @gitArgs3w 2>&1
+    }
     if ($LASTEXITCODE -ne 0) {
         Write-Err "$id 应用失败，回滚到上一条补丁"
         $output | Select-Object -Last 8 | ForEach-Object { Write-Host "      $_" -ForegroundColor DarkGray }
@@ -114,7 +121,7 @@ Write-Step '结果'
 if ($failed) {
     Write-Err "补丁链在 $failed 处中断，当前源码树已回到上一条补丁的状态"
     Write-Host ("  已成功：{0}" -f ($(if ($applied.Count -gt 0) { $applied -join ', ' } else { '无' })))
-    Write-Host '  排查方式：git -C <krita> status；单条手动试：git apply --3way <patch>'
+    Write-Host '  排查方式：git -C <krita> status；单条手动试：git apply <patch>'
     exit 3
 }
 
