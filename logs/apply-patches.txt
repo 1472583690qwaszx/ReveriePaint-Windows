@@ -1,0 +1,18 @@
+
+== 源码状态检查
+  [OK]   HEAD = e7e52a7
+  [WARN] 已为本地仓库设置临时提交身份（不修改全局 git 配置）
+
+== 按顺序应用
+  → 0002  圆头笔刷 KisMarkerPainter 修复
+  [FAIL] 0002 应用失败，回滚到上一条补丁
+      error: patch failed: libs/image/kis_marker_painter.cpp:92
+      Falling back to direct application...
+      error: patch failed: libs/image/kis_marker_painter.cpp:92
+      error: libs/image/kis_marker_painter.cpp: patch does not apply
+
+== 结果
+  [FAIL] 补丁链在 0002 处中断，当前源码树已回到上一条补丁的状态
+  已成功：无
+  排查方式：git -C <krita> status；单条手动试：git apply --3way <patch>
+02 rc: 3
