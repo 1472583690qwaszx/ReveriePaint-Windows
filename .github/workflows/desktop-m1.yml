@@ -2,7 +2,7 @@ name: Desktop M1 (engine compile)
 
 # 专用于 M1：把 ReveriePaint v1.11.0 的原生引擎在 Windows 上做语法级编译验证。
 # - 不重建整棵 Krita（只 configure），单轮约 15 分钟
-# - 探针与补丁日志写入 logs/ 并提交回仓库，供未登录场景读取
+# - 探针/补丁/configure 日志写入 logs/ 并提交回仓库，供未登录场景读取
 on:
   workflow_dispatch:
   push:
@@ -112,9 +112,6 @@ jobs:
           $crlf = 0
           for ($i = 0; $i -lt $bytes.Length - 1; $i++) { if ($bytes[$i] -eq 13 -and $bytes[$i + 1] -eq 10) { $crlf++ } }
           $out += ('CRLF pairs: ' + $crlf + ' / bytes: ' + $bytes.Length)
-          $out += '--- file lines 88-96 ---'
-          $lines = [System.IO.File]::ReadAllLines((Join-Path $k $target))
-          $out += ($lines[87..95] | ForEach-Object { '[' + $_ + ']' })
           $out += '--- apply --check --3way ---'
           $out += (& git -C $k apply --check --3way --whitespace=nowarn $patch 2>&1)
           $out += '--- apply --check plain ---'
@@ -136,11 +133,12 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force logs | Out-Null
           . (Join-Path $env:GITHUB_WORKSPACE 'windows/scripts/lib/common.ps1')
           $build = 'C:/krita-dev/b_krita'
           New-Item -ItemType Directory -Force $build | Out-Null
           $llvm = ($env:LLVM_MINGW + '/bin')
-          $args = @(
+          $cmakeArgs = @(
             '-G', 'Ninja',
             '-DCMAKE_BUILD_TYPE=Release',
             '-DCMAKE_INSTALL_PREFIX=C:/krita-dev/_install',
@@ -153,12 +151,18 @@ jobs:
             ('-DCMAKE_C_COMPILER=' + $llvm + '/clang.exe'),
             ('-DCMAKE_CXX_COMPILER=' + $llvm + '/clang++.exe'),
             ('-DCMAKE_RC_COMPILER=' + $llvm + '/windres.exe'))
-          $quoted = ($args -join ' ')
-          $line = 'cmake "C:/krita-dev/krita" ' + $quoted
-          $lines = @('cd /d ' + $build, $line, 'if errorlevel 1 exit /b 31')
+          $line = 'cmake "C:/krita-dev/krita" ' + ($cmakeArgs -join ' ')
+          $lines = @('cd /d ' + $build, 'cmake --version', $line, 'if errorlevel 1 exit /b 31')
           $rc = [int](Invoke-InKritaEnv -Root 'C:/krita-dev' -Lines $lines -LogPath 'C:/krita-dev/configure.log' -BatName 'reverie-configure.bat')
           'configure exit: ' + $rc
-          if ($rc -ne 0) { Get-Content 'C:/krita-dev/configure.log' -Tail 40; throw ('configure failed: ' + $rc) }
+          if (Test-Path 'C:/krita-dev/configure.log') {
+            Get-Content 'C:/krita-dev/configure.log' -Tail 80 | Out-File -FilePath 'logs/configure.txt' -Encoding utf8
+            Get-Content 'C:/krita-dev/configure.log' -Tail 25
+          }
+          if (-not (Test-Path (Join-Path $build 'CMakeCache.txt'))) {
+            throw 'configure did not produce CMakeCache.txt'
+          }
+          if ($rc -ne 0) { throw ('configure failed: ' + $rc) }
 
       - name: Engine compile probe
         shell: pwsh
@@ -166,6 +170,9 @@ jobs:
           $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
           $log = 'logs/engine-probe.txt'
+          $qt = 'C:/krita-dev/_install/include'
+          $qtc = Join-Path $qt 'QtCore'
+          if (-not (Test-Path $qtc)) { 'warning: Qt headers not found at ' + $qt }
           $rp = 'C:/rp'
           git clone --filter=blob:none --sparse --depth 1 --branch $env:UPSTREAM_TAG https://github.com/LanRhyme/ReveriePaint.git $rp
           if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
@@ -174,7 +181,6 @@ jobs:
           $eng = Join-Path $rp 'app/src/main/cpp'
           $src = 'C:/krita-dev/krita'
           $build = 'C:/krita-dev/b_krita'
-          $qt = 'C:/krita-dev/_install/include'
           $shim = Join-Path $env:GITHUB_WORKSPACE 'desktop-port/engine/include'
           $clang = Join-Path $env:LLVM_MINGW 'bin/clang++.exe'
           $incs = @(
@@ -185,8 +191,8 @@ jobs:
             (Join-Path $src 'libs/impex'), (Join-Path $src 'libs/metadata'), (Join-Path $src 'libs/store'),
             (Join-Path $src 'libs/resources'), (Join-Path $src 'libs/psd'), (Join-Path $src 'libs/widgets'),
             (Join-Path $build 'libs'), (Join-Path $build 'libs/image'), (Join-Path $build 'libs/pigment'),
-            $qt, (Join-Path $qt 'QtCore'), (Join-Path $qt 'QtGui'), (Join-Path $qt 'QtWidgets'), (Join-Path $qt 'QtConcurrent'),
-            (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include/win32'))
+            $qt, $qtc, (Join-Path $qt 'QtGui'), (Join-Path $qt 'QtWidgets'), (Join-Path $qt 'QtConcurrent'),
+            (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include/win32'))) if ($false) { }
           $flags = @('-std=c++17', '-fsyntax-only', '-w', '-fms-extensions')
           foreach ($i in $incs) { if (Test-Path $i) { $flags += ('-I' + $i) } }
           $files = Get-ChildItem (Join-Path $eng '*.cpp') | Sort-Object Name
@@ -197,14 +203,16 @@ jobs:
             if ($LASTEXITCODE -ne 0) {
               $failed++
               $report += ('### ' + $f.Name)
-              $report += (($out | Where-Object { $_ -match ': error ' } | Select-Object -First 3) | ForEach-Object { ([string]$_).Trim() })
+              $errs = @($out | Where-Object { ([string]$_) -match 'error' } | Select-Object -First 3)
+              if ($errs.Count -eq 0) { $errs = @($out | Select-Object -Last 3) }
+              $report += ($errs | ForEach-Object { ([string]$_).Trim() })
             }
           }
           $summary = ('probe: ' + $failed + '/' + $files.Count + ' cpp files failed')
           Set-Content -Path $log -Value $summary -Encoding utf8
           $summary
           $report | Select-Object -First 400 | Out-File -FilePath $log -Append -Encoding utf8
-          $report | Select-Object -First 60
+          $report | Select-Object -First 30
 
       - name: Publish probe report
         if: always()
@@ -217,6 +225,9 @@ jobs:
           if (-not (Test-Path 'logs/apply-patches.txt')) {
             Set-Content 'logs/apply-patches.txt' -Value 'apply log missing' -Encoding utf8
           }
+          if (-not (Test-Path 'logs/configure.txt')) {
+            Set-Content 'logs/configure.txt' -Value 'configure log missing' -Encoding utf8
+          }
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
           git add -A logs
@@ -228,9 +239,6 @@ jobs:
         if: always()
         with:
           name: engine-probe
-          path: |
-            logs/engine-probe.txt
-            logs/apply-patches.txt
-            C:/krita-dev/configure.log
+          path: logs
           if-no-files-found: warn
           retention-days: 14
