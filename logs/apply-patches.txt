@@ -4,29 +4,11 @@ git version 2.56.1.windows.1
 file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
 --- head ---
 e7e52a72ed37ecaf9ffaa2fab836b7c2f5539d1f
---- gitattributes ---
-# Windows batch files must be in CRLF to not make cmd.exe freak out
-*.cmd text eol=crlf
-*.bat text eol=crlf
-
-# Make sure Windows .lnk shortcuts are binary
-*.lnk binary
-
-# Patch files must be checked out in CRLF on Windows for patch to work
-*.patch text=auto
-*.diff text=auto
---- index entry ---
-100644 7713b0dbfacb305447d696c8fe503784838cc6fa 0	libs/image/kis_marker_painter.cpp
-blob type: blob
---- working file bytes ---
-CRLF pairs: 156 / bytes: 4692
---- apply --check --3way ---
-error: patch failed: libs/image/kis_marker_painter.cpp:92
-Falling back to direct application...
-error: patch failed: libs/image/kis_marker_painter.cpp:92
-error: libs/image/kis_marker_painter.cpp: patch does not apply
+--- env and install ---
+env.bat exists: True
+_install exists: True
+QtCore dir: True
 --- apply --check plain ---
---- status ---
 
 == 源码状态检查
   [OK]   HEAD = e7e52a7
@@ -58,16 +40,16 @@ error: libs/image/kis_marker_painter.cpp: patch does not apply
   [OK]   10 条补丁全部应用：0002, 0003, 0004, 0005, 0005b, 0008, 0011, 0012, 0015, 0017
 
   提交历史：
-    774c65f reverie-port: apply 0017 (网格笔刷 HSV 修复)
-    8c93440 reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
-    4911896 reverie-port: apply 0012 (事务中止修复)
-    83bb977 reverie-port: apply 0011 (Memento SIGABRT 修复)
-    d437d44 reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
-    8c0441b reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
-    fd2c967 reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
-    fdbebd0 reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
-    01b8563 reverie-port: apply 0003 (换页 Swap qFatal 修复)
-    c9a397c reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
+    73ac73e reverie-port: apply 0017 (网格笔刷 HSV 修复)
+    dc65327 reverie-port: apply 0015 (Sketch 笔刷查找表 O(N²)→O(1))
+    f0a35a9 reverie-port: apply 0012 (事务中止修复)
+    0d5cde0 reverie-port: apply 0011 (Memento SIGABRT 修复)
+    85c1a3a reverie-port: apply 0008 (kis_lockless_stack Qt 6.6 构建修复)
+    19d2840 reverie-port: apply 0005b (PSD 剪切蒙版读写重基（本工程新增）)
+    0f95d5c reverie-port: apply 0005 (剪切蒙版（PSD 两文件另见 0005b）)
+    e782288 reverie-port: apply 0004 (圆头笔刷边缘 COMPOSITE_OVER)
+    4e217b5 reverie-port: apply 0003 (换页 Swap qFatal 修复)
+    4456ed9 reverie-port: apply 0002 (圆头笔刷 KisMarkerPainter 修复)
     e7e52a7 Fix MacOS builds when Python 3.11 is used
 
   [OK]   下一步：.\03-build.ps1

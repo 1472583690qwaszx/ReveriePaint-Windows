@@ -1,0 +1,717 @@
+
+== 准备工作目录
+  [OK]   C:\krita-dev
+
+== Krita 源码（v6.0.4）
+Cloning into 'C:\krita-dev\krita'...
+warning: refs/tags/v6.0.4 7d4d37d9f59297febda0c2b0fde847885bf73440 is not a commit!
+Note: switching to 'e7e52a72ed37ecaf9ffaa2fab836b7c2f5539d1f'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Updating files:   6% (820/12332)
+Updating files:   7% (864/12332)
+Updating files:   8% (987/12332)
+Updating files:   9% (1110/12332)
+Updating files:   9% (1218/12332)
+Updating files:  10% (1234/12332)
+Updating files:  11% (1357/12332)
+Updating files:  12% (1480/12332)
+Updating files:  13% (1604/12332)
+Updating files:  14% (1727/12332)
+Updating files:  15% (1850/12332)
+Updating files:  16% (1974/12332)
+Updating files:  17% (2097/12332)
+Updating files:  17% (2211/12332)
+Updating files:  18% (2220/12332)
+Updating files:  19% (2344/12332)
+Updating files:  20% (2467/12332)
+Updating files:  21% (2590/12332)
+Updating files:  22% (2714/12332)
+Updating files:  23% (2837/12332)
+Updating files:  24% (2960/12332)
+Updating files:  25% (3083/12332)
+Updating files:  26% (3207/12332)
+Updating files:  26% (3288/12332)
+Updating files:  27% (3330/12332)
+Updating files:  28% (3453/12332)
+Updating files:  29% (3577/12332)
+Updating files:  30% (3700/12332)
+Updating files:  31% (3823/12332)
+Updating files:  32% (3947/12332)
+Updating files:  32% (4045/12332)
+Updating files:  33% (4070/12332)
+Updating files:  34% (4193/12332)
+Updating files:  35% (4317/12332)
+Updating files:  35% (4344/12332)
+Updating files:  36% (4440/12332)
+Updating files:  37% (4563/12332)
+Updating files:  38% (4687/12332)
+Updating files:  39% (4810/12332)
+Updating files:  40% (4933/12332)
+Updating files:  41% (5057/12332)
+Updating files:  42% (5180/12332)
+Updating files:  43% (5303/12332)
+Updating files:  44% (5427/12332)
+Updating files:  45% (5550/12332)
+Updating files:  45% (5562/12332)
+Updating files:  46% (5673/12332)
+Updating files:  47% (5797/12332)
+Updating files:  48% (5920/12332)
+Updating files:  49% (6043/12332)
+Updating files:  50% (6166/12332)
+Updating files:  50% (6286/12332)
+Updating files:  51% (6290/12332)
+Updating files:  52% (6413/12332)
+Updating files:  53% (6536/12332)
+Updating files:  54% (6660/12332)
+Updating files:  54% (6728/12332)
+Updating files:  55% (6783/12332)
+Updating files:  56% (6906/12332)
+Updating files:  57% (7030/12332)
+Updating files:  58% (7153/12332)
+Updating files:  59% (7276/12332)
+Updating files:  60% (7400/12332)
+Updating files:  61% (7523/12332)
+Updating files:  62% (7646/12332)
+Updating files:  62% (7761/12332)
+Updating files:  63% (7770/12332)
+Updating files:  64% (7893/12332)
+Updating files:  65% (8016/12332)
+Updating files:  66% (8140/12332)
+Updating files:  67% (8263/12332)
+Updating files:  68% (8386/12332)
+Updating files:  69% (8510/12332)
+Updating files:  70% (8633/12332)
+Updating files:  71% (8756/12332)
+Updating files:  71% (8792/12332)
+Updating files:  72% (8880/12332)
+Updating files:  73% (9003/12332)
+Updating files:  74% (9126/12332)
+Updating files:  75% (9249/12332)
+Updating files:  76% (9373/12332)
+Updating files:  77% (9496/12332)
+Updating files:  77% (9533/12332)
+Updating files:  78% (9619/12332)
+Updating files:  79% (9743/12332)
+Updating files:  80% (9866/12332)
+Updating files:  81% (9989/12332)
+Updating files:  81% (10043/12332)
+Updating files:  82% (10113/12332)
+Updating files:  83% (10236/12332)
+Updating files:  84% (10359/12332)
+Updating files:  85% (10483/12332)
+Updating files:  86% (10606/12332)
+Updating files:  87% (10729/12332)
+Updating files:  88% (10853/12332)
+Updating files:  89% (10976/12332)
+Updating files:  89% (11033/12332)
+Updating files:  90% (11099/12332)
+Updating files:  91% (11223/12332)
+Updating files:  92% (11346/12332)
+Updating files:  93% (11469/12332)
+Updating files:  94% (11593/12332)
+Updating files:  95% (11716/12332)
+Updating files:  96% (11839/12332)
+Updating files:  96% (11949/12332)
+Updating files:  97% (11963/12332)
+Updating files:  98% (12086/12332)
+Updating files:  98% (12161/12332)
+Updating files:  99% (12209/12332)
+Updating files: 100% (12332/12332)
+Updating files: 100% (12332/12332), done.
+  [OK]   已克隆到 C:\krita-dev\krita
+
+== 依赖管理脚本
+Cloning into 'C:\krita-dev\krita-deps-management'...
+Cloning into 'C:\krita-dev\krita-deps-management\ci-utilities'...
+
+== Python 虚拟环境（只用于跑构建脚本，不是 Krita 内嵌的 Python）
+Requirement already satisfied: pip in C:\krita-dev\PythonEnv\Lib\site-packages (26.3)
+Collecting certifi==2026.10.23 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 7))
+  Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Collecting charset-normalizer==3.4.4 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 11))
+  Downloading charset_normalizer-3.4.4-cp312-cp312-win_amd64.whl (107 kB)
+Collecting idna==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 126))
+  Downloading idna-3.11-py3-none-any.whl (71 kB)
+Collecting lxml==6.0.2 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 130))
+  Downloading lxml-6.0.2-cp312-cp312-win_amd64.whl (4.0 MB)
+     ---------------------------------------- 4.0/4.0 MB 48.1 MB/s  0:00:00
+Collecting meson==1.9.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 272))
+  Downloading meson-1.9.1-py3-none-any.whl (1.0 MB)
+     ---------------------------------------- 1.0/1.0 MB 24.0 MB/s  0:00:00
+Collecting packaging==25.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 276))
+  Downloading packaging-25.0-py3-none-any.whl (66 kB)
+Collecting ply==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 280))
+  Downloading ply-3.11-py2.py3-none-any.whl (49 kB)
+Collecting python-gitlab==7.0.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 284))
+  Downloading python_gitlab-7.0.0-py3-none-any.whl (144 kB)
+Collecting pyyaml==6.0.3 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 288))
+  Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl (154 kB)
+Collecting requests==2.32.5 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 363))
+  Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+Collecting requests-toolbelt==1.0.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 369))
+  Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+Collecting toml==0.10.2 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 373))
+  Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+Collecting tomli==2.3.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 377))
+  Downloading tomli-2.3.0-cp312-cp312-win_amd64.whl (107 kB)
+Collecting urllib3==2.5.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 421))
+  Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+Collecting wheel==0.45.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 425))
+  Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Collecting setuptools==82.0.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 431))
+  Downloading setuptools-82.0.1-py3-none-any.whl (1.0 MB)
+     ---------------------------------------- 1.0/1.0 MB 24.0 MB/s  0:00:00
+Installing collected packages: ply, wheel, urllib3, tomli, toml, setuptools, pyyaml, packaging, meson, lxml, idna, charset-normalizer, certifi, requests, requests-toolbelt, python-gitlab
+
+Successfully installed certifi-2026.10.23 charset-normalizer-3.4.4 idna-3.11 lxml-6.0.2 meson-1.9.1 packaging-25.0 ply-3.11 python-gitlab-7.0.0 pyyaml-6.0.3 requests-2.32.5 requests-toolbelt-1.0.0 setuptools-82.0.1 toml-0.10.2 tomli-2.3.0 urllib3-2.5.0 wheel-0.45.1
+Collecting asn1crypto==1.5.1 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 7))
+  Downloading asn1crypto-1.5.1-py2.py3-none-any.whl (105 kB)
+Collecting certvalidator==0.11.1 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 14))
+  Downloading certvalidator-0.11.1-py2.py3-none-any.whl (31 kB)
+Collecting mscerts==2026.10.27 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 18))
+  Downloading mscerts-2026.10.27-py3-none-any.whl (728 kB)
+     ---------------------------------------- 728.3/728.3 kB 9.9 MB/s  0:00:00
+Collecting oscrypto==1.3.0 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 22))
+  Downloading oscrypto-1.3.0-py2.py3-none-any.whl (194 kB)
+Collecting pefile==2024.8.26 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 28))
+  Downloading pefile-2024.8.26-py3-none-any.whl (74 kB)
+Collecting signify==0.9.3 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 32))
+  Downloading signify-0.9.3-py3-none-any.whl (88 kB)
+Collecting typing-extensions==4.15.0 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 36))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Installing collected packages: asn1crypto, typing-extensions, pefile, oscrypto, mscerts, certvalidator, signify
+
+Successfully installed asn1crypto-1.5.1 certvalidator-0.11.1 mscerts-2026.10.27 oscrypto-1.3.0 pefile-2024.8.26 signify-0.9.3 typing-extensions-4.15.0
+  [OK]   构建脚本依赖就绪
+
+== 拉取预编译依赖并生成 env.bat（耗时最长的一步）
+C:\krita-dev\krita-deps-management\tools\..\ci-utilities\run-ci-build.py:342: DeprecationWarning: Python 3.14 will, by default, filter extracted tar archives and reject files or modify their metadata. Use the filter argument to control this behavior.
+  archive.extractall( path=tmpDir )
+Downloading package: ext_pkgconfig-transition.now-qt6
+Downloading package: ext_openssl-transition.now-qt6
+Downloading package: ext_gettext-transition.now-qt6
+Downloading package: ext_zlib-transition.now-qt6
+Downloading package: ext_icoutils-transition.now-qt6
+Downloading package: ext_gperf-transition.now-qt6
+Downloading package: ext_googleangle-transition.now-qt6
+Downloading package: ext_drmingw-transition.now-qt6
+Downloading package: ext_dlfcn_win32-transition.now-qt6
+Downloading package: ext_sip-transition.now-qt6
+Downloading package: ext_python-transition.now-qt6
+Downloading package: ext_pyqt6-sip-transition.now-qt6
+Downloading package: ext_pyqt6-transition.now-qt6
+Downloading package: ext_pyqt-builder-transition.now-qt6
+Downloading package: ext_poppler-transition.now-qt6
+Downloading package: ext_libraw-transition.now-qt6
+Downloading package: ext_kdcraw-transition.now-qt6
+Downloading package: ext_vpl-transition.now-qt6
+Downloading package: ext_libx265_12bit-transition.now-qt6
+Downloading package: ext_libx265_10bit-transition.now-qt6
+Downloading package: ext_libx265-transition.now-qt6
+Downloading package: ext_libde265-transition.now-qt6
+Downloading package: ext_libheif-transition.now-qt6
+Downloading package: ext_ocio-transition.now-qt6
+Downloading package: ext_lzma-transition.now-qt6
+Downloading package: ext_iconv-transition.now-qt6
+Downloading package: ext_libaom-transition.now-qt6
+Downloading package: ext_vpx-transition.now-qt6
+Downloading package: ext_sdl2-transition.now-qt6
+Downloading package: ext_opus-transition.now-qt6
+Downloading package: ext_openh264-transition.now-qt6
+Downloading package: ext_libvorbis-transition.now-qt6
+Downloading package: ext_libtheora-transition.now-qt6
+Downloading package: ext_libogg-transition.now-qt6
+Downloading package: ext_lame-transition.now-qt6
+Downloading package: ext_flac-transition.now-qt6
+Downloading package: ext_ffmpeg-transition.now-qt6
+Downloading package: ext_zug-transition.now-qt6
+Downloading package: ext_xsimd-transition.now-qt6
+Downloading package: ext_webp-transition.now-qt6
+Downloading package: ext_unibreak-transition.now-qt6
+Downloading package: ext_tiff-transition.now-qt6
+Downloading package: ext_seexpr-transition.now-qt6
+Downloading package: ext_quazip-transition.now-qt6
+Downloading package: ext_qt-transition.now-qt6
+Downloading package: ext_png-transition.now-qt6
+Downloading package: ext_openjpeg-transition.now-qt6
+Downloading package: ext_openexr-transition.now-qt6
+Downloading package: ext_mypaint-transition.now-qt6
+Downloading package: ext_mlt-transition.now-qt6
+Downloading package: ext_lcms2-transition.now-qt6
+Downloading package: ext_lager-transition.now-qt6
+Downloading package: ext_kwindowsystem-transition.now-qt6
+Downloading package: ext_kwidgetsaddons-transition.now-qt6
+Downloading package: ext_kitemviews-transition.now-qt6
+Downloading package: ext_kitemmodels-transition.now-qt6
+Downloading package: ext_kimageformats-transition.now-qt6
+Downloading package: ext_ki18n-transition.now-qt6
+Downloading package: ext_kguiaddons-transition.now-qt6
+Downloading package: ext_kcoreaddons-transition.now-qt6
+Downloading package: ext_kconfig-transition.now-qt6
+Downloading package: ext_kcompletion-transition.now-qt6
+Downloading package: ext_kcolorscheme-transition.now-qt6
+Downloading package: ext_kcodecs-transition.now-qt6
+Downloading package: ext_karchive-transition.now-qt6
+Downloading package: ext_json_c-transition.now-qt6
+Downloading package: ext_jpegxl-transition.now-qt6
+Downloading package: ext_jpeg-transition.now-qt6
+Downloading package: ext_immer-transition.now-qt6
+Downloading package: ext_imath-transition.now-qt6
+Downloading package: ext_icu-transition.now-qt6
+Downloading package: ext_highway-transition.now-qt6
+Downloading package: ext_gsl-transition.now-qt6
+Downloading package: ext_giflib-transition.now-qt6
+Downloading package: ext_fribidi-transition.now-qt6
+Downloading package: ext_freetype-transition.now-qt6
+Downloading package: ext_fontconfig-transition.now-qt6
+Downloading package: ext_fftw3-transition.now-qt6
+Downloading package: ext_extra_cmake_modules-transition.now-qt6
+Downloading package: ext_expat-transition.now-qt6
+Downloading package: ext_exiv2-transition.now-qt6
+Downloading package: ext_eigen3-transition.now-qt6
+Downloading package: ext_brotli-transition.now-qt6
+Downloading package: ext_boost-transition.now-qt6
+## Unpacking dependency: ext_pkgconfig (FromRemote)
+## Unpacking dependency: ext_openssl (FromRemote)
+## Unpacking dependency: ext_zlib (FromRemote)
+## Unpacking dependency: ext_gperf (FromRemote)
+## Unpacking dependency: ext_drmingw (FromRemote)
+## Unpacking dependency: ext_dlfcn_win32 (FromRemote)
+## Unpacking dependency: ext_python (FromRemote)
+## Unpacking dependency: ext_vpl (FromRemote)
+## Unpacking dependency: ext_libx265_10bit (FromRemote)
+## Unpacking dependency: ext_libde265 (FromRemote)
+## Unpacking dependency: ext_lzma (FromRemote)
+## Unpacking dependency: ext_iconv (FromRemote)
+## Unpacking dependency: ext_libaom (FromRemote)
+## Unpacking dependency: ext_sdl2 (FromRemote)
+## Unpacking dependency: ext_opus (FromRemote)
+## Unpacking dependency: ext_libogg (FromRemote)
+## Unpacking dependency: ext_zug (FromRemote)
+## Unpacking dependency: ext_xsimd (FromRemote)
+## Unpacking dependency: ext_unibreak (FromRemote)
+## Unpacking dependency: ext_lcms2 (FromRemote)
+## Unpacking dependency: ext_json_c (FromRemote)
+## Unpacking dependency: ext_jpeg (FromRemote)
+## Unpacking dependency: ext_immer (FromRemote)
+## Unpacking dependency: ext_imath (FromRemote)
+## Unpacking dependency: ext_icu (FromRemote)
+## Unpacking dependency: ext_highway (FromRemote)
+## Unpacking dependency: ext_gsl (FromRemote)
+## Unpacking dependency: ext_giflib (FromRemote)
+## Unpacking dependency: ext_fribidi (FromRemote)
+## Unpacking dependency: ext_fftw3 (FromRemote)
+## Unpacking dependency: ext_extra_cmake_modules (FromRemote)
+## Unpacking dependency: ext_expat (FromRemote)
+## Unpacking dependency: ext_eigen3 (FromRemote)
+## Unpacking dependency: ext_brotli (FromRemote)
+## Unpacking dependency: ext_boost (FromRemote)
+## Unpacking dependency: ext_gettext (FromRemote)
+## Unpacking dependency: ext_googleangle (FromRemote)
+## Unpacking dependency: ext_sip (FromRemote)
+## Unpacking dependency: ext_libraw (FromRemote)
+## Unpacking dependency: ext_libx265_12bit (FromRemote)
+## Unpacking dependency: ext_vpx (FromRemote)
+## Unpacking dependency: ext_openh264 (FromRemote)
+## Unpacking dependency: ext_libvorbis (FromRemote)
+## Unpacking dependency: ext_lame (FromRemote)
+## Unpacking dependency: ext_flac (FromRemote)
+## Unpacking dependency: ext_tiff (FromRemote)
+## Unpacking dependency: ext_png (FromRemote)
+## Unpacking dependency: ext_openjpeg (FromRemote)
+## Unpacking dependency: ext_openexr (FromRemote)
+## Unpacking dependency: ext_mypaint (FromRemote)
+## Unpacking dependency: ext_lager (FromRemote)
+## Unpacking dependency: ext_exiv2 (FromRemote)
+## Unpacking dependency: ext_icoutils (FromRemote)
+## Unpacking dependency: ext_libx265 (FromRemote)
+## Unpacking dependency: ext_ocio (FromRemote)
+## Unpacking dependency: ext_libtheora (FromRemote)
+## Unpacking dependency: ext_webp (FromRemote)
+## Unpacking dependency: ext_jpegxl (FromRemote)
+## Unpacking dependency: ext_freetype (FromRemote)
+## Unpacking dependency: ext_libheif (FromRemote)
+## Unpacking dependency: ext_ffmpeg (FromRemote)
+## Unpacking dependency: ext_qt (FromRemote)
+## Unpacking dependency: ext_fontconfig (FromRemote)
+## Unpacking dependency: ext_pyqt-builder (FromRemote)
+## Unpacking dependency: ext_poppler (FromRemote)
+## Unpacking dependency: ext_kdcraw (FromRemote)
+## Unpacking dependency: ext_quazip (FromRemote)
+## Unpacking dependency: ext_mlt (FromRemote)
+## Unpacking dependency: ext_kwindowsystem (FromRemote)
+## Unpacking dependency: ext_kwidgetsaddons (FromRemote)
+## Unpacking dependency: ext_kitemviews (FromRemote)
+## Unpacking dependency: ext_kitemmodels (FromRemote)
+## Unpacking dependency: ext_ki18n (FromRemote)
+## Unpacking dependency: ext_kguiaddons (FromRemote)
+## Unpacking dependency: ext_kcoreaddons (FromRemote)ccache version 4.9.1
+Features: file-storage http-storage redis+unix-storage redis-storage
+
+Copyright (C) 2002-2007 Andrew Tridgell
+Copyright (C) 2009-2024 Joel Rosdahl and other contributors
+
+See <https://ccache.dev/credits.html> for a complete list of contributors.
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 3 of the License, or (at your option) any later
+version.
+
+## Unpacking dependency: ext_kconfig (FromRemote)
+## Unpacking dependency: ext_kcodecs (FromRemote)
+## Unpacking dependency: ext_karchive (FromRemote)
+## Unpacking dependency: ext_pyqt6 (FromRemote)
+## Unpacking dependency: ext_seexpr (FromRemote)
+## Unpacking dependency: ext_kimageformats (FromRemote)
+## Unpacking dependency: ext_kcompletion (FromRemote)
+## Unpacking dependency: ext_kcolorscheme (FromRemote)
+## Unpacking dependency: ext_pyqt6-sip (FromRemote)
+## KDE Continuous Integration System
+##
+## Starting build for krita on transition.now/qt6
+##
+## Installing project to C:\krita-dev\_install
+## Building project in C:\krita-dev\_build
+## Staging project directory C:\krita-dev\_staging
+##
+## Project build target: all
+## Project install target: install
+##
+## Project CI configuration as follows:
+##    in-source-build: False
+##    use-ccache: False
+##    ccache-large-cache: False
+##    cmake-options: 
+##    force-ninja-on-windows: True
+##    release-build: False
+##    test-before-installing: False
+##    run-tests: True
+##    build-tests: True
+##    tests-load-sensitive: False
+##    tests-run-in-parallel: False
+##    per-test-timeout: 60
+##    setup-x-environment: True
+##    setup-dbus-session: True
+##    force-inject-asan: False
+##    ctest-arguments: 
+##    require-passing-tests-on: []
+##    run-cppcheck: True
+##    cppcheck-arguments: --enable=warning,style,performance
+##    cppcheck-ignore-files: []
+##    run-gcovr: True
+##    gcovr-arguments: 
+##    use-asan: True
+##    pkg-config-sanity-check: none
+##    force-build-target: 
+##    force-install-target: 
+##
+## Providing the following dependencies:
+##    ext_pkgconfig - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_openssl - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_gettext - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_zlib - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_icoutils - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_gperf - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_googleangle - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_drmingw - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_dlfcn_win32 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_sip - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_python - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_pyqt6-sip - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_pyqt6 - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_pyqt-builder - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_poppler - transition.now/qt6 (a4d2786849b7b6cf8271ad8283304e50bb5798d6)
+##    ext_libraw - transition.now/qt6 (a4d2786849b7b6cf8271ad8283304e50bb5798d6)
+##    ext_kdcraw - transition.now/qt6 (a4d2786849b7b6cf8271ad8283304e50bb5798d6)
+##    ext_vpl - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libx265_12bit - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libx265_10bit - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libx265 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libde265 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libheif - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_ocio - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_lzma - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_iconv - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libaom - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_vpx - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_sdl2 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_opus - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_openh264 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libvorbis - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libtheora - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_libogg - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_lame - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_flac - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_ffmpeg - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_zug - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_xsimd - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_webp - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_unibreak - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_tiff - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_seexpr - transition.now/qt6 (bc636dd4d907786cb1a09dcfa22df1599e08df0c)
+##    ext_quazip - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_qt - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_png - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_openjpeg - transition.now/qt6 (a4d2786849b7b6cf8271ad8283304e50bb5798d6)
+##    ext_openexr - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_mypaint - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_mlt - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_lcms2 - transition.now/qt6 (a4d2786849b7b6cf8271ad8283304e50bb5798d6)
+##    ext_lager - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_kwindowsystem - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kwidgetsaddons - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kitemviews - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kitemmodels - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kimageformats - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_ki18n - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kguiaddons - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kcoreaddons - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kconfig - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kcompletion - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kcolorscheme - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_kcodecs - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_karchive - transition.now/qt6 (2ba042f647a87b8147f1d6431cb50db5a39b875a)
+##    ext_json_c - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_jpegxl - transition.now/qt6 (a4d2786849b7b6cf8271ad8283304e50bb5798d6)
+##    ext_jpeg - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_immer - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_imath - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_icu - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_highway - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_gsl - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_giflib - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_fribidi - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_freetype - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_fontconfig - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_fftw3 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_extra_cmake_modules - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_expat - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_exiv2 - transition.now/qt6 (5038b07330ef5c5f195a4b809875a2671082b08e)
+##    ext_eigen3 - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##    ext_brotli - transition.now/qt6 (5038b07330ef5c5f195a4b809875a2671082b08e)
+##    ext_boost - transition.now/qt6 (4aff6eb927a44c2dd155d45c75cc57fa305a970b)
+##
+##
+## Building with the following environment variables:
+##    ACTIONS_ORCHESTRATION_ID=b4786594-dc11-8775-a2fb-49cc07345e05.probe.__default
+##    ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=C:\actionarchivecache\
+##    ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED=1
+##    AGENT_TOOLSDIRECTORY=C:\hostedtoolcache\windows
+##    ALLUSERSPROFILE=C:\ProgramData
+##    ANDROID_HOME=C:\Android\android-sdk
+##    ANDROID_NDK=C:\Android\android-sdk\ndk\27.3.13750724
+##    ANDROID_NDK_HOME=C:\Android\android-sdk\ndk\27.3.13750724
+##    ANDROID_NDK_LATEST_HOME=C:\Android\android-sdk\ndk\30.0.16248370
+##    ANDROID_NDK_ROOT=C:\Android\android-sdk\ndk\27.3.13750724
+##    ANDROID_SDK_ROOT=C:\Android\android-sdk
+##    ANT_HOME=C:\ProgramData\chocolatey\lib\ant\tools\apache-ant-1.10.18
+##    APPDATA=C:\Users\runneradmin\AppData\Roaming
+##    ASAN_OPTIONS=detect_leaks=0:new_delete_type_mismatch=0:detect_odr_violation=0:stack-use-after-scope=0:alloc_dealloc_mismatch=0
+##    AZURE_CONFIG_DIR=C:\azureCli
+##    AZURE_DEVOPS_CACHE_DIR=C:\azureDevOpsCli\cache
+##    AZURE_EXTENSION_DIR=C:\Program Files\Common Files\AzureCliExtensionDirectory
+##    AZ_DEVOPS_GLOBAL_CONFIG_DIR=C:\azureDevOpsCli
+##    CABAL_DIR=C:\cabal
+##    CHOCOLATEYINSTALL=C:\ProgramData\chocolatey
+##    CHROMEWEBDRIVER=C:\SeleniumWebDrivers\ChromeDriver
+##    CI=true
+##    CI_COMMIT_REF_PROTECTED=true
+##    CMAKE_HOME=C:\deps\cmake-3.31.6-windows-x86_64
+##    CMAKE_PREFIX_PATH=C:\krita-dev\_install
+##    COBERTURA_HOME=C:\cobertura-2.1.1
+##    COMMONPROGRAMFILES=C:\Program Files\Common Files
+##    COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+##    COMMONPROGRAMW6432=C:\Program Files\Common Files
+##    COMPUTERNAME=runnervmbpeip
+##    COMSPEC=C:\Windows\system32\cmd.exe
+##    CONDA=C:\Miniconda
+##    DOTNET_MULTILEVEL_LOOKUP=0
+##    DOTNET_NOLOGO=1
+##    DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+##    DRIVERDATA=C:\Windows\System32\Drivers\DriverData
+##    EDGEWEBDRIVER=C:\SeleniumWebDrivers\EdgeDriver
+##    ENABLE_RUNNER_TRACING=true
+##    EXTERNALS_DOWNLOAD_DIR=C:\krita-dev\cache\downloads
+##    GCM_INTERACTIVE=Never
+##    GECKOWEBDRIVER=C:\SeleniumWebDrivers\GeckoDriver
+##    GHCUP_INSTALL_BASE_PREFIX=C:\
+##    GHCUP_MSYS2=C:\msys64
+##    GITHUB_ACTION=__run_3
+##    GITHUB_ACTIONS=true
+##    GITHUB_ACTION_REF=
+##    GITHUB_ACTION_REPOSITORY=
+##    GITHUB_ACTOR=1472583690qwaszx
+##    GITHUB_ACTOR_ID=155727973
+##    GITHUB_API_URL=https://api.github.com
+##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_BASE_REF=
+##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_EVENT_NAME=push
+##    GITHUB_EVENT_PATH=D:\a\_temp\_github_workflow\event.json
+##    GITHUB_GRAPHQL_URL=https://api.github.com/graphql
+##    GITHUB_HEAD_REF=
+##    GITHUB_JOB=probe
+##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_REF=refs/heads/main
+##    GITHUB_REF_NAME=main
+##    GITHUB_REF_PROTECTED=false
+##    GITHUB_REF_TYPE=branch
+##    GITHUB_REPOSITORY=1472583690qwaszx/ReveriePaint-Windows
+##    GITHUB_REPOSITORY_ID=1460959233
+##    GITHUB_REPOSITORY_OWNER=1472583690qwaszx
+##    GITHUB_REPOSITORY_OWNER_ID=155727973
+##    GITHUB_RETENTION_DAYS=90
+##    GITHUB_RUN_ATTEMPT=1
+##    GITHUB_RUN_ID=45827923945
+##    GITHUB_RUN_NUMBER=10
+##    GITHUB_SERVER_URL=https://github.com
+##    GITHUB_SHA=44f6b495a57da9a004e5e55ea377da168b7778f0
+##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_428962bd-af60-4dd2-93e5-6101d80777e8
+##    GITHUB_TRIGGERING_ACTOR=1472583690qwaszx
+##    GITHUB_WORKFLOW=Desktop M1 (engine compile)
+##    GITHUB_WORKFLOW_REF=1472583690qwaszx/ReveriePaint-Windows/.github/workflows/desktop-m1.yml@refs/heads/main
+##    GITHUB_WORKFLOW_SHA=44f6b495a57da9a004e5e55ea377da168b7778f0
+##    GITHUB_WORKSPACE=D:\a\ReveriePaint-Windows\ReveriePaint-Windows
+##    GOROOT_1_25_X64=C:\hostedtoolcache\windows\go\1.25.14\x64
+##    GOROOT_1_26_X64=C:\hostedtoolcache\windows\go\1.26.11\x64
+##    GOROOT_1_27_X64=C:\hostedtoolcache\windows\go\1.27.4\x64
+##    GRADLE_HOME=C:\ProgramData\chocolatey\lib\gradle\tools\gradle-9.9.1
+##    HOMEDRIVE=C:
+##    HOMEPATH=\Users\runneradmin
+##    IEWEBDRIVER=C:\SeleniumWebDrivers\IEDriver
+##    IMAGEOS=win25-vs2026
+##    IMAGEVERSION=20261116.315.1
+##    JAVA_HOME=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-9\x64
+##    JAVA_HOME_11_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\11.0.33-10\x64
+##    JAVA_HOME_17_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-9\x64
+##    JAVA_HOME_21_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\21.0.13-9.0\x64
+##    JAVA_HOME_25_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\25.0.5-8.0\x64
+##    JAVA_HOME_8_X64=C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\8.0.512-9\x64
+##    KDECI_ALLOW_PACKAGE_OVERRIDE_BY_CACHE=1
+##    KDECI_BUILD=TRUE
+##    KDECI_BUILD_TYPE=Release
+##    KDECI_CC_CACHE=C:\krita-dev\ccache
+##    KDECI_COMPRESS_PACKAGES_ON_DOWNLOAD=1
+##    KDECI_REPO_METADATA_PATH=C:\krita-dev\krita-deps-management\repo-metadata
+##    KIT_SHA256=048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
+##    KIT_URL=https://aka.doubaocdn.com/s/n3IQw6uQ4V
+##    KRITA_DEPS_BRANCH=transition.now/qt6
+##    KRITA_ROOT=C:\krita-dev
+##    LLVM_MINGW=C:\deps\llvm-mingw-20251118-ucrt-x86_64
+##    LOCALAPPDATA=C:\Users\runneradmin\AppData\Local
+##    LOGONSERVER=\\runnervmbpeip
+##    M2=C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin
+##    M2_REPO=C:\ProgramData\m2
+##    MAVEN_OPTS=-Xms256m
+##    NINJA_DIR=C:\deps\Ninja
+##    NPM_CONFIG_PREFIX=C:\npm\prefix
+##    NUMBER_OF_PROCESSORS=4
+##    OS=Windows_NT
+##    PATH=C:\krita-dev\_install\bin;C:\krita-dev\_install\lib;C:\Program Files\PowerShell\7;C:\deps\Ninja;C:\deps\cmake-3.31.6-windows-x86_64\bin;C:\Program Files\MongoDB\Server\7.0\bin;C:\vcpkg;C:\tools\zstd;C:\hostedtoolcache\windows\stack\3.11.1\x64;C:\cabal\bin;C:\\ghcup\bin;C:\mingw64\bin;C:\Program Files\dotnet;C:\Program Files\MySQL\MySQL Server 8.4\bin;C:\Program Files\R\R-4.6.2\bin\x64;C:\SeleniumWebDrivers\GeckoDriver;C:\SeleniumWebDrivers\EdgeDriver\;C:\SeleniumWebDrivers\ChromeDriver;C:\Program Files (x86)\sbt\bin;C:\Program Files (x86)\GitHub CLI;C:\Program Files\Git\bin;C:\Program Files (x86)\pipx_bin;C:\npm\prefix;C:\hostedtoolcache\windows\go\1.26.11\x64\bin;C:\hostedtoolcache\windows\Python\3.12.10\x64\Scripts;C:\hostedtoolcache\windows\Python\3.12.10\x64;C:\hostedtoolcache\windows\Ruby\3.3.13\x64\bin;C:\Program Files\OpenSSL\bin;C:\tools\kotlinc\bin;C:\hostedtoolcache\windows\Java_Temurin-Hotspot_jdk\17.0.21-9\x64\bin;C:\Program Files\ImageMagick-7.1.2-Q16-HDRI;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\ProgramData\kind;C:\ProgramData\Chocolatey\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\WSL\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\WiX Toolset v3.14\bin;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\ProgramData\chocolatey\lib\pulumi\tools\Pulumi\bin;C:\Program Files\CMake\bin;C:\Strawberry\c\bin;C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\ProgramData\chocolatey\lib\maven\apache-maven-3.9.16\bin;C:\Program Files\Microsoft Service Fabric\bin\Fabric\Fabric.Code;C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager;C:\Program Files\LLVM\bin;C:\Program Files (x86)\LLVM\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Git\ucrt64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\GitHub CLI\;c:\tools\php;C:\Program Files (x86)\sbt\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Amazon\SessionManagerPlugin\bin\;C:\Program Files\Amazon\AWSSAMCLI\bin\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\mongosh\;C:\Users\runneradmin\.dotnet\tools;C:\Users\runneradmin\.cargo\bin;C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps;C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin;C:\deps\llvm-mingw-20251118-ucrt-x86_64\x86_64-w64-mingw32\bin;C:\deps\Ninja
+##    PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+##    PGBIN=C:\Program Files\PostgreSQL\17\bin
+##    PGDATA=C:\PostgreSQL\17\data
+##    PGPASSWORD=root
+##    PGROOT=C:\Program Files\PostgreSQL\17
+##    PGUSER=postgres
+##    PHPROOT=c:\tools\php
+##    PIPX_BIN_DIR=C:\Program Files (x86)\pipx_bin
+##    PIPX_HOME=C:\Program Files (x86)\pipx
+##    PKG_CONFIG_PATH=C:\krita-dev\_install\lib\pkgconfig;C:\krita-dev\_install\share\pkgconfig
+##    POWERSHELL_DISTRIBUTION_CHANNEL=GitHub-Actions-win25-vs2026
+##    POWERSHELL_TELEMETRY_OPTOUT=1
+##    POWERSHELL_UPDATECHECK=Off
+##    PROCESSOR_ARCHITECTURE=AMD64
+##    PROCESSOR_IDENTIFIER=AMD64 Family 25 Model 1 Stepping 1, AuthenticAMD
+##    PROCESSOR_LEVEL=25
+##    PROCESSOR_REVISION=0101
+##    PROGRAMDATA=C:\ProgramData
+##    PROGRAMFILES=C:\Program Files
+##    PROGRAMFILES(X86)=C:\Program Files (x86)
+##    PROGRAMW6432=C:\Program Files
+##    PROMPT=$P$G
+##    PSEXECUTIONPOLICYPREFERENCE=Bypass
+##    PSMODULEANALYSISCACHEPATH=C:\PSModuleAnalysisCachePath\ModuleAnalysisCache
+##    PSMODULEPATH=C:\Users\runneradmin\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\\Modules\az_15.6.1;C:\Users\packer\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files\Microsoft SQL Server\130\Tools\PowerShell\Modules\
+##    PUBLIC=C:\Users\Public
+##    PYTHONDONTWRITEBYTECODE=1
+##    PYTHONPATH=C:\krita-dev\_install\lib\site-packages
+##    QMAKEFEATURES=C:\krita-dev\_install\mkspecs/features
+##    QT_DATA_DIRS=C:\krita-dev\_install\share
+##    RTOOLS45_HOME=C:\rtools45
+##    RUNNER_ARCH=X64
+##    RUNNER_ENVIRONMENT=github-hosted
+##    RUNNER_NAME=GitHub Actions 1000000035
+##    RUNNER_OS=Windows
+##    RUNNER_TEMP=D:\a\_temp
+##    RUNNER_TOOL_CACHE=C:\hostedtoolcache\windows
+##    RUNNER_TRACKING_ID=github_f598b8aa-cc6d-443a-a33b-83852595dbfd
+##    RUNNER_WORKSPACE=D:\a\ReveriePaint-Windows
+##    SBT_HOME=C:\Program Files (x86)\sbt\
+##    SELENIUM_JAR_PATH=C:\selenium\selenium-server.jar
+##    SYSTEMDRIVE=C:
+##    SYSTEMROOT=C:\Windows
+##    TEMP=C:\Users\RUNNER~1\AppData\Local\Temp
+##    TMP=C:\Users\RUNNER~1\AppData\Local\Temp
+##    UPSTREAM_TAG=v1.11.0
+##    USERDOMAIN=runnervmbpeip
+##    USERDOMAIN_ROAMINGPROFILE=runnervmbpeip
+##    USERNAME=runneradmin
+##    USERPROFILE=C:\Users\runneradmin
+##    VCPKG_INSTALLATION_ROOT=C:\vcpkg
+##    WINDIR=C:\Windows
+##    WIX=C:\Program Files (x86)\WiX Toolset v3.14\
+##    XDG_CURRENT_DESKTOP=KDE
+##    XDG_DATA_DIRS=C:\krita-dev\_install\share
+##
+## Generating env file: C:\krita-dev\env
+## env file generated, exiting...
+## Environment root: C:\krita-dev
+## Generating cache folders...
+##     created: C:\krita-dev\cache
+##     created: C:\krita-dev\ccache
+##     created: C:\krita-dev\cache\downloads
+KDECI_CACHE_PATH -> C:\krita-dev\cache
+KDECI_CC_CACHE -> C:\krita-dev\ccache
+EXTERNALS_DOWNLOAD_DIR -> C:\krita-dev\cache\downloads
+KDECI_GITLAB_SERVER -> https://invent.kde.org/
+KDECI_PACKAGE_PROJECT -> teams/ci-artifacts/krita-windows
+KDECI_BUILD_TYPE -> Release
+KDECI_COMPRESS_PACKAGES_ON_DOWNLOAD -> 1
+KDECI_ALLOW_PACKAGE_OVERRIDE_BY_CACHE -> 1
+KDECI_GLOBAL_CONFIG_OVERRIDE_PATH -> C:\krita-dev\krita-deps-management\global-config.yml
+KDECI_REPO_METADATA_PATH -> C:\krita-dev\krita-deps-management\repo-metadata
+CI_COMMIT_REF_PROTECTED -> true
+PATH += C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin
+PATH += C:\deps\llvm-mingw-20251118-ucrt-x86_64\x86_64-w64-mingw32\bin
+PATH += C:\deps\Ninja
+## RUNNING BRANCH RENAME SCRIPT: C:\krita-dev\PythonEnv\Scripts\python.exe -s C:\krita-dev\krita-deps-management\tools\replace-branch-in-seed-file.py -o C:\krita-dev\branch-corrected-deps.yml -d transition.now/qt6 C:\krita-dev\krita-deps-management\tools\..\latest\krita-deps.yml
+## RUNNING DEPS GENERATION SCRIPT: C:\krita-dev\PythonEnv\Scripts\python.exe -s C:\krita-dev\krita-deps-management\tools\generate-deps-file.py -o C:\krita-dev\.kde-ci.yml -s C:\krita-dev\branch-corrected-deps.yml
+## RUNNING DEPS FETCH SCRIPT: C:\krita-dev\PythonEnv\Scripts\python.exe -s C:\krita-dev\krita-deps-management\tools\..\ci-utilities\run-ci-build.py --only-env -e env --project krita --branch transition.now/qt6 --platform Windows
+
+== 结果检查
+  [OK]   env.bat: C:\krita-dev\env.bat
+  [OK]   _install: C:\krita-dev\_install
+  [OK]   内嵌 Python: C:\krita-dev\_install\python
+
+  [OK]   下一步：.\02-apply-patches.ps1
+01 rc: 0
