@@ -1,1 +1,53 @@
-The filename, directory name, or volume label syntax is incorrect.
+root: C:\krita-dev
+bat: C:\krita-dev\reverie-configure.bat exists=True
+build: C:\krita-dev\b_krita exists=True
+env.bat: C:\krita-dev\env.bat exists=True
+--- bat content ---
+@echo on
+call "C:\krita-dev\env.bat"
+cd /d "C:\krita-dev\b_krita"
+cmake --version
+cmake "C:\krita-dev\krita" -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=C:\krita-dev\_install -DBUILD_WITH_QT6=ON -DALLOW_UNSTABLE=QT6 -DKRITA_ENABLE_PCH=OFF -DHIDE_SAFE_ASSERTS=OFF -DKRITA_USE_SURFACE_COLOR_MANAGEMENT_API=OFF -DBUILD_TESTING=OFF -DCMAKE_C_COMPILER=C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\clang.exe -DCMAKE_CXX_COMPILER=C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\clang++.exe -DCMAKE_RC_COMPILER=C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\windres.exe
+if errorlevel 1 exit /b 31
+exit /b 0
+--- configure.log tail 120 ---
+
+D:\a\ReveriePaint-Windows\ReveriePaint-Windows>call "C:\krita-dev\env.bat" 
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+-- The CXX compiler identification is Clang 21.1.6
+-- The C compiler identification is Clang 21.1.6
+CMake Error at C:/krita-dev/b_krita/CMakeFiles/3.31.6/CMakeRCCompiler.cmake:1 (set):
+  Syntax error in cmake code at
+
+    C:/krita-dev/b_krita/CMakeFiles/3.31.6/CMakeRCCompiler.cmake:1
+
+  when parsing string
+
+    C:\deps\llvm-mingw-20251118-ucrt-x86_64\bin\windres.exe
+
+  Invalid character escape '\d'.
+Call Stack (most recent call first):
+  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-GNU.cmake:165 (enable_language)
+  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-Clang.cmake:250 (__windows_compiler_gnu)
+  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-Clang.cmake:260 (__windows_compiler_clang_base)
+  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/Platform/Windows-Clang-CXX.cmake:3 (__windows_compiler_clang)
+  C:/deps/cmake-3.31.6-windows-x86_64/share/cmake-3.31/Modules/CMakeCXXInformation.cmake:48 (include)
+  CMakeLists.txt:9 (project)
+
+
+-- Configuring incomplete, errors occurred!
+--- env.bat head ---
+@echo off
+set __OLD_ACTIONS_ORCHESTRATION_ID=%ACTIONS_ORCHESTRATION_ID%
+set __OLD_ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=%ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE%
+set __OLD_ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED=%ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED%
+set __OLD_AGENT_TOOLSDIRECTORY=%AGENT_TOOLSDIRECTORY%
+set __OLD_ALLUSERSPROFILE=%ALLUSERSPROFILE%
+set __OLD_ANDROID_HOME=%ANDROID_HOME%
+set __OLD_ANDROID_NDK=%ANDROID_NDK%
+set __OLD_ANDROID_NDK_HOME=%ANDROID_NDK_HOME%
+set __OLD_ANDROID_NDK_LATEST_HOME=%ANDROID_NDK_LATEST_HOME%
+set __OLD_ANDROID_NDK_ROOT=%ANDROID_NDK_ROOT%
+set __OLD_ANDROID_SDK_ROOT=%ANDROID_SDK_ROOT%
