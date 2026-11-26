@@ -192,7 +192,7 @@ jobs:
             (Join-Path $src 'libs/resources'), (Join-Path $src 'libs/psd'), (Join-Path $src 'libs/widgets'),
             (Join-Path $build 'libs'), (Join-Path $build 'libs/image'), (Join-Path $build 'libs/pigment'),
             $qt, $qtc, (Join-Path $qt 'QtGui'), (Join-Path $qt 'QtWidgets'), (Join-Path $qt 'QtConcurrent'),
-            (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include/win32'))) if ($false) { }
+            (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include/win32'))
           $flags = @('-std=c++17', '-fsyntax-only', '-w', '-fms-extensions')
           foreach ($i in $incs) { if (Test-Path $i) { $flags += ('-I' + $i) } }
           $files = Get-ChildItem (Join-Path $eng '*.cpp') | Sort-Object Name
