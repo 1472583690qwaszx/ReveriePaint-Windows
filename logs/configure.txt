@@ -56,6 +56,6 @@
  * PyQt6 (required version >= 6.7.0), Python bindings for Qt6., <https://www.riverbankcomputing.com/software/pyqt/download>
    Required by the Krita PyQt plugin
 
--- Configuring done (29.7s)
--- Generating done (12.1s)
+-- Configuring done (21.3s)
+-- Generating done (7.9s)
 -- Build files have been written to: C:/krita-dev/b_krita

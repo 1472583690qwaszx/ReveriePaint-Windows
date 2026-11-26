@@ -22,8 +22,7 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-Updating files:   6% (820/12332)
-Updating files:   7% (864/12332)
+Updating files:   7% (918/12332)
 Updating files:   8% (987/12332)
 Updating files:   9% (1110/12332)
 Updating files:  10% (1234/12332)
@@ -34,12 +33,11 @@ Updating files:  14% (1727/12332)
 Updating files:  15% (1850/12332)
 Updating files:  16% (1974/12332)
 Updating files:  17% (2097/12332)
-Updating files:  17% (2135/12332)
 Updating files:  18% (2220/12332)
 Updating files:  19% (2344/12332)
 Updating files:  20% (2467/12332)
 Updating files:  21% (2590/12332)
-Updating files:  21% (2596/12332)
+Updating files:  21% (2708/12332)
 Updating files:  22% (2714/12332)
 Updating files:  23% (2837/12332)
 Updating files:  24% (2960/12332)
@@ -47,14 +45,14 @@ Updating files:  25% (3083/12332)
 Updating files:  26% (3207/12332)
 Updating files:  27% (3330/12332)
 Updating files:  28% (3453/12332)
+Updating files:  28% (3512/12332)
 Updating files:  29% (3577/12332)
 Updating files:  30% (3700/12332)
 Updating files:  31% (3823/12332)
 Updating files:  32% (3947/12332)
-Updating files:  32% (4041/12332)
 Updating files:  33% (4070/12332)
-Updating files:  33% (4173/12332)
 Updating files:  34% (4193/12332)
+Updating files:  34% (4204/12332)
 Updating files:  35% (4317/12332)
 Updating files:  36% (4440/12332)
 Updating files:  37% (4563/12332)
@@ -64,22 +62,21 @@ Updating files:  40% (4933/12332)
 Updating files:  41% (5057/12332)
 Updating files:  42% (5180/12332)
 Updating files:  43% (5303/12332)
-Updating files:  43% (5369/12332)
 Updating files:  44% (5427/12332)
 Updating files:  45% (5550/12332)
 Updating files:  46% (5673/12332)
 Updating files:  47% (5797/12332)
 Updating files:  48% (5920/12332)
+Updating files:  48% (5969/12332)
 Updating files:  49% (6043/12332)
 Updating files:  50% (6166/12332)
 Updating files:  51% (6290/12332)
-Updating files:  51% (6406/12332)
 Updating files:  52% (6413/12332)
 Updating files:  53% (6536/12332)
 Updating files:  54% (6660/12332)
 Updating files:  55% (6783/12332)
-Updating files:  55% (6820/12332)
 Updating files:  56% (6906/12332)
+Updating files:  56% (6942/12332)
 Updating files:  57% (7030/12332)
 Updating files:  58% (7153/12332)
 Updating files:  59% (7276/12332)
@@ -88,7 +85,7 @@ Updating files:  61% (7523/12332)
 Updating files:  62% (7646/12332)
 Updating files:  63% (7770/12332)
 Updating files:  64% (7893/12332)
-Updating files:  64% (7948/12332)
+Updating files:  64% (7945/12332)
 Updating files:  65% (8016/12332)
 Updating files:  66% (8140/12332)
 Updating files:  67% (8263/12332)
@@ -99,25 +96,25 @@ Updating files:  71% (8756/12332)
 Updating files:  72% (8880/12332)
 Updating files:  73% (9003/12332)
 Updating files:  74% (9126/12332)
+Updating files:  74% (9138/12332)
 Updating files:  75% (9249/12332)
 Updating files:  76% (9373/12332)
 Updating files:  77% (9496/12332)
-Updating files:  77% (9571/12332)
 Updating files:  78% (9619/12332)
 Updating files:  79% (9743/12332)
 Updating files:  80% (9866/12332)
 Updating files:  81% (9989/12332)
 Updating files:  82% (10113/12332)
-Updating files:  82% (10218/12332)
 Updating files:  83% (10236/12332)
+Updating files:  83% (10263/12332)
 Updating files:  84% (10359/12332)
 Updating files:  85% (10483/12332)
 Updating files:  86% (10606/12332)
 Updating files:  87% (10729/12332)
-Updating files:  87% (10737/12332)
 Updating files:  88% (10853/12332)
 Updating files:  89% (10976/12332)
 Updating files:  90% (11099/12332)
+Updating files:  90% (11200/12332)
 Updating files:  91% (11223/12332)
 Updating files:  92% (11346/12332)
 Updating files:  93% (11469/12332)
@@ -125,18 +122,75 @@ Updating files:  94% (11593/12332)
 Updating files:  95% (11716/12332)
 Updating files:  96% (11839/12332)
 Updating files:  97% (11963/12332)
-Updating files:  97% (12011/12332)
 Updating files:  98% (12086/12332)
-Updating files:  98% (12174/12332)
-Updating files:  98% (12193/12332)
+Updating files:  98% (12138/12332)
 Updating files:  99% (12209/12332)
-Updating files:  99% (12309/12332)
 Updating files: 100% (12332/12332)
 Updating files: 100% (12332/12332), done.
   [OK]   已克隆到 C:\krita-dev\krita
 
 == 依赖管理脚本
 Cloning into 'C:\krita-dev\krita-deps-management'...
+Updating files:  42% (214/498)
+Updating files:  43% (215/498)
+Updating files:  44% (220/498)
+Updating files:  45% (225/498)
+Updating files:  46% (230/498)
+Updating files:  47% (235/498)
+Updating files:  48% (240/498)
+Updating files:  49% (245/498)
+Updating files:  50% (249/498)
+Updating files:  51% (254/498)
+Updating files:  52% (259/498)
+Updating files:  53% (264/498)
+Updating files:  54% (269/498)
+Updating files:  55% (274/498)
+Updating files:  56% (279/498)
+Updating files:  57% (284/498)
+Updating files:  58% (289/498)
+Updating files:  59% (294/498)
+Updating files:  60% (299/498)
+Updating files:  61% (304/498)
+Updating files:  62% (309/498)
+Updating files:  63% (314/498)
+Updating files:  64% (319/498)
+Updating files:  65% (324/498)
+Updating files:  66% (329/498)
+Updating files:  67% (334/498)
+Updating files:  68% (339/498)
+Updating files:  69% (344/498)
+Updating files:  70% (349/498)
+Updating files:  71% (354/498)
+Updating files:  72% (359/498)
+Updating files:  73% (364/498)
+Updating files:  74% (369/498)
+Updating files:  75% (374/498)
+Updating files:  76% (379/498)
+Updating files:  77% (384/498)
+Updating files:  78% (389/498)
+Updating files:  79% (394/498)
+Updating files:  80% (399/498)
+Updating files:  81% (404/498)
+Updating files:  82% (409/498)
+Updating files:  83% (414/498)
+Updating files:  84% (419/498)
+Updating files:  85% (424/498)
+Updating files:  86% (429/498)
+Updating files:  87% (434/498)
+Updating files:  88% (439/498)
+Updating files:  89% (444/498)
+Updating files:  90% (449/498)
+Updating files:  91% (454/498)
+Updating files:  92% (459/498)
+Updating files:  93% (464/498)
+Updating files:  94% (469/498)
+Updating files:  95% (474/498)
+Updating files:  96% (479/498)
+Updating files:  97% (484/498)
+Updating files:  98% (489/498)
+Updating files:  99% (494/498)
+Updating files: 100% (498/498)
+Updating files: 100% (498/498), done.
 Cloning into 'C:\krita-dev\krita-deps-management\ci-utilities'...
 
 == Python 虚拟环境（只用于跑构建脚本，不是 Krita 内嵌的 Python）
@@ -149,10 +203,10 @@ Collecting idna==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.t
   Downloading idna-3.11-py3-none-any.whl (71 kB)
 Collecting lxml==6.0.2 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 130))
   Downloading lxml-6.0.2-cp312-cp312-win_amd64.whl (4.0 MB)
-     ---------------------------------------- 4.0/4.0 MB 15.0 MB/s  0:00:00
+     ---------------------------------------- 4.0/4.0 MB 16.0 MB/s  0:00:00
 Collecting meson==1.9.1 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 272))
   Downloading meson-1.9.1-py3-none-any.whl (1.0 MB)
-     ---------------------------------------- 1.0/1.0 MB 16.7 MB/s  0:00:00
+     ---------------------------------------- 1.0/1.0 MB 16.3 MB/s  0:00:00
 Collecting packaging==25.0 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 276))
   Downloading packaging-25.0-py3-none-any.whl (66 kB)
 Collecting ply==3.11 (from -r C:\krita-dev\krita-deps-management\requirements.txt (line 280))
@@ -185,7 +239,7 @@ Collecting certvalidator==0.11.1 (from -r C:\krita-dev\krita-deps-management\ci-
   Downloading certvalidator-0.11.1-py2.py3-none-any.whl (31 kB)
 Collecting mscerts==2026.10.27 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 18))
   Downloading mscerts-2026.10.27-py3-none-any.whl (728 kB)
-     ---------------------------------------- 728.3/728.3 kB 14.6 MB/s  0:00:00
+     ---------------------------------------- 728.3/728.3 kB 7.5 MB/s  0:00:00
 Collecting oscrypto==1.3.0 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 22))
   Downloading oscrypto-1.3.0-py2.py3-none-any.whl (194 kB)
 Collecting pefile==2024.8.26 (from -r C:\krita-dev\krita-deps-management\ci-utilities\requirements-windows.txt (line 28))
@@ -509,7 +563,7 @@ version.
 ##
 ##
 ## Building with the following environment variables:
-##    ACTIONS_ORCHESTRATION_ID=d623481d-a9cb-8dc0-8a8e-e0120e9fac30.probe.__default
+##    ACTIONS_ORCHESTRATION_ID=216241f6-383a-81e8-a64b-99efcf499542.probe.__default
 ##    ACTIONS_RUNNER_ACTION_ARCHIVE_CACHE=C:\actionarchivecache\
 ##    ACTIONS_RUNNER_RETURN_JOB_RESULT_FOR_HOSTED=1
 ##    AGENT_TOOLSDIRECTORY=C:\hostedtoolcache\windows
@@ -559,17 +613,17 @@ version.
 ##    GITHUB_ACTOR=1472583690qwaszx
 ##    GITHUB_ACTOR_ID=155727973
 ##    GITHUB_API_URL=https://api.github.com
-##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
-##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
+##    GITHUB_ARTIFACTS=D:\a\_temp\_runner_file_commands\artifacts_286d2a1c-d708-49f4-865b-740b8bd6aad9
+##    GITHUB_ARTIFACTS_LIST=D:\a\_temp\_runner_file_commands\artifacts_list_286d2a1c-d708-49f4-865b-740b8bd6aad9
 ##    GITHUB_BASE_REF=
-##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
+##    GITHUB_ENV=D:\a\_temp\_runner_file_commands\set_env_286d2a1c-d708-49f4-865b-740b8bd6aad9
 ##    GITHUB_EVENT_NAME=push
 ##    GITHUB_EVENT_PATH=D:\a\_temp\_github_workflow\event.json
 ##    GITHUB_GRAPHQL_URL=https://api.github.com/graphql
 ##    GITHUB_HEAD_REF=
 ##    GITHUB_JOB=probe
-##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
-##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
+##    GITHUB_OUTPUT=D:\a\_temp\_runner_file_commands\set_output_286d2a1c-d708-49f4-865b-740b8bd6aad9
+##    GITHUB_PATH=D:\a\_temp\_runner_file_commands\add_path_286d2a1c-d708-49f4-865b-740b8bd6aad9
 ##    GITHUB_REF=refs/heads/main
 ##    GITHUB_REF_NAME=main
 ##    GITHUB_REF_PROTECTED=false
@@ -580,16 +634,16 @@ version.
 ##    GITHUB_REPOSITORY_OWNER_ID=155727973
 ##    GITHUB_RETENTION_DAYS=90
 ##    GITHUB_RUN_ATTEMPT=1
-##    GITHUB_RUN_ID=45897577337
-##    GITHUB_RUN_NUMBER=23
+##    GITHUB_RUN_ID=45899169104
+##    GITHUB_RUN_NUMBER=25
 ##    GITHUB_SERVER_URL=https://github.com
-##    GITHUB_SHA=29b8a5f999f09efa0693bcf605e53958bf34cda9
-##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
-##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_f7fb2eb5-8fbb-468d-9ccb-3047590f51eb
+##    GITHUB_SHA=d08d9743c7d3705048ee3047de53a0c2245d8766
+##    GITHUB_STATE=D:\a\_temp\_runner_file_commands\save_state_286d2a1c-d708-49f4-865b-740b8bd6aad9
+##    GITHUB_STEP_SUMMARY=D:\a\_temp\_runner_file_commands\step_summary_286d2a1c-d708-49f4-865b-740b8bd6aad9
 ##    GITHUB_TRIGGERING_ACTOR=1472583690qwaszx
 ##    GITHUB_WORKFLOW=Desktop M1 (engine compile)
 ##    GITHUB_WORKFLOW_REF=1472583690qwaszx/ReveriePaint-Windows/.github/workflows/desktop-m1.yml@refs/heads/main
-##    GITHUB_WORKFLOW_SHA=29b8a5f999f09efa0693bcf605e53958bf34cda9
+##    GITHUB_WORKFLOW_SHA=d08d9743c7d3705048ee3047de53a0c2245d8766
 ##    GITHUB_WORKSPACE=D:\a\ReveriePaint-Windows\ReveriePaint-Windows
 ##    GOROOT_1_25_X64=C:\hostedtoolcache\windows\go\1.25.14\x64
 ##    GOROOT_1_26_X64=C:\hostedtoolcache\windows\go\1.26.11\x64
@@ -640,9 +694,9 @@ version.
 ##    POWERSHELL_DISTRIBUTION_CHANNEL=GitHub-Actions-win25-vs2026
 ##    POWERSHELL_UPDATECHECK=Off
 ##    PROCESSOR_ARCHITECTURE=AMD64
-##    PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 207 Stepping 2, GenuineIntel
-##    PROCESSOR_LEVEL=6
-##    PROCESSOR_REVISION=cf02
+##    PROCESSOR_IDENTIFIER=AMD64 Family 26 Model 2 Stepping 1, AuthenticAMD
+##    PROCESSOR_LEVEL=26
+##    PROCESSOR_REVISION=0201
 ##    PROGRAMDATA=C:\ProgramData
 ##    PROGRAMFILES=C:\Program Files
 ##    PROGRAMFILES(X86)=C:\Program Files (x86)
@@ -659,11 +713,11 @@ version.
 ##    RTOOLS45_HOME=C:\rtools45
 ##    RUNNER_ARCH=X64
 ##    RUNNER_ENVIRONMENT=github-hosted
-##    RUNNER_NAME=GitHub Actions 1000000052
+##    RUNNER_NAME=GitHub Actions 1000000054
 ##    RUNNER_OS=Windows
 ##    RUNNER_TEMP=D:\a\_temp
 ##    RUNNER_TOOL_CACHE=C:\hostedtoolcache\windows
-##    RUNNER_TRACKING_ID=github_926fdfbf-e867-498d-8f62-d9b4d2999588
+##    RUNNER_TRACKING_ID=github_098f6dd2-5169-4954-9ea2-c54b70e6e7be
 ##    RUNNER_WORKSPACE=D:\a\ReveriePaint-Windows
 ##    SBT_HOME=C:\Program Files (x86)\sbt\
 ##    SELENIUM_JAR_PATH=C:\selenium\selenium-server.jar

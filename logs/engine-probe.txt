@@ -1,283 +1,289 @@
-probe: 28/44 cpp files failed (incs: 311, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
+probe: 28/44 cpp files failed (incs: 378, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143, plug: 72) | kis_brush_based_paintop_settings.h: OK -IC:\krita-dev\krita\plugins\paintops\libpaintop | psd_colormode_block.h: OK -IC:\krita-dev\krita\plugins\impex\psd | kis_brushop.h: OK -IC:\krita-dev\krita\plugins\paintops\defaultpaintops\brush
 --- 错误签名 Top 15 ---
-[28x] 'kis_brush_based_paintop_settings.h' file not found
+[28x] use of undeclared identifier 'assert'
+[3x] use of undeclared identifier 'CPU_SETSIZE'
+[1x] no member named 'fsync' in the global namespace
+[1x] 'rtc/rtc.hpp' file not found
 ### reverie_jni_core.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
-1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/reverie_jni_core.cpp:447:20: error: use of undeclared identifier 'CPU_SETSIZE'
+C:/rp/app/src/main/cpp/reverie_jni_core.cpp:448:20: error: use of undeclared identifier 'CPU_SETSIZE'
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreAdjustment.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreAnimation.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreBrush.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreCollab.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
-1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreCollab.cpp:13:10: fatal error: 'rtc/rtc.hpp' file not found
+2 errors generated.
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreDocument.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreFilterKernels.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreFilterPlugins.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreFilterPreview.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreFilterPreviewFx.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreFilterRegistry.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreFilters.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreGenerators.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreIccData.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreInstance.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreIO.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
-1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
+C:/rp/app/src/main/cpp/ReverieCoreIO.cpp:756:15: error: no member named 'fsync' in the global namespace
+2 errors generated.
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreLayerIO.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreLayerOps.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreLayers.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreMiscTools.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCorePanel.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCorePatternFill.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreRender.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreSelection.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreSelectionLasso.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreSelectionTools.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreStroke.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
 ### ReverieCoreTransform.cpp
-C:/rp/app/src/main/cpp/ReverieCoreInternal.h:42:10: fatal error: 'kis_brush_based_paintop_settings.h' file not found
+C:/krita-dev/_install/include/lager/detail/nodes.hpp:156:9: error: use of undeclared identifier 'assert'
 1 error generated.
-   39: #include <KisLocalStrokeResources.h>
-   40: #include <KisFakeRunnableStrokeJobsExecutor.h>
-   41: #include <KisRunnableStrokeJobData.h>
->> 42: #include <kis_brush_based_paintop_settings.h>
-   43: #include <kis_brushop.h>
-   44: #include <kis_gbr_brush.h>
-   45: #include <kis_png_brush.h>
+   153:     {
+   154:         using namespace std;
+   155:         using std::placeholders::_1;
+>> 156:         assert(find_if(begin(children_),
+   157:                        end(children_),
+   158:                        bind(owner_equals, child, _1)) == end(children_) &&
+   159:                "Child node must not be linked twice");
