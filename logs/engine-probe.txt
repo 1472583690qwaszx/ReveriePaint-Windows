@@ -1,169 +1,135 @@
-probe: 44/44 cpp files failed (incs: 417, src hdr dirs: 95, build hdr dirs: 46)
+probe: 44/44 cpp files failed (incs: 290, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
+--- 错误签名 Top 15 ---
+[44x] 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 ### reverie_jni_animation.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_brush.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_collab.cpp
-C:\krita-dev\_install\include\QtCore/QString:1:10: fatal error: 'QtCore/qstring.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### reverie_jni_core.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_filters.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_io.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_layers.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_panel.cpp
-C:\krita-dev\_install\include\QtCore/QString:1:10: fatal error: 'QtCore/qstring.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### reverie_jni_selection.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_snapshot.cpp
-C:\rp\app\src\main\cpp\reverie_jni_snapshot.cpp:37:26: error: use of undeclared identifier 'atoi'
-C:\rp\app\src\main\cpp\reverie_jni_snapshot.cpp:68:1: error: unknown type name 'JNIEXPORT'
-C:\rp\app\src\main\cpp\reverie_jni_snapshot.cpp:68:15: error: expected ';' after top level declarator
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### reverie_jni_tools.cpp
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:41:40: error: unknown type name 'jobject'
-D:\a\ReveriePaint-Windows\ReveriePaint-Windows\desktop-port\engine\include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreAdjustment.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreAnimation.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreApi.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreBrush.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreCollab.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreColorSpaceHook.cpp
-C:\krita-dev\_install\include\QtGui/QImage:1:10: fatal error: 'QtGui/qimage.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### ReverieCoreDocument.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreFilterKernels.cpp
-C:\krita-dev\_install\include\QtGui/QImage:1:10: fatal error: 'QtGui/qimage.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### ReverieCoreFilterPlugins.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreFilterPreview.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreFilterPreviewFx.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreFilterRegistry.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreFilters.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreGenerators.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreIccData.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreInbetween.cpp
-C:\krita-dev\_install\include\QtGui/QColor:1:10: fatal error: 'QtGui/qcolor.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### ReverieCoreInstance.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/cwchar:135:9: error: target of using declaration conflicts with declaration already in scope
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreIO.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreLayerExtras.cpp
-C:\krita-dev\_install\include\QtCore/QHash:1:10: fatal error: 'QtCore/qhash.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### ReverieCoreLayerIO.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreLayerOps.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreLayers.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreMiscTools.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCorePanel.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCorePatternFill.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreRender.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreSelection.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreSelectionLasso.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreSelectionTools.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreStroke.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreTransform.cpp
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
-C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
-C:\krita-dev\_install\include\QtCore/QDebug:1:10: fatal error: 'QtCore/qdebug.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+1 error generated.
 ### ReverieCoreUndoStore.cpp
-C:\krita-dev\_install\include\QtCore/QObject:1:10: fatal error: 'QtCore/qobject.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
 ### ReverieMaskingBrushRenderer.cpp
-C:\krita-dev\_install\include\QtCore/QVector:1:10: fatal error: 'QtCore/qvector.h' file not found
+<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
 1 error generated.
