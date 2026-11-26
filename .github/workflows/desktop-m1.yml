@@ -95,15 +95,11 @@ jobs:
           $f = 'logs/apply-patches.txt'
           $k = Join-Path $env:KRITA_ROOT 'krita'
           $patch = Join-Path $env:GITHUB_WORKSPACE 'windows\patches\krita\0002-fix-roundmarker-KisMarkerPainter.patch'
-          $target = 'libs/image/kis_marker_painter.cpp'
           $out = @()
-          $out += '--- git version ---'
-          $out += (& git --version 2>&1)
           $out += ('env.bat exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT 'env.bat')))
           $out += ('_install exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install')))
           $out += ('QtCore dir: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install\include\QtCore')))
-          $out += '--- apply --check plain ---'
-          $out += (& git -C $k apply --check --whitespace=nowarn $patch 2>&1)
+          $out += ('apply --check: ' + (& git -C $k apply --check --whitespace=nowarn $patch 2>&1))
           $out | Tee-Object -FilePath $f
 
       - name: Apply patches
@@ -112,7 +108,7 @@ jobs:
           New-Item -ItemType Directory -Force logs | Out-Null
           & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt -Append
           $rc = $LASTEXITCODE
-          ('02 rc: ' + $rc) | Tee-Object -FilePath logs/apply-patches.txt -Append
+          ('02 rc: ' + $rc) | Out-File -FilePath logs/apply-patches.txt -Append -Encoding utf8
           if ($rc -ne 0) { throw ('02 failed: ' + $rc) }
 
       - name: Configure Krita (no build)
@@ -121,50 +117,42 @@ jobs:
           $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
           $root = $env:KRITA_ROOT
+          $rootFwd = $root.Replace('\', '/')
           $build = Join-Path $root 'b_krita'
           New-Item -ItemType Directory -Force $build | Out-Null
-          $llvm = Join-Path $env:LLVM_MINGW 'bin'
+          $llvm = $env:LLVM_MINGW.Replace('\', '/') + '/bin'
           $cmakeArgs = @(
             '-G', 'Ninja',
             '-DCMAKE_BUILD_TYPE=Release',
-            ('-DCMAKE_INSTALL_PREFIX=' + (Join-Path $root '_install')),
+            ('-DCMAKE_INSTALL_PREFIX=' + $rootFwd + '/_install'),
             '-DBUILD_WITH_QT6=ON',
             '-DALLOW_UNSTABLE=QT6',
             '-DKRITA_ENABLE_PCH=OFF',
             '-DHIDE_SAFE_ASSERTS=OFF',
             '-DKRITA_USE_SURFACE_COLOR_MANAGEMENT_API=OFF',
             '-DBUILD_TESTING=OFF',
-            ('-DCMAKE_C_COMPILER=' + (Join-Path $llvm 'clang.exe')),
-            ('-DCMAKE_CXX_COMPILER=' + (Join-Path $llvm 'clang++.exe')),
-            ('-DCMAKE_RC_COMPILER=' + (Join-Path $llvm 'windres.exe')))
-          $src = Join-Path $root 'krita'
-          $line = 'cmake "' + $src + '" ' + ($cmakeArgs -join ' ')
+            ('-DCMAKE_C_COMPILER=' + $llvm + '/clang.exe'),
+            ('-DCMAKE_CXX_COMPILER=' + $llvm + '/clang++.exe'),
+            ('-DCMAKE_RC_COMPILER=' + $llvm + '/windres.exe'))
+          $line = 'cmake "' + $rootFwd + '/krita" ' + ($cmakeArgs -join ' ')
           $batPath = Join-Path $root 'reverie-configure.bat'
           $envBat = Join-Path $root 'env.bat'
           $content = @(
-            '@echo on',
+            '@echo off',
             ('call "' + $envBat + '"'),
             ('cd /d "' + $build + '"'),
-            'cmake --version',
             $line,
-            'if errorlevel 1 exit /b 31',
-            'exit /b 0')
+            'exit /b %errorlevel%')
           Set-Content -LiteralPath $batPath -Value $content -Encoding ASCII
           $cfg = Join-Path $root 'configure.log'
           & cmd /c $batPath 2>&1 | Tee-Object -FilePath $cfg | Out-Null
           $rc = $LASTEXITCODE
           'configure exit: ' + $rc
           $hdr = @()
-          $hdr += ('root: ' + $root)
-          $hdr += ('bat: ' + $batPath + ' exists=' + (Test-Path $batPath))
-          $hdr += ('build: ' + $build + ' exists=' + (Test-Path $build))
-          $hdr += ('env.bat: ' + $envBat + ' exists=' + (Test-Path $envBat))
           $hdr += '--- bat content ---'
           if (Test-Path $batPath) { $hdr += (Get-Content $batPath) }
-          $hdr += '--- configure.log tail 120 ---'
-          if (Test-Path $cfg) { $hdr += (Get-Content $cfg -Tail 120) }
-          $hdr += '--- env.bat head ---'
-          if (Test-Path $envBat) { $hdr += (Get-Content $envBat -TotalCount 12) }
+          $hdr += '--- configure.log tail 150 ---'
+          if (Test-Path $cfg) { $hdr += (Get-Content $cfg -Tail 150) }
           $hdr | Out-File -FilePath 'logs/configure.txt' -Encoding utf8
           if (-not (Test-Path (Join-Path $build 'CMakeCache.txt'))) {
             throw 'configure did not produce CMakeCache.txt'
