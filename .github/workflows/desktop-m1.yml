@@ -2,7 +2,7 @@ name: Desktop M1 (engine compile)
 
 # 专用于 M1：把 ReveriePaint v1.11.0 的原生引擎在 Windows 上做语法级编译验证。
 # - 不重建整棵 Krita（只 configure），单轮约 15 分钟
-# - 探针结果写入 logs/engine-probe.txt 并提交回仓库，供未登录场景读取
+# - 探针与补丁日志写入 logs/ 并提交回仓库，供未登录场景读取
 on:
   workflow_dispatch:
   push:
@@ -87,8 +87,12 @@ jobs:
       - name: Apply patches
         shell: pwsh
         run: |
-          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT
-          if ($LASTEXITCODE -ne 0) { throw ('02 failed: ' + $LASTEXITCODE) }
+          New-Item -ItemType Directory -Force logs | Out-Null
+          & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt
+          $rc = $LASTEXITCODE
+          ('02 rc: ' + $rc) | Tee-Object -FilePath logs/apply-patches.txt -Append
+          & git -C (Join-Path $env:KRITA_ROOT 'krita') status --porcelain 2>&1 | Select-Object -First 25 | Tee-Object -FilePath logs/apply-patches.txt -Append
+          if ($rc -ne 0) { throw ('02 failed: ' + $rc) }
 
       - name: Configure Krita (no build)
         shell: pwsh
@@ -170,12 +174,16 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
           if (-not (Test-Path 'logs/engine-probe.txt')) {
-            Set-Content 'logs/engine-probe.txt' -Value 'probe log missing' -Encoding utf8
+            Set-Content 'logs/engine-probe.txt' -Value 'probe not reached (earlier step failed)' -Encoding utf8
+          }
+          if (-not (Test-Path 'logs/apply-patches.txt')) {
+            Set-Content 'logs/apply-patches.txt' -Value 'apply log missing' -Encoding utf8
           }
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
-          git add logs/engine-probe.txt
+          git add -A logs
           git commit -m 'ci: engine probe report'
+          git pull --rebase --autostash -q
           git push
 
       - uses: actions/upload-artifact@v4
@@ -184,6 +192,7 @@ jobs:
           name: engine-probe
           path: |
             logs/engine-probe.txt
+            logs/apply-patches.txt
             C:/krita-dev/configure.log
           if-no-files-found: warn
           retention-days: 14
