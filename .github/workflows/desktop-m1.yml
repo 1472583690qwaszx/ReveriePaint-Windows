@@ -16,11 +16,11 @@ permissions:
   contents: write
 
 env:
-  KRITA_ROOT: C:/krita-dev
+  KRITA_ROOT: C:\krita-dev
   UPSTREAM_TAG: v1.11.0
-  LLVM_MINGW: C:/deps/llvm-mingw-20251118-ucrt-x86_64
-  NINJA_DIR: C:/deps/Ninja
-  CMAKE_HOME: C:/deps/cmake-3.31.6-windows-x86_64
+  LLVM_MINGW: C:\deps\llvm-mingw-20251118-ucrt-x86_64
+  NINJA_DIR: C:\deps\Ninja
+  CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
   KRITA_DEPS_BRANCH: transition.now/qt6
   KIT_URL: https://aka.doubaocdn.com/s/n3IQw6uQ4V
   KIT_SHA256: 048e4384ebd72e594d1c3f23a645989277a8b338f948a2abe8d561cfff343bce
@@ -35,28 +35,28 @@ jobs:
       - name: Cache toolchain
         uses: actions/cache@v4
         with:
-          path: C:/deps
+          path: C:\deps
           key: deps-${{ runner.os }}-llvm20251118-cmake3316-ninja
 
       - name: Toolchain
         shell: pwsh
         run: |
           $ProgressPreference = 'SilentlyContinue'
-          New-Item -ItemType Directory -Force C:/deps | Out-Null
-          if (-not (Test-Path ($env:LLVM_MINGW + '/bin/clang++.exe'))) {
+          New-Item -ItemType Directory -Force 'C:\deps' | Out-Null
+          if (-not (Test-Path ($env:LLVM_MINGW + '\bin\clang++.exe'))) {
             Invoke-WebRequest -Uri 'https://github.com/mstorsjo/llvm-mingw/releases/download/20251118/llvm-mingw-20251118-ucrt-x86_64.zip' -OutFile ($env:RUNNER_TEMP + '/llvm.zip')
-            Expand-Archive ($env:RUNNER_TEMP + '/llvm.zip') -DestinationPath 'C:/deps' -Force
+            Expand-Archive ($env:RUNNER_TEMP + '/llvm.zip') -DestinationPath 'C:\deps' -Force
           }
-          if (-not (Test-Path ($env:NINJA_DIR + '/ninja.exe'))) {
+          if (-not (Test-Path ($env:NINJA_DIR + '\ninja.exe'))) {
             Invoke-WebRequest -Uri 'https://github.com/ninja-build/ninja/releases/latest/download/ninja-win.zip' -OutFile ($env:RUNNER_TEMP + '/ninja.zip')
             New-Item -ItemType Directory -Force $env:NINJA_DIR | Out-Null
             Expand-Archive ($env:RUNNER_TEMP + '/ninja.zip') -DestinationPath $env:NINJA_DIR -Force
           }
-          if (-not (Test-Path ($env:CMAKE_HOME + '/bin/cmake.exe'))) {
+          if (-not (Test-Path ($env:CMAKE_HOME + '\bin\cmake.exe'))) {
             Invoke-WebRequest -Uri 'https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-windows-x86_64.zip' -OutFile ($env:RUNNER_TEMP + '/cmake.zip')
-            Expand-Archive ($env:RUNNER_TEMP + '/cmake.zip') -DestinationPath 'C:/deps' -Force
+            Expand-Archive ($env:RUNNER_TEMP + '/cmake.zip') -DestinationPath 'C:\deps' -Force
           }
-          ($env:CMAKE_HOME + '/bin') | Out-File -FilePath $env:GITHUB_PATH -Append
+          ($env:CMAKE_HOME + '\bin') | Out-File -FilePath $env:GITHUB_PATH -Append
           $env:NINJA_DIR | Out-File -FilePath $env:GITHUB_PATH -Append
 
       - name: Port kit (repo copy or signed zip)
@@ -81,7 +81,7 @@ jobs:
       - name: Krita source and dependencies
         shell: pwsh
         run: |
-          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag v6.0.4 -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag v6.0.4 -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python -ProgressPreference SilentlyContinue
           if ($LASTEXITCODE -ne 0) { throw ('01 failed: ' + $LASTEXITCODE) }
 
       - name: Patch precheck diagnostics
@@ -91,7 +91,7 @@ jobs:
           New-Item -ItemType Directory -Force logs | Out-Null
           $f = 'logs/apply-patches.txt'
           $k = Join-Path $env:KRITA_ROOT 'krita'
-          $patch = Join-Path $env:GITHUB_WORKSPACE 'windows/patches/krita/0002-fix-roundmarker-KisMarkerPainter.patch'
+          $patch = Join-Path $env:GITHUB_WORKSPACE 'windows\patches\krita\0002-fix-roundmarker-KisMarkerPainter.patch'
           $target = 'libs/image/kis_marker_painter.cpp'
           $out = @()
           $out += '--- git version ---'
@@ -100,24 +100,17 @@ jobs:
           $out += (& git -C $k config --list --show-origin 2>&1 | Select-String -Pattern 'autocrlf|eol|safecrlf' | ForEach-Object { ([string]$_).Trim() })
           $out += '--- head ---'
           $out += (& git -C $k rev-parse HEAD 2>&1)
-          $out += '--- gitattributes ---'
-          if (Test-Path (Join-Path $k '.gitattributes')) { $out += (Get-Content (Join-Path $k '.gitattributes') | Select-Object -First 15) } else { $out += 'no .gitattributes' }
           $out += '--- index entry ---'
           $idx = (& git -C $k ls-files -s $target 2>&1)
           $out += $idx
           $sha = ($idx -split ' ')[1]
           $out += ('blob type: ' + (& git -C $k cat-file -t $sha 2>&1))
-          $out += '--- working file bytes ---'
-          $bytes = [System.IO.File]::ReadAllBytes((Join-Path $k $target))
-          $crlf = 0
-          for ($i = 0; $i -lt $bytes.Length - 1; $i++) { if ($bytes[$i] -eq 13 -and $bytes[$i + 1] -eq 10) { $crlf++ } }
-          $out += ('CRLF pairs: ' + $crlf + ' / bytes: ' + $bytes.Length)
-          $out += '--- apply --check --3way ---'
-          $out += (& git -C $k apply --check --3way --whitespace=nowarn $patch 2>&1)
+          $out += '--- env.bat ---'
+          $out += ('env.bat exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT 'env.bat')))
+          $out += ('_install exists: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install')))
+          $out += ('QtCore dir: ' + (Test-Path (Join-Path $env:KRITA_ROOT '_install\include\QtCore')))
           $out += '--- apply --check plain ---'
           $out += (& git -C $k apply --check --whitespace=nowarn $patch 2>&1)
-          $out += '--- status ---'
-          $out += (& git -C $k status --porcelain 2>&1 | Select-Object -First 10)
           $out | Tee-Object -FilePath $f
 
       - name: Apply patches
@@ -134,30 +127,33 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           New-Item -ItemType Directory -Force logs | Out-Null
-          . (Join-Path $env:GITHUB_WORKSPACE 'windows/scripts/lib/common.ps1')
-          $build = 'C:/krita-dev/b_krita'
+          . (Join-Path $env:GITHUB_WORKSPACE 'windows\scripts\lib\common.ps1')
+          $root = $env:KRITA_ROOT
+          $build = Join-Path $root 'b_krita'
           New-Item -ItemType Directory -Force $build | Out-Null
-          $llvm = ($env:LLVM_MINGW + '/bin')
+          $llvm = Join-Path $env:LLVM_MINGW 'bin'
           $cmakeArgs = @(
             '-G', 'Ninja',
             '-DCMAKE_BUILD_TYPE=Release',
-            '-DCMAKE_INSTALL_PREFIX=C:/krita-dev/_install',
+            ('-DCMAKE_INSTALL_PREFIX=' + (Join-Path $root '_install')),
             '-DBUILD_WITH_QT6=ON',
             '-DALLOW_UNSTABLE=QT6',
             '-DKRITA_ENABLE_PCH=OFF',
             '-DHIDE_SAFE_ASSERTS=OFF',
             '-DKRITA_USE_SURFACE_COLOR_MANAGEMENT_API=OFF',
             '-DBUILD_TESTING=OFF',
-            ('-DCMAKE_C_COMPILER=' + $llvm + '/clang.exe'),
-            ('-DCMAKE_CXX_COMPILER=' + $llvm + '/clang++.exe'),
-            ('-DCMAKE_RC_COMPILER=' + $llvm + '/windres.exe'))
-          $line = 'cmake "C:/krita-dev/krita" ' + ($cmakeArgs -join ' ')
-          $lines = @('cd /d ' + $build, 'cmake --version', $line, 'if errorlevel 1 exit /b 31')
-          $rc = [int](Invoke-InKritaEnv -Root 'C:/krita-dev' -Lines $lines -LogPath 'C:/krita-dev/configure.log' -BatName 'reverie-configure.bat')
+            ('-DCMAKE_C_COMPILER=' + (Join-Path $llvm 'clang.exe')),
+            ('-DCMAKE_CXX_COMPILER=' + (Join-Path $llvm 'clang++.exe')),
+            ('-DCMAKE_RC_COMPILER=' + (Join-Path $llvm 'windres.exe')))
+          $src = Join-Path $root 'krita'
+          $line = 'cmake "' + $src + '" ' + ($cmakeArgs -join ' ')
+          $lines = @('cd /d "' + $build + '"', 'cmake --version', $line, 'if errorlevel 1 exit /b 31')
+          $cfg = Join-Path $root 'configure.log'
+          $rc = [int](Invoke-InKritaEnv -Root $root -Lines $lines -LogPath $cfg -BatName 'reverie-configure.bat')
           'configure exit: ' + $rc
-          if (Test-Path 'C:/krita-dev/configure.log') {
-            Get-Content 'C:/krita-dev/configure.log' -Tail 80 | Out-File -FilePath 'logs/configure.txt' -Encoding utf8
-            Get-Content 'C:/krita-dev/configure.log' -Tail 25
+          if (Test-Path $cfg) {
+            Get-Content $cfg -Tail 100 | Out-File -FilePath 'logs/configure.txt' -Encoding utf8
+            Get-Content $cfg -Tail 30
           }
           if (-not (Test-Path (Join-Path $build 'CMakeCache.txt'))) {
             throw 'configure did not produce CMakeCache.txt'
@@ -170,29 +166,28 @@ jobs:
           $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
           $log = 'logs/engine-probe.txt'
-          $qt = 'C:/krita-dev/_install/include'
-          $qtc = Join-Path $qt 'QtCore'
-          if (-not (Test-Path $qtc)) { 'warning: Qt headers not found at ' + $qt }
-          $rp = 'C:/rp'
+          $root = $env:KRITA_ROOT
+          $qt = Join-Path $root '_install\include'
+          $rp = 'C:\rp'
           git clone --filter=blob:none --sparse --depth 1 --branch $env:UPSTREAM_TAG https://github.com/LanRhyme/ReveriePaint.git $rp
           if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
           git -C $rp sparse-checkout set app/src/main/cpp
           if ($LASTEXITCODE -ne 0) { throw 'sparse checkout failed' }
-          $eng = Join-Path $rp 'app/src/main/cpp'
-          $src = 'C:/krita-dev/krita'
-          $build = 'C:/krita-dev/b_krita'
-          $shim = Join-Path $env:GITHUB_WORKSPACE 'desktop-port/engine/include'
-          $clang = Join-Path $env:LLVM_MINGW 'bin/clang++.exe'
+          $eng = Join-Path $rp 'app\src\main\cpp'
+          $src = Join-Path $root 'krita'
+          $build = Join-Path $root 'b_krita'
+          $shim = Join-Path $env:GITHUB_WORKSPACE 'desktop-port\engine\include'
+          $clang = Join-Path $env:LLVM_MINGW 'bin\clang++.exe'
           $incs = @(
             $shim,
-            $src, (Join-Path $src 'libs'), (Join-Path $src 'libs/global'), (Join-Path $src 'libs/image'),
-            (Join-Path $src 'libs/pigment'), (Join-Path $src 'libs/ui'), (Join-Path $src 'libs/flake'),
-            (Join-Path $src 'libs/brush'), (Join-Path $src 'libs/color'), (Join-Path $src 'libs/command'),
-            (Join-Path $src 'libs/impex'), (Join-Path $src 'libs/metadata'), (Join-Path $src 'libs/store'),
-            (Join-Path $src 'libs/resources'), (Join-Path $src 'libs/psd'), (Join-Path $src 'libs/widgets'),
-            (Join-Path $build 'libs'), (Join-Path $build 'libs/image'), (Join-Path $build 'libs/pigment'),
-            $qt, $qtc, (Join-Path $qt 'QtGui'), (Join-Path $qt 'QtWidgets'), (Join-Path $qt 'QtConcurrent'),
-            (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include/win32'))
+            $src, (Join-Path $src 'libs'), (Join-Path $src 'libs\global'), (Join-Path $src 'libs\image'),
+            (Join-Path $src 'libs\pigment'), (Join-Path $src 'libs\ui'), (Join-Path $src 'libs\flake'),
+            (Join-Path $src 'libs\brush'), (Join-Path $src 'libs\color'), (Join-Path $src 'libs\command'),
+            (Join-Path $src 'libs\impex'), (Join-Path $src 'libs\metadata'), (Join-Path $src 'libs\store'),
+            (Join-Path $src 'libs\resources'), (Join-Path $src 'libs\psd'), (Join-Path $src 'libs\widgets'),
+            (Join-Path $build 'libs'), (Join-Path $build 'libs\image'), (Join-Path $build 'libs\pigment'),
+            $qt, (Join-Path $qt 'QtCore'), (Join-Path $qt 'QtGui'), (Join-Path $qt 'QtWidgets'), (Join-Path $qt 'QtConcurrent'),
+            (Join-Path $env:JAVA_HOME 'include'), (Join-Path $env:JAVA_HOME 'include\win32'))
           $flags = @('-std=c++17', '-fsyntax-only', '-w', '-fms-extensions')
           foreach ($i in $incs) { if (Test-Path $i) { $flags += ('-I' + $i) } }
           $files = Get-ChildItem (Join-Path $eng '*.cpp') | Sort-Object Name
