@@ -1,135 +1,185 @@
 probe: 44/44 cpp files failed (incs: 290, src hdr dirs: 95, build hdr dirs: 46, qt sub: 143)
 --- 错误签名 Top 15 ---
-[44x] 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
+[42x] 'klocalizedstring.h' file not found
+[42x] unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+[42x] no type named 'timespec' in the global namespace
+[24x] unknown type name 'jobject'
+[24x] unknown type name 'JNIEnv'
+[2x] unknown type name 'JNIEXPORT'
+[2x] expected ';' after top level declarator
 ### reverie_jni_animation.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_brush.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_collab.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### reverie_jni_core.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_filters.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_io.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_layers.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_panel.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### reverie_jni_selection.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### reverie_jni_snapshot.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/rp/app/src/main/cpp/reverie_jni_snapshot.cpp:68:1: error: unknown type name 'JNIEXPORT'
+C:/rp/app/src/main/cpp/reverie_jni_snapshot.cpp:68:15: error: expected ';' after top level declarator
+C:/rp/app/src/main/cpp/reverie_jni_snapshot.cpp:79:1: error: unknown type name 'JNIEXPORT'
 ### reverie_jni_tools.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:27: error: unknown type name 'JNIEnv'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:41:40: error: unknown type name 'jobject'
+D:/a/ReveriePaint-Windows/ReveriePaint-Windows/desktop-port/engine/include/android/bitmap.h:42:30: error: unknown type name 'JNIEnv'
 ### ReverieCoreAdjustment.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreAnimation.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreApi.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreBrush.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreCollab.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreColorSpaceHook.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/global/KoID.h:20:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreDocument.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreFilterKernels.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreFilterPlugins.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreFilterPreview.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreFilterPreviewFx.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreFilterRegistry.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreFilters.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreGenerators.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreIccData.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreInbetween.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+2 errors generated.
 ### ReverieCoreInstance.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreIO.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreLayerExtras.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/global/KoID.h:20:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreLayerIO.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreLayerOps.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreLayers.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreMiscTools.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCorePanel.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCorePatternFill.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreRender.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreSelection.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreSelectionLasso.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreSelectionTools.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreStroke.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreTransform.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/resources/KisResourceTypes.h:9:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieCoreUndoStore.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/command/kundo2magicstring.h:14:10: fatal error: 'klocalizedstring.h' file not found
 ### ReverieMaskingBrushRenderer.cpp
-<built-in>:1:10: fatal error: 'D:aReveriePaint-WindowsReveriePaint-Windowsdesktop-portengineincludereverie_prelude.h' file not found
-1 error generated.
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:23:31: error: no type named 'timespec' in the global namespace
+C:/deps/llvm-mingw-20251118-ucrt-x86_64/include/c++/v1/__thread/support/windows.h:72:77: error: unknown type name '__libcpp_timespec_t'; did you mean '__libcpp_mutex_t'?
+C:/krita-dev/krita/libs/global/KoID.h:20:10: fatal error: 'klocalizedstring.h' file not found
