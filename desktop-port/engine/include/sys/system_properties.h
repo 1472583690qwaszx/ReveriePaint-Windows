@@ -3,6 +3,9 @@
 // Implemented in src/android_shims_win.cpp: always reports "property unset".
 #pragma once
 
+#define PROP_VALUE_MAX 92
+#define PROP_NAME_MAX 32
+
 #ifdef __cplusplus
 extern "C" {
 #endif
