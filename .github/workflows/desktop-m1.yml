@@ -185,6 +185,22 @@ jobs:
               if ($incs -notcontains $d.FullName) { $incs += $d.FullName }
             }
           }
+          # 上游 CMakeLists.txt 里额外的 include 目录：引擎直接 include 了个别插件源码目录的头，
+          # 例如 psd_colormode_block.h / psd_image_data.h 在 krita/plugins/impex/psd（不是 libs 下）
+          $extra = @(
+            (Join-Path $src 'plugins/impex/psd'),
+            (Join-Path $build 'plugins/impex/psd'),
+            (Join-Path $src 'plugins/paintops/hairy'),
+            (Join-Path $src 'plugins/paintops/hatching'),
+            (Join-Path $src 'plugins/paintops/mypaint'),
+            (Join-Path $build 'plugins/paintops/libpaintop'),
+            (Join-Path $build 'plugins/paintops/defaultpaintops'),
+            (Join-Path $qt 'libmypaint'),
+            (Join-Path $qt 'freetype2'),
+            (Join-Path $qt 'libunibreak'),
+            (Join-Path $qt 'eigen3')
+          )
+          foreach ($d in $extra) { if ((Test-Path $d) -and ($incs -notcontains $d)) { $incs += $d } }
           foreach ($j in @('include', 'include/win32')) {
             $p = Join-Path $env:JAVA_HOME $j
             if ((Test-Path $p) -and ($incs -notcontains $p)) { $incs += $p }
@@ -249,9 +265,10 @@ jobs:
               if ($errs.Count -eq 0) { $errs = @($out | Select-Object -Last 3) }
               $report += ($errs | ForEach-Object { ([string]$_).Trim() })
               # 第一条 error 定位到 文件:行，把该行前后各 3 行贴进报告，避免只看签名反复猜
-              $first = @($out | Where-Object { ([string]$_) -match '^[A-Za-z]:.*: [0-9]+:[0-9]+: error: ' } | Select-Object -First 1)
+              # 注意 clang 实际格式是 file:196:50: error:（冒号后无空格），正则不能多空格
+              $first = @($out | Where-Object { ([string]$_) -match '^[A-Za-z]:.*:[0-9]+:[0-9]+: (fatal )?error: ' } | Select-Object -First 1)
               if ($first.Count -gt 0) {
-                $m = [regex]::Match(([string]$first[0]).Trim(), '^(.*):([0-9]+):[0-9]+: error: ')
+                $m = [regex]::Match(([string]$first[0]).Trim(), '^(.*):([0-9]+):[0-9]+: (fatal )?error: ')
                 if ($m.Success) {
                   $cp = $m.Groups[1].Value
                   $cl = [int]$m.Groups[2].Value
