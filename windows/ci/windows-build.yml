@@ -1,0 +1,166 @@
+# 在 GitHub Actions 的 windows-latest 上编译 ReveriePaint Windows 版并产出安装包
+#
+# 用法：
+#   1. 把 windows/ 目录放到 ReveriePaint 仓库根（与 app/ 同级）
+#   2. 把本文件复制到仓库 .github/workflows/windows-build.yml
+#   3. push 后到 Actions 页面手动 Run workflow（或推送 v* 标签自动触发）
+#
+# 产物（Actions 运行页的 Artifacts）：
+#   ReveriePaint-Windows/
+#     ├── ReveriePaint.zip             便携版（解压即用）
+#     └── ReveriePaint-*-setup.exe     安装包
+#
+# 说明：Krita 首次完整构建在 4 核 runner 上约 2~4 小时；依赖下载每次约 10~20 分钟。
+
+name: Windows build and installer
+
+on:
+  workflow_dispatch:
+    inputs:
+      krita_tag:
+        description: 'Krita tag to build against'
+        required: false
+        default: 'v6.0.4'
+      include_experimental:
+        description: 'Also apply the mobile perf patches (0013/0014/0016)'
+        required: false
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 360
+    env:
+      KRITA_ROOT: C:\krita-dev
+      LLVM_MINGW: C:\deps\llvm-mingw-20251118-ucrt-x86_64
+      NINJA_DIR: C:\deps\Ninja
+      CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
+
+    steps:
+      - name: Checkout ReveriePaint
+        uses: actions/checkout@v4
+
+      - name: Fetch upstream ReveriePaint assets and license
+        shell: pwsh
+        run: |
+          git clone --depth 1 https://github.com/LanRhyme/ReveriePaint.git "$env:GITHUB_WORKSPACE\upstream"
+          if (Test-Path "$env:GITHUB_WORKSPACE\upstream\LICENSE") {
+            Copy-Item "$env:GITHUB_WORKSPACE\upstream\LICENSE" "$env:GITHUB_WORKSPACE\LICENSE" -Force
+          }
+
+      - name: Setup Python 3.13 (x64)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          architecture: x64
+
+      - name: Install toolchain (llvm-mingw 20251118 / Ninja / CMake 3.31)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $ProgressPreference = 'SilentlyContinue'
+          New-Item -ItemType Directory -Force C:\deps | Out-Null
+
+          if (-not (Test-Path "$env:LLVM_MINGW\bin\clang++.exe")) {
+            Write-Host 'Downloading llvm-mingw...'
+            Invoke-WebRequest -Uri 'https://github.com/mstorsjo/llvm-mingw/releases/download/20251118/llvm-mingw-20251118-ucrt-x86_64.zip' -OutFile "$env:RUNNER_TEMP\llvm.zip"
+            Expand-Archive "$env:RUNNER_TEMP\llvm.zip" -DestinationPath 'C:\deps' -Force
+          }
+
+          if (-not (Test-Path "$env:NINJA_DIR\ninja.exe")) {
+            Write-Host 'Downloading ninja...'
+            Invoke-WebRequest -Uri 'https://github.com/ninja-build/ninja/releases/latest/download/ninja-win.zip' -OutFile "$env:RUNNER_TEMP\ninja.zip"
+            New-Item -ItemType Directory -Force $env:NINJA_DIR | Out-Null
+            Expand-Archive "$env:RUNNER_TEMP\ninja.zip" -DestinationPath $env:NINJA_DIR -Force
+          }
+
+          if (-not (Test-Path "$env:CMAKE_HOME\bin\cmake.exe")) {
+            Write-Host 'Downloading CMake 3.31.6...'
+            Invoke-WebRequest -Uri 'https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-windows-x86_64.zip' -OutFile "$env:RUNNER_TEMP\cmake.zip"
+            Expand-Archive "$env:RUNNER_TEMP\cmake.zip" -DestinationPath 'C:\deps' -Force
+          }
+
+          "$env:CMAKE_HOME\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+          "$env:NINJA_DIR" | Out-File -FilePath $env:GITHUB_PATH -Append
+          & "$env:CMAKE_HOME\bin\cmake.exe" --version
+          & "$env:NINJA_DIR\ninja.exe" --version
+
+      - name: Cache build-script venv (deps archives are too large to cache)
+        continue-on-error: true
+        uses: actions/cache@v4
+        with:
+          path: |
+            C:\krita-dev\PythonEnv
+            C:\krita-dev\krita-deps-management
+          key: reverie-deps-${{ github.run_id }}
+          restore-keys: |
+            reverie-deps-
+
+      - name: '00 check prerequisites'
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/00-check-prereqs.ps1 `
+            -LlvmMingw "$env:LLVM_MINGW" -NinjaDir "$env:NINJA_DIR" -Root "$env:KRITA_ROOT"
+
+      - name: '01 bootstrap source and dependencies'
+        shell: pwsh
+        run: |
+          $tag = '${{ inputs.krita_tag }}'
+          if (-not $tag) { $tag = 'v6.0.4' }
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 `
+            -Root "$env:KRITA_ROOT" -KritaTag $tag `
+            -LlvmMingw "$env:LLVM_MINGW" -NinjaDir "$env:NINJA_DIR" -PythonExe python
+
+      - name: '02 apply ReveriePaint patches'
+        shell: pwsh
+        run: |
+          $extra = @()
+          if ('${{ inputs.include_experimental }}' -eq 'true') { $extra += '-IncludeExperimental' }
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 `
+            -Root "$env:KRITA_ROOT" @extra
+
+      - name: '03 build and install'
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/03-build.ps1 `
+            -Root "$env:KRITA_ROOT" -Jobs 4
+
+      - name: '04 stage portable package'
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/04-stage-portable.ps1 `
+            -Root "$env:KRITA_ROOT" -LlvmMingw "$env:LLVM_MINGW" `
+            -AssetSource "$env:GITHUB_WORKSPACE\upstream\app\src\main\assets"
+
+      - name: '05 verify package (file checks only)'
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/05-verify.ps1 `
+            -Root "$env:KRITA_ROOT" -NoLaunch
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          $iscc = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
+          if (-not (Test-Path $iscc)) { $iscc = (Get-Command iscc.exe).Source }
+          & $iscc "/DDistDir=$env:KRITA_ROOT\dist\ReveriePaint" "windows\installer\reveriepaint.iss"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReveriePaint-Windows
+          path: |
+            C:\krita-dev\dist\ReveriePaint.zip
+            windows\out\*.exe
+            C:\krita-dev\build.log
+          if-no-files-found: warn
+          retention-days: 14

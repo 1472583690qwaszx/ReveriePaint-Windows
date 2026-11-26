@@ -1,0 +1,114 @@
+From 388d0190cda455b7c8b6033319fd9c530db183ad Mon Sep 17 00:00:00 2001
+From: LanRhyme <xiao_ren233@foxmail.com>
+Date: Tue, 27 Oct 2026 23:59:51 +0800
+Subject: [PATCH 03/17] =?UTF-8?q?fix(swap):=20=E4=BF=AE=E5=A4=8D=E5=A4=9A?=
+ =?UTF-8?q?=E6=AD=A5=E6=92=A4=E9=94=80=E6=97=B6=20Swap=20=E6=BA=A2?=
+ =?UTF-8?q?=E5=87=BA=E8=A7=A6=E5=8F=91=20qFatal=20=E5=B4=A9=E6=BA=83?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- KisChunkAllocator 槽位耗尽时不再断言退出, 改为向上报错并回收
+- 抬高清空与软限制默认阈值, 连续撤销大画布不再闪退
+---
+ libs/image/kis_image_config.cpp                   | 4 ++--
+ libs/image/tiles3/swap/kis_chunk_allocator.cpp    | 8 +++++---
+ libs/image/tiles3/swap/kis_chunk_allocator.h      | 9 +++++++--
+ libs/image/tiles3/swap/kis_swapped_data_store.cpp | 5 +++++
+ 4 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/libs/image/kis_image_config.cpp b/libs/image/kis_image_config.cpp
+index eba8c3c3..835993a8 100644
+--- a/libs/image/kis_image_config.cpp
++++ b/libs/image/kis_image_config.cpp
+@@ -141,7 +141,7 @@ void KisImageConfig::setSchedulerBalancingRatio(qreal value)
+ int KisImageConfig::maxSwapSize(bool requestDefault) const
+ {
+     return !requestDefault ?
+-        m_config.readEntry("maxSwapSize", 4096) : 4096; // in MiB
++        m_config.readEntry("maxSwapSize", 8192) : 8192; // in MiB
+ }
+ 
+ void KisImageConfig::setMaxSwapSize(int value)
+@@ -206,7 +206,7 @@ void KisImageConfig::setMemoryHardLimitPercent(qreal value)
+ qreal KisImageConfig::memorySoftLimitPercent(bool requestDefault) const
+ {
+     return !requestDefault ?
+-        m_config.readEntry("memorySoftLimitPercent", 2.) : 2.;
++        m_config.readEntry("memorySoftLimitPercent", 50.) : 50.;
+ }
+ 
+ void KisImageConfig::setMemorySoftLimitPercent(qreal value)
+diff --git a/libs/image/tiles3/swap/kis_chunk_allocator.cpp b/libs/image/tiles3/swap/kis_chunk_allocator.cpp
+index b4b4adaf..7462634a 100644
+--- a/libs/image/tiles3/swap/kis_chunk_allocator.cpp
++++ b/libs/image/tiles3/swap/kis_chunk_allocator.cpp
+@@ -70,10 +70,12 @@ KisChunk KisChunkAllocator::getChunk(quint64 size)
+             return WRAP_PREVIOUS_CHUNK_DATA(m_iterator);
+     }
+ 
+-    qFatal("KisChunkAllocator: out of swap space");
++    qWarning("KisChunkAllocator: out of swap space (requested size %llu, storeSize %llu, maxSize %llu)",
++             static_cast<unsigned long long>(size),
++             static_cast<unsigned long long>(m_storeSize),
++             static_cast<unsigned long long>(m_storeMaxSize));
+ 
+-    // just let gcc be happy! :)
+-    return KisChunk(m_list.end());
++    return KisChunk();
+ }
+ 
+ bool KisChunkAllocator::tryInsertChunk(KisChunkDataList &list,
+diff --git a/libs/image/tiles3/swap/kis_chunk_allocator.h b/libs/image/tiles3/swap/kis_chunk_allocator.h
+index 89bb6ff2..9f8cd5c7 100644
+--- a/libs/image/tiles3/swap/kis_chunk_allocator.h
++++ b/libs/image/tiles3/swap/kis_chunk_allocator.h
+@@ -81,13 +81,17 @@ public:
+ class KRITAIMAGE_EXPORT KisChunk
+ {
+ public:
+-    KisChunk() {}
++    KisChunk() : m_valid(false) {}
+ 
+     KisChunk(KisChunkDataListIterator iterator)
+-        : m_iterator(iterator)
++        : m_iterator(iterator), m_valid(true)
+     {
+     }
+ 
++    inline bool isValid() const {
++        return m_valid;
++    }
++
+     inline quint64 begin() const {
+         return m_iterator->m_begin;
+     }
+@@ -110,6 +114,7 @@ public:
+ 
+ private:
+     KisChunkDataListIterator m_iterator;
++    bool m_valid {false};
+ };
+ 
+ 
+diff --git a/libs/image/tiles3/swap/kis_swapped_data_store.cpp b/libs/image/tiles3/swap/kis_swapped_data_store.cpp
+index a2065b1a..e8eb79b7 100644
+--- a/libs/image/tiles3/swap/kis_swapped_data_store.cpp
++++ b/libs/image/tiles3/swap/kis_swapped_data_store.cpp
+@@ -63,8 +63,13 @@ bool KisSwappedDataStore::trySwapOutTileData(KisTileData *td)
+     m_compressor->compressTileData(td, (quint8*) m_buffer.data(), m_buffer.size(), bytesWritten);
+ 
+     KisChunk chunk = m_allocator->getChunk(bytesWritten);
++    if (!chunk.isValid()) {
++        qWarning() << "swap out of tile failed: allocator returned invalid chunk";
++        return false;
++    }
+     quint8 *ptr = m_swapSpace->getWriteChunkPtr(chunk);
+     if (!ptr) {
++        m_allocator->freeChunk(chunk);
+         qWarning() << "swap out of tile failed";
+         return false;
+     }
+-- 
+2.56.0
+

@@ -1,0 +1,54 @@
+diff --git a/libs/psd/psd_layer_section.cpp b/libs/psd/psd_layer_section.cpp
+index 4c776ce..542aba7 100644
+--- a/libs/psd/psd_layer_section.cpp
++++ b/libs/psd/psd_layer_section.cpp
+@@ -15,6 +15,7 @@
+ #include <kis_debug.h>
+ #include <kis_effect_mask.h>
+ #include <kis_group_layer.h>
++#include <kis_layer.h>
+ #include <kis_generator_layer.h>
+ #include <kis_image.h>
+ #include <kis_node.h>
+@@ -670,7 +671,8 @@ void PSDLayerMaskSection::writePsdImpl(QIODevice &io, KisNodeSP rootLayer, psd_c
+                 const bool nodeVisible = node->visible();
+                 const KoColorSpace *colorSpace = node->colorSpace();
+                 const quint8 nodeOpacity = node->opacity();
+-                const quint8 nodeClipping = 0;
++                const KisLayer *layerObj = qobject_cast<const KisLayer *>(node.data());
++                const quint8 nodeClipping = (layerObj && layerObj->clippingEnabled()) ? 1 : 0;
+                 const int nodeLabelColor = node->colorLabelIndex();
+                 const KisPaintLayer *paintLayer = qobject_cast<KisPaintLayer *>(node.data());
+                 const bool alphaLocked = (paintLayer && paintLayer->alphaLocked());
+@@ -1058,7 +1060,8 @@ void PSDLayerMaskSection::writeTiffImpl(QIODevice &io, KisNodeSP rootLayer, psd_
+                 const bool nodeVisible = node->visible();
+                 const KoColorSpace *colorSpace = node->colorSpace();
+                 const quint8 nodeOpacity = node->opacity();
+-                const quint8 nodeClipping = 0;
++                const KisLayer *layerObj = qobject_cast<const KisLayer *>(node.data());
++                const quint8 nodeClipping = (layerObj && layerObj->clippingEnabled()) ? 1 : 0;
+                 const int nodeLabelColor = node->colorLabelIndex();
+                 const KisPaintLayer *paintLayer = qobject_cast<KisPaintLayer *>(node.data());
+                 const bool alphaLocked = (paintLayer && paintLayer->alphaLocked());
+diff --git a/plugins/impex/psd/psd_loader.cpp b/plugins/impex/psd/psd_loader.cpp
+index 87e365c..9a5aa62 100644
+--- a/plugins/impex/psd/psd_loader.cpp
++++ b/plugins/impex/psd/psd_loader.cpp
+@@ -19,6 +19,7 @@
+ #include <KoSvgTextShape.h>
+ #include <KoSvgTextShapeMarkupConverter.h>
+ #include <kis_shape_layer.h>
++#include <kis_layer.h>
+ #include <KoPathShape.h>
+ #include <KoShapeStroke.h>
+ #include <kis_shape_selection.h>
+@@ -562,6 +563,9 @@ KisImportExportErrorCode PSDLoader::decode(QIODevice &io)
+                 m_image->addNode(layer, m_image->root());
+             }
+             layer->setVisible(layerRecord->visible);
++            if (layerRecord->clipping == 1) {
++                layer->enableClippingLayer(true);
++            }
+             newLayer = layer;
+ 
+         }

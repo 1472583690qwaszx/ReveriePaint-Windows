@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=reverie_verify
+Name=ReveriePaint Python Probe
+Name[zh_CN]=ReveriePaint Python 探针
+Comment=Writes a probe file when PyKrita loads it; used by 05-verify.ps1
+Comment[zh_CN]=被 PyKrita 加载时写出探针文件，供 05-verify.ps1 判定

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=reveriepaint
+Name=ReveriePaint
+Name[en]=ReveriePaint
+Name[zh_CN]=ReveriePaint
+Name[zh_TW]=ReveriePaint
+Comment=Import the bundled brush pack and inspect the Python environment
+Comment[zh_CN]=导入内置笔刷包，查看 Python 插件环境
+Comment[zh_TW]=匯入內建筆刷包，檢視 Python 外掛環境

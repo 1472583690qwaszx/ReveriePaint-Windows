@@ -1,0 +1,258 @@
+# 在 windows-latest 上编译 ReveriePaint Windows 版（Krita 6.0.4 + PyKrita），产出便携包与安装包
+#
+# 触发：push 到 main，或在 Actions 页面 Run workflow（可指定 Krita tag）
+# 产物：Artifacts → ReveriePaint-Windows（ReveriePaint.zip、ReveriePaint-*-setup.exe、build.log）
+#
+# 说明：
+#   * Krita 源码与 17 条补丁都从上游 LanRhyme/ReveriePaint 克隆获得；0005b 是本仓库自带的 PSD 重基补丁
+#   * 依赖走 KDE 官方 krita-deps-management 的 setup-env.py，约 1~2GB，10~20 分钟
+#   * 4 核 runner 全量编译约 2~4 小时
+
+name: Windows build and installer
+
+on:
+  workflow_dispatch:
+    inputs:
+      krita_tag:
+        description: 'Krita tag'
+        required: false
+        default: 'v6.0.4'
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 360
+    env:
+      KRITA_ROOT: C:\krita-dev
+      LLVM_MINGW: C:\deps\llvm-mingw-20251118-ucrt-x86_64
+      NINJA_DIR: C:\deps\Ninja
+      CMAKE_HOME: C:\deps\cmake-3.31.6-windows-x86_64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.13 (x64)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          architecture: x64
+
+      - name: Install toolchain (llvm-mingw 20251118 / Ninja / CMake 3.31)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $ProgressPreference = 'SilentlyContinue'
+          New-Item -ItemType Directory -Force C:\deps | Out-Null
+
+          if (-not (Test-Path "$env:LLVM_MINGW\bin\clang++.exe")) {
+            Invoke-WebRequest -Uri 'https://github.com/mstorsjo/llvm-mingw/releases/download/20251118/llvm-mingw-20251118-ucrt-x86_64.zip' -OutFile "$env:RUNNER_TEMP\llvm.zip"
+            Expand-Archive "$env:RUNNER_TEMP\llvm.zip" -DestinationPath 'C:\deps' -Force
+          }
+          if (-not (Test-Path "$env:NINJA_DIR\ninja.exe")) {
+            Invoke-WebRequest -Uri 'https://github.com/ninja-build/ninja/releases/latest/download/ninja-win.zip' -OutFile "$env:RUNNER_TEMP\ninja.zip"
+            New-Item -ItemType Directory -Force $env:NINJA_DIR | Out-Null
+            Expand-Archive "$env:RUNNER_TEMP\ninja.zip" -DestinationPath $env:NINJA_DIR -Force
+          }
+          if (-not (Test-Path "$env:CMAKE_HOME\bin\cmake.exe")) {
+            Invoke-WebRequest -Uri 'https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-windows-x86_64.zip' -OutFile "$env:RUNNER_TEMP\cmake.zip"
+            Expand-Archive "$env:RUNNER_TEMP\cmake.zip" -DestinationPath 'C:\deps' -Force
+          }
+          "$env:CMAKE_HOME\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+          "$env:NINJA_DIR" | Out-File -FilePath $env:GITHUB_PATH -Append
+          & "$env:CMAKE_HOME\bin\cmake.exe" --version
+          & "$env:NINJA_DIR\ninja.exe" --version
+
+      - name: Clone upstream ReveriePaint (assets / patches / LICENSE)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          git clone --depth 1 https://github.com/LanRhyme/ReveriePaint.git "$env:GITHUB_WORKSPACE\upstream"
+          if ($LASTEXITCODE -ne 0) { throw 'clone upstream failed' }
+          if (Test-Path "$env:GITHUB_WORKSPACE\upstream\LICENSE") {
+            Copy-Item "$env:GITHUB_WORKSPACE\upstream\LICENSE" "$env:GITHUB_WORKSPACE\LICENSE" -Force
+          }
+          $assets = "$env:GITHUB_WORKSPACE\upstream\app\src\main\assets"
+          foreach ($sub in @('paintoppresets', 'brushes', 'patterns')) {
+            "  {0}: {1} files" -f $sub, (Get-ChildItem "$assets\$sub" -File).Count
+          }
+
+      - name: Clone Krita source and dependencies
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $tag = '${{ inputs.krita_tag }}'
+          if (-not $tag) { $tag = 'v6.0.4' }
+          New-Item -ItemType Directory -Force $env:KRITA_ROOT | Out-Null
+
+          git clone --depth 1 --branch $tag https://invent.kde.org/graphics/krita.git "$env:KRITA_ROOT\krita"
+          if ($LASTEXITCODE -ne 0) { throw 'clone krita failed' }
+          git clone --depth 1 https://invent.kde.org/packaging/krita-deps-management.git "$env:KRITA_ROOT\krita-deps-management"
+          if ($LASTEXITCODE -ne 0) { throw 'clone deps-management failed' }
+          git clone --depth 1 https://invent.kde.org/packaging/krita-ci-utilities.git "$env:KRITA_ROOT\krita-deps-management\ci-utilities"
+          if ($LASTEXITCODE -ne 0) { throw 'clone ci-utilities failed' }
+          git -C "$env:KRITA_ROOT\krita" rev-parse --short HEAD
+
+      - name: Bootstrap build environment (setup-env.py)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $py = "$env:KRITA_ROOT\PythonEnv\Scripts\python.exe"
+          python -m venv "$env:KRITA_ROOT\PythonEnv"
+          if ($LASTEXITCODE -ne 0) { throw 'venv failed' }
+          & $py -m pip install --upgrade pip
+          & $py -m pip install -r "$env:KRITA_ROOT\krita-deps-management\requirements.txt"
+          if ($LASTEXITCODE -ne 0) { throw 'requirements failed' }
+          & $py -m pip install -r "$env:KRITA_ROOT\krita-deps-management\ci-utilities\requirements-windows.txt"
+          if ($LASTEXITCODE -ne 0) { throw 'requirements-windows failed' }
+
+          Push-Location $env:KRITA_ROOT
+          try {
+            & $py "$env:KRITA_ROOT\krita-deps-management\tools\setup-env.py" --full-krita-env -v "$env:KRITA_ROOT\PythonEnv" -p "$env:LLVM_MINGW\bin" -p "$env:LLVM_MINGW\x86_64-w64-mingw32\bin" -p "$env:NINJA_DIR"
+            if ($LASTEXITCODE -ne 0) { throw 'setup-env.py failed' }
+          }
+          finally { Pop-Location }
+
+          if (-not (Test-Path "$env:KRITA_ROOT\env.bat")) { throw 'env.bat missing' }
+          'env.bat: OK'
+          'embedded python: ' + (Test-Path "$env:KRITA_ROOT\_install\python")
+
+      - name: Apply ReveriePaint patches
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $krita = "$env:KRITA_ROOT\krita"
+          $patchDir = "$env:GITHUB_WORKSPACE\upstream\patches\krita"
+          git -C $krita config user.email 'port@reveriepaint.local'
+          git -C $krita config user.name 'ReveriePaint Port'
+
+          # 顺序有依赖：0004/0016 依赖 0002；0005b 依赖 0005
+          $plan = @(
+            @{ id = '0002'; ex = @() },
+            @{ id = '0003'; ex = @() },
+            @{ id = '0004'; ex = @() },
+            @{ id = '0005'; ex = @('libs/psd/psd_layer_section.cpp', 'plugins/impex/psd/psd_loader.cpp') },
+            @{ id = '0005b'; ex = @() },
+            @{ id = '0008'; ex = @() },
+            @{ id = '0011'; ex = @('REVERIE-PATCHES.md') },
+            @{ id = '0012'; ex = @() },
+            @{ id = '0015'; ex = @() },
+            @{ id = '0017'; ex = @() }
+          )
+
+          foreach ($p in $plan) {
+            if ($p.id -eq '0005b') {
+              $file = "$env:GITHUB_WORKSPACE\windows\patches\0005b-psd-clipping-rebase.patch"
+            }
+            else {
+              $file = (Get-ChildItem $patchDir -Filter "$($p.id)-*.patch" | Select-Object -First 1).FullName
+            }
+            if (-not $file -or -not (Test-Path $file)) { throw "patch $($p.id) not found" }
+
+            $gitArgs = @('-C', $krita, 'apply', '--3way', '--whitespace=nowarn')
+            foreach ($e in $p.ex) { $gitArgs += "--exclude=$e" }
+            $gitArgs += $file
+
+            & git @gitArgs
+            if ($LASTEXITCODE -ne 0) { throw "patch $($p.id) failed: $file" }
+            & git -C $krita add -A
+            & git -C $krita commit -q -m "reverie-port: apply $($p.id)"
+            "  [OK] $($p.id)"
+          }
+
+      - name: Configure and build (cmake + ninja install)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force "$env:KRITA_ROOT\b_krita" | Out-Null
+
+          $src = "$env:KRITA_ROOT\krita".Replace('\', '/')
+          $inst = "$env:KRITA_ROOT\_install".Replace('\', '/')
+
+          $bat = @"
+          @echo off
+          call "$env:KRITA_ROOT\env.bat"
+          if errorlevel 1 exit /b 30
+          cd /d "$env:KRITA_ROOT\b_krita"
+          cmake "$src" -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX="$inst" -DBUILD_WITH_QT6=ON -DALLOW_UNSTABLE=QT6 -DKRITA_ENABLE_PCH=OFF -DHIDE_SAFE_ASSERTS=OFF -DKRITA_USE_SURFACE_COLOR_MANAGEMENT_API=OFF -DBUILD_TESTING=OFF
+          if errorlevel 1 exit /b 31
+          ninja -j4 install
+          if errorlevel 1 exit /b 32
+          exit /b 0
+          "@
+          $batPath = "$env:KRITA_ROOT\build.bat"
+          Set-Content -LiteralPath $batPath -Value $bat -Encoding ASCII
+
+          cmd /c call $batPath 2>&1 | Tee-Object -FilePath "$env:KRITA_ROOT\build.log"
+          $rc = $LASTEXITCODE
+          if ($rc -ne 0) { throw "build failed, exit $rc" }
+
+          if (-not (Test-Path "$env:KRITA_ROOT\_install\bin\krita.exe")) { throw 'krita.exe missing after install' }
+          $pykrita = Get-ChildItem "$env:KRITA_ROOT\_install" -Recurse -Filter '*kritapykrita*' -ErrorAction SilentlyContinue
+          if ($pykrita) { 'PyKrita: ' + ($pykrita[0].FullName) } else { throw 'kritapykrita not built (Python/SIP/PyQt6 not detected)' }
+
+      - name: Package portable build
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force "$env:KRITA_ROOT\dist" | Out-Null
+
+          $bat = @"
+          @echo off
+          call "$env:KRITA_ROOT\env.bat"
+          set MINGW_BIN_DIR=$env:LLVM_MINGW\bin
+          cd /d "$env:KRITA_ROOT\dist"
+          "$env:KRITA_ROOT\PythonEnv\Scripts\python.exe" -u "$env:KRITA_ROOT\krita\packaging\windows\package-complete.py" --no-interactive --package-name ReveriePaint --src-dir "$env:KRITA_ROOT\krita" --deps-install-dir "$env:KRITA_ROOT\_install" --krita-install-dir "$env:KRITA_ROOT\_install"
+          exit /b %errorlevel%
+          "@
+          $batPath = "$env:KRITA_ROOT\package.bat"
+          Set-Content -LiteralPath $batPath -Value $bat -Encoding ASCII
+
+          cmd /c call $batPath
+          if ($LASTEXITCODE -ne 0) { throw "package-complete.py failed, exit $LASTEXITCODE" }
+
+          $pkg = "$env:KRITA_ROOT\dist\ReveriePaint"
+          if (-not (Test-Path $pkg)) { throw 'package dir missing' }
+
+          # 笔刷资产随包分发
+          $assets = "$env:GITHUB_WORKSPACE\upstream\app\src\main\assets"
+          $dst = Join-Path $pkg 'share\reveriepaint\assets'
+          New-Item -ItemType Directory -Force $dst | Out-Null
+          foreach ($sub in @('paintoppresets', 'brushes', 'patterns')) {
+            Copy-Item "$assets\$sub" -Destination (Join-Path $dst $sub) -Recurse -Force
+          }
+
+          if (-not (Test-Path "$env:KRITA_ROOT\dist\ReveriePaint.zip")) {
+            Compress-Archive -Path $pkg -DestinationPath "$env:KRITA_ROOT\dist\ReveriePaint.zip"
+          }
+          $size = (Get-ChildItem $pkg -Recurse -File | Measure-Object Length -Sum).Sum / 1MB
+          'package size: {0:N0} MB' -f $size
+          'pykrita desktop files: ' + (Get-ChildItem "$pkg\share\krita\pykrita" -Filter '*.desktop' -ErrorAction SilentlyContinue).Count
+
+      - name: Build installer (Inno Setup)
+        shell: pwsh
+        run: |
+          choco install innosetup --no-progress -y
+          $iscc = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
+          if (-not (Test-Path $iscc)) { $iscc = (Get-Command iscc.exe).Source }
+          & $iscc "/DDistDir=$env:KRITA_ROOT\dist\ReveriePaint" "windows\installer\reveriepaint.iss"
+          if ($LASTEXITCODE -ne 0) { throw "iscc failed, exit $LASTEXITCODE" }
+          Get-ChildItem "windows\out" -Filter '*.exe' | ForEach-Object { $_.FullName + ' ' + [math]::Round($_.Length / 1MB) + ' MB' }
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReveriePaint-Windows
+          path: |
+            C:\krita-dev\dist\ReveriePaint.zip
+            windows\out\*.exe
+            C:\krita-dev\build.log
+          if-no-files-found: warn
+          retention-days: 14
