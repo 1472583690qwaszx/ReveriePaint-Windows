@@ -1,4 +1,58 @@
 # CI failure log
 run: 
-44132525492
+45816621769
 
+--- preflight-console.log tail 100 ---
+iscc: C:\Program Files (x86)\Inno Setup 6\ISCC.exe
+download isl: https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/ChineseSimplified.isl
+isl size: 21516
+chinese isl usable: True
+Inno Setup 6 Command-Line Compiler
+Copyright (C) 1997-2026 Jordan Russell. All rights reserved.
+Portions Copyright (C) 2000-2026 Martijn Laan. All rights reserved.
+Portions Copyright (C) 2001-2004 Alex Yackimoff. All rights reserved.
+https://www.innosetup.com
+
+Compiler engine version: Inno Setup 6.7.1
+Non-commercial use only
+
+Preprocessing
+   Reading file: C:\Program Files (x86)\Inno Setup 6\ISPPBuiltins.iss
+Parsing [Setup] section, line 2
+Parsing [Setup] section, line 3
+Parsing [Setup] section, line 4
+Parsing [Setup] section, line 5
+Parsing [Setup] section, line 6
+Parsing [Setup] section, line 7
+Reading file (WizardImageFile)
+Reading file (WizardSmallImageFile)
+Preparing Setup program executable
+   Verification successful
+   Updating icons (Setup.e32)
+   Updating version info (Setup.e32)
+Determining language code pages
+Parsing [Languages] section, line 9
+   Reading file: C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl
+Parsing [Languages] section, line 10
+   Reading file: C:\Program Files (x86)\Inno Setup 6\Default.isl
+   Messages in script file
+Reading default messages from Default.isl
+Parsing [Languages] section, line 9
+   Reading file: C:\Program Files (x86)\Inno Setup 6\Languages\ChineseSimplified.isl
+Parsing [Languages] section, line 10
+   Reading file: C:\Program Files (x86)\Inno Setup 6\Default.isl
+Parsing [LangOptions], [Messages], and [CustomMessages] sections
+   Messages in script file
+Reading [Code] section
+Creating setup files
+   Verification successful
+   Updating icons (Setup.exe)
+   Compressing Setup program executable
+   Updating version info (Setup.exe)
+   Updating manifest (Setup.exe)
+
+
+Successful compile (1.109 sec). Resulting Setup program filename is:
+D:\a\_temp\preflight.exe
+preflight iscc exit: 0
+chinese installer language available
