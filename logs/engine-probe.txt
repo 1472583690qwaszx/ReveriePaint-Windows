@@ -1,129 +1,129 @@
-probe: 44/45 cpp files failed
+probe: 44/45 cpp files failed (gen includes: 44)
 ### reverie_jni_animation.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_brush.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_collab.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_core.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_filters.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_io.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_layers.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_panel.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_selection.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### reverie_jni_snapshot.cpp
 C:\rp\app\src\main\cpp\reverie_jni_snapshot.cpp:34:16: error: use of undeclared identifier 'PROP_VALUE_MAX'
 1 error generated.
 ### reverie_jni_tools.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreAdjustment.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreAnimation.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreApi.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreBrush.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreCollab.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreColorSpaceHook.cpp
 C:\krita-dev\krita\libs\pigment/KoColorSpace.h:18:10: fatal error: 'boost/operators.hpp' file not found
 1 error generated.
 ### ReverieCoreDocument.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreFilterKernels.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreFilterPlugins.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreFilterPreview.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreFilterPreviewFx.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreFilterRegistry.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreFilters.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreGenerators.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreIccData.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreInstance.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreIO.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreLayerExtras.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/KoID.h:17:10: fatal error: 'boost/optional.hpp' file not found
 1 error generated.
 ### ReverieCoreLayerIO.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreLayerOps.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreLayers.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreMiscTools.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCorePanel.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCorePatternFill.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreRender.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreSelection.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreSelectionLasso.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreSelectionTools.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreStroke.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreTransform.cpp
-C:\krita-dev\krita\libs\global/kis_debug.h:12:10: fatal error: 'kritaglobal_export.h' file not found
+C:\krita-dev\krita\libs\global/kis_global.h:13:10: fatal error: 'KoConfig.h' file not found
 1 error generated.
 ### ReverieCoreUndoStore.cpp
-C:\krita-dev\krita\libs\command/kis_undo_store.h:12:10: fatal error: 'kritacommand_export.h' file not found
+C:\krita-dev\krita\libs\command/kundo2magicstring.h:14:10: fatal error: 'klocalizedstring.h' file not found
 1 error generated.
 ### ReverieCrashHandler.cpp
 C:\rp\app\src\main\cpp\ReverieCrashHandler.cpp:13:10: fatal error: 'ucontext.h' file not found
