@@ -6,6 +6,7 @@
 #include <sys/mman.h>
 
 #include <cstdio>
+#include <io.h>
 #include <cstring>
 #include <windows.h>
 
@@ -21,6 +22,10 @@ long sysconf(int name) {
         return static_cast<long>(GetActiveProcessorCount(ALL_PROCESSOR_GROUPS));
     }
     return -1;
+}
+
+int fsync(int fd) {
+    return _commit(fd);
 }
 
 int kill(int pid, int sig) {

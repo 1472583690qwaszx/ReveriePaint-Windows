@@ -22,6 +22,8 @@ long sysconf(int name);
 // Crash handler signal path; the Windows build compiles the handler out, so a
 // no-op keeps the remaining call sites linkable.
 int kill(int pid, int sig);
+// ReverieCoreIO.cpp 用 ::fsync 刷盘；Windows 走 _commit。
+int fsync(int fd);
 
 #ifdef __cplusplus
 }

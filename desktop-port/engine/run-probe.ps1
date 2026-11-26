@@ -86,7 +86,10 @@ $dgTime = Join-Path $rp 'dg-time.cpp'
 Set-Content -Path $dgTime -Value @('#include <time.h>', 'int main(){ struct timespec dg_ts; (void)dg_ts; return 0; }') -Encoding utf8
 $dgJni = Join-Path $rp 'dg-jni.cpp'
 Set-Content -Path $dgJni -Value @('#include <jni.h>', 'JNIEnv* dg_env; jobject dg_obj;') -Encoding utf8
-foreach ($d in @($dgTime, $dgJni)) {
+# assert 宏到底有没有来到：这条 rc 直接判定 lager / Eigen 那 28 个 TU 的生死
+$dgAssert = Join-Path $rp 'dg-assert.cpp'
+Set-Content -Path $dgAssert -Value @('#include <cassert>', 'void dg_a(){ assert(1); }') -Encoding utf8
+foreach ($d in @($dgTime, $dgJni, $dgAssert)) {
   $o = & $clang ('@' + $rsp) ($d.Replace($bs, '/')) 2>&1
   $diag += ('[' + (Split-Path $d -Leaf) + '] rc=' + $LASTEXITCODE)
   $diag += @($o | Select-Object -First 12 | ForEach-Object { ([string]$_).Trim() })
@@ -108,7 +111,9 @@ $oE = & $clang ('@' + $rspE) ($dgJni.Replace($bs, '/')) 2>&1
 $diag += ('[dg-jni -E] rc=' + $LASTEXITCODE)
 $diag += @($oE | Select-Object -First 16 | ForEach-Object { ([string]$_).Trim() })
 $diag | Out-File -FilePath 'logs/probe-diag.txt' -Encoding utf8
-$skip = @('ReverieCrashHandler.cpp')
+# ReverieCrashHandler 的 Linux 信号栈在 Windows 上不编；
+# ReverieCoreCollab 依赖 libdatachannel（rtc/rtc.hpp），Krita 依赖里没有，桌面版不做协作，先不探
+$skip = @('ReverieCrashHandler.cpp', 'ReverieCoreCollab.cpp')
 $files = @(Get-ChildItem (Join-Path $eng '*.cpp') | Where-Object { $skip -notcontains $_.Name } | Sort-Object Name)
 $failed = 0
 $report = @()

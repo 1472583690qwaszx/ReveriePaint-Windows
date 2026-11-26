@@ -23,5 +23,12 @@ int sched_yield(void);
 }
 #endif
 
-#define CPU_ZERO(set) for (int _i = 0; _i < 16; ++_i) { (set)->bits[_i] = 0UL; }
-#define CPU_SET(cpu, set) ((set)->bits[(cpu) / 32] |= (1UL << ((cpu) % 32)))
+#define CPU_SETSIZE 1024
+#define CPU_ZERO(set) \
+    for (int _i = 0; _i < 16; ++_i) { (set)->bits[_i] = 0UL; }
+#define CPU_SET(cpu, set) \
+    ((set)->bits[(cpu) / 32] |= (1UL << ((cpu) % 32)))
+#define CPU_CLR(cpu, set) \
+    ((set)->bits[(cpu) / 32] &= ~(1UL << ((cpu) % 32)))
+#define CPU_ISSET(cpu, set) \
+    (((set)->bits[(cpu) / 32] & (1UL << ((cpu) % 32))) != 0)

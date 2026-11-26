@@ -31,5 +31,13 @@
 #include <cmath>
 #include <cassert>
 
+// lager（Krita 的 signal/slot 库）自己不 include <cassert>，只靠调用方先带来；
+// 实测这条 include 链上 <cassert> 拿到的 assert 宏并不可用（命中第三方 assert.h），
+// 于是 lager/detail/nodes.hpp 里的 assert(...) 变成未声明标识符。这里兜底：
+// 确认宏在，否则按 NDEBUG 语义补成 no-op（正式构建同样是 Release/NDEBUG）。
+#ifndef assert
+#define assert(expr) ((void)0)
+#endif
+
 #include <jni.h>
 #include "reverie_win_compat.h"
