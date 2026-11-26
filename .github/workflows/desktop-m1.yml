@@ -84,14 +84,52 @@ jobs:
           pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/01-bootstrap-deps.ps1 -Root $env:KRITA_ROOT -KritaTag v6.0.4 -DepsBranch $env:KRITA_DEPS_BRANCH -LlvmMingw $env:LLVM_MINGW -NinjaDir $env:NINJA_DIR -PythonExe python
           if ($LASTEXITCODE -ne 0) { throw ('01 failed: ' + $LASTEXITCODE) }
 
+      - name: Patch precheck diagnostics
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Continue'
+          New-Item -ItemType Directory -Force logs | Out-Null
+          $f = 'logs/apply-patches.txt'
+          $k = Join-Path $env:KRITA_ROOT 'krita'
+          $patch = Join-Path $env:GITHUB_WORKSPACE 'windows/patches/krita/0002-fix-roundmarker-KisMarkerPainter.patch'
+          $target = 'libs/image/kis_marker_painter.cpp'
+          $out = @()
+          $out += '--- git version ---'
+          $out += (& git --version 2>&1)
+          $out += '--- eol config ---'
+          $out += (& git -C $k config --list --show-origin 2>&1 | Select-String -Pattern 'autocrlf|eol|safecrlf' | ForEach-Object { ([string]$_).Trim() })
+          $out += '--- head ---'
+          $out += (& git -C $k rev-parse HEAD 2>&1)
+          $out += '--- gitattributes ---'
+          if (Test-Path (Join-Path $k '.gitattributes')) { $out += (Get-Content (Join-Path $k '.gitattributes') | Select-Object -First 15) } else { $out += 'no .gitattributes' }
+          $out += '--- index entry ---'
+          $idx = (& git -C $k ls-files -s $target 2>&1)
+          $out += $idx
+          $sha = ($idx -split ' ')[1]
+          $out += ('blob type: ' + (& git -C $k cat-file -t $sha 2>&1))
+          $out += '--- working file bytes ---'
+          $bytes = [System.IO.File]::ReadAllBytes((Join-Path $k $target))
+          $crlf = 0
+          for ($i = 0; $i -lt $bytes.Length - 1; $i++) { if ($bytes[$i] -eq 13 -and $bytes[$i + 1] -eq 10) { $crlf++ } }
+          $out += ('CRLF pairs: ' + $crlf + ' / bytes: ' + $bytes.Length)
+          $out += '--- file lines 88-96 ---'
+          $lines = [System.IO.File]::ReadAllLines((Join-Path $k $target))
+          $out += ($lines[87..95] | ForEach-Object { '[' + $_ + ']' })
+          $out += '--- apply --check --3way ---'
+          $out += (& git -C $k apply --check --3way --whitespace=nowarn $patch 2>&1)
+          $out += '--- apply --check plain ---'
+          $out += (& git -C $k apply --check --whitespace=nowarn $patch 2>&1)
+          $out += '--- status ---'
+          $out += (& git -C $k status --porcelain 2>&1 | Select-Object -First 10)
+          $out | Tee-Object -FilePath $f
+
       - name: Apply patches
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force logs | Out-Null
-          & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt
+          & pwsh -NoProfile -ExecutionPolicy Bypass -File windows/scripts/02-apply-patches.ps1 -Root $env:KRITA_ROOT *>&1 | Tee-Object -FilePath logs/apply-patches.txt -Append
           $rc = $LASTEXITCODE
           ('02 rc: ' + $rc) | Tee-Object -FilePath logs/apply-patches.txt -Append
-          & git -C (Join-Path $env:KRITA_ROOT 'krita') status --porcelain 2>&1 | Select-Object -First 25 | Tee-Object -FilePath logs/apply-patches.txt -Append
           if ($rc -ne 0) { throw ('02 failed: ' + $rc) }
 
       - name: Configure Krita (no build)
