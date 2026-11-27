@@ -1,0 +1,43 @@
+--- link step start 2026-11-27T01:38:28.1058499+00:00
+diag: pwsh=7.6.10 linkScript=True objDir=True cwd=D:\a\ReveriePaint-Windows\ReveriePaint-Windows
+--- link diag ---
+objects=43 implibs=132 statics=0 rc=1 time=0s
+dll=missing
+undefined symbols: 20
+--- undefined top 20 ---
+[13x] __declspec
+[1x] ReverieCore::collabStartSession
+[1x] ReverieCore::collabStopSession
+[1x] ReverieCore::collabLayersMetaJson
+[1x] ReverieCore::collabCanEditCurrentLayer
+[1x] AndroidBitmap_lockPixels
+[1x] AndroidBitmap_getInfo
+[1x] AndroidBitmap_unlockPixels
+--- linker output tail 60 ---
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(Java_com_reverie_paint_core_ReverieCoreBridge_renderKeyframeFull)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(Java_com_reverie_paint_core_ReverieCoreBridge_importKeyframeFromBitmap)
+>>> referenced 11 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) QByteArray::QByteArray(long long, char)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(Java_com_reverie_paint_core_ReverieCoreBridge_storeRevAsset)
+>>> referenced by C:/rp/obj/32-ReverieCoreLayers.o:(ReverieCore::findLayersAtPoint(int, int, int))
+>>> referenced by C:/rp/obj/37-ReverieCoreSelection.o:(ReverieCore::selectionMask() const)
+>>> referenced 1 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) QByteArray::reallocData(long long, QArrayData::AllocationOption)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(Java_com_reverie_paint_core_ReverieCoreBridge_storeRevAsset)
+>>> referenced by C:/rp/obj/07-reverie_jni_layers.o:(Java_com_reverie_paint_core_ReverieCoreBridge_setFillLayerPattern)
+>>> referenced by C:/rp/obj/11-reverie_jni_tools.o:(Java_com_reverie_paint_core_ReverieCoreBridge_floodFillPatternAt)
+>>> referenced 17 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) QArrayData::allocate(QArrayData**, long long, long long, long long, QArrayData::AllocationOption)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QList<int>::reserve(long long))
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::allocateGrow(QArrayDataPointer<int> const&, long long, QArrayData::GrowthPosition))
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(QArrayDataPointer<QPointF>::allocateGrow(QArrayDataPointer<QPointF> const&, long long, QArrayData::GrowthPosition))
+>>> referenced 99 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) qBadAlloc()
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QList<int>::reserve(long long))
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::reallocateAndGrow(QArrayData::GrowthPosition, long long, QArrayDataPointer<int>*))
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::reallocateAndGrow(QArrayData::GrowthPosition, long long, QArrayDataPointer<int>*))
+link rc: 1
