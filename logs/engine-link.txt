@@ -2,13 +2,89 @@
 extras=3
 objects=46 implibs=132 statics=0 rc=1 time=0s
 dll=missing
-undefined symbols: 0
+undefined symbols: 20
+scan roots: C:/krita-dev/b_krita=True ; C:/krita-dev/_install=True ; C:/krita-dev/deps=False ; C:/krita-dev/_deps=False
+implibs(first 25): libdummytrivialinterface.dll.a,libkrita.dll.a,libkritabasicflakes.dll.a,libkritacommand.dll.a,libkritaexifcommon.dll.a,libkritaflake.dll.a,libkritaglobal.dll.a,libkritaimage.dll.a,libkritaimpex.dll.a,libkritalibbrush.dll.a,libkritalibkis.dll.a,libkritalibkra.dll.a,libkritalibpaintop.dll.a,libkritametadata.dll.a,libkritamultiarch.dll.a,libkritapigment.dll.a,libkritaplugin.dll.a,libkritapsd.dll.a,libkritapsdutils.dll.a,libkritaqmicinterface.dll.a,libkritaqmlwidgets.dll.a,libkritaresources.dll.a,libkritaresourcewidgets.dll.a,libkritastore.dll.a,libkritatiffpsd.dll.a
+Qt6Core files: C:\krita-dev\_install\bin\Qt6Core.dll | C:\krita-dev\_install\bin\Qt6Core5Compat.dll | C:\krita-dev\_install\bin\.debug\Qt6Core.dll.debug | C:\krita-dev\_install\bin\.debug\Qt6Core5Compat.dll.debug | C:\krita-dev\_install\lib\Qt6Core.prl | C:\krita-dev\_install\lib\Qt6Core5Compat.prl
+--- undefined top 20 ---
+[1x] QArrayData::allocate
+[1x] ReverieCore::collabSyncOnReconnect
+[1x] ReverieCore::collabOnRemoteSignal
+[1x] QByteArray::reallocData
+[1x] QByteArray::QByteArray
+[1x] QString::toUtf8_helper
+[1x] QArrayData::reallocateUnaligned
+[1x] ReverieCore::collabOnPeerLeft
+[1x] ReverieCore::collabOnHostChanged
+[1x] qt_version_tag_6_11
+[1x] qBadAlloc
+[1x] QString::fromUtf8
+[1x] qt_assert_x
+[1x] qt_assert
+[1x] QByteArray::_empty
+[1x] ReverieCore::collabStartSession
+[1x] QColor::fromString
+[1x] QArrayData::deallocate
+[1x] ReverieCore::collabLayersMetaJson
+[1x] ReverieCore::collabOnPeerJoined
 --- linker output tail 60 ---
-ld.lld: error: duplicate symbol: ReverieCore::collabSyncAddedLayerPlacement(int, int, QString const&, int)
->>> defined at C:/rp/obj/32-ReverieCoreLayers.o
->>> defined at C:/rp/obj/xx-reverie_collab_stub.o
+>>> referenced by C:/rp/obj/37-ReverieCoreSelection.o:(ReverieCore::selectionMask() const)
+>>> referenced 1 more times
 
-ld.lld: error: duplicate symbol: ReverieCore::collabAdjustProtectedInsertPosition(KisSharedPtr<KisImage>, KisSharedPtr<KisNode>&, KisSharedPtr<KisNode>&) const
->>> defined at C:/rp/obj/32-ReverieCoreLayers.o
->>> defined at C:/rp/obj/xx-reverie_collab_stub.o
+ld.lld: error: undefined symbol: __declspec(dllimport) QByteArray::reallocData(long long, QArrayData::AllocationOption)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(Java_com_reverie_paint_core_ReverieCoreBridge_storeRevAsset)
+>>> referenced by C:/rp/obj/07-reverie_jni_layers.o:(Java_com_reverie_paint_core_ReverieCoreBridge_setFillLayerPattern)
+>>> referenced by C:/rp/obj/11-reverie_jni_tools.o:(Java_com_reverie_paint_core_ReverieCoreBridge_floodFillPatternAt)
+>>> referenced 17 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) QArrayData::allocate(QArrayData**, long long, long long, long long, QArrayData::AllocationOption)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QList<int>::reserve(long long))
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::allocateGrow(QArrayDataPointer<int> const&, long long, QArrayData::GrowthPosition))
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(QArrayDataPointer<QPointF>::allocateGrow(QArrayDataPointer<QPointF> const&, long long, QArrayData::GrowthPosition))
+>>> referenced 99 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) qBadAlloc()
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QList<int>::reserve(long long))
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::reallocateAndGrow(QArrayData::GrowthPosition, long long, QArrayDataPointer<int>*))
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::reallocateAndGrow(QArrayData::GrowthPosition, long long, QArrayDataPointer<int>*))
+>>> referenced 176 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) QArrayData::reallocateUnaligned(QArrayData*, void*, long long, long long, QArrayData::AllocationOption)
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(QArrayDataPointer<int>::reallocateAndGrow(QArrayData::GrowthPosition, long long, QArrayDataPointer<int>*))
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(QArrayDataPointer<QPointF>::reallocateAndGrow(QArrayData::GrowthPosition, long long, QArrayDataPointer<QPointF>*))
+>>> referenced by C:/rp/obj/05-reverie_jni_filters.o
+>>> referenced 23 more times
+
+ld.lld: error: undefined symbol: __declspec(dllimport) qt_version_tag_6_11
+>>> referenced by C:/rp/obj/01-reverie_jni_animation.o:(qt_version_tag_6_11_used)
+>>> referenced by C:/rp/obj/02-reverie_jni_brush.o
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o
+
+ld.lld: error: undefined symbol: __declspec(dllimport) QColor::fromString(QAnyStringView)
+>>> referenced by C:/rp/obj/02-reverie_jni_brush.o:(Java_com_reverie_paint_core_ReverieCoreBridge_setBrushSecondaryColor)
+>>> referenced by C:/rp/obj/17-ReverieCoreDocument.o:(ReverieCore::fillBackground(QString const&))
+>>> referenced by C:/rp/obj/17-ReverieCoreDocument.o:(ReverieCore::setBrushColorName(QString const&))
+
+ld.lld: error: undefined symbol: ReverieCore::collabLayersMetaJson() const
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabLayersMetaJson)
+
+ld.lld: error: undefined symbol: ReverieCore::collabStartSession(QString const&, QString const&, QString const&, QString const&, QString const&, QString const&)
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabStartSession)
+
+ld.lld: error: undefined symbol: ReverieCore::collabOnPeerJoined(QString const&, QString const&, bool)
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabOnPeerJoined)
+
+ld.lld: error: undefined symbol: ReverieCore::collabOnPeerLeft(QString const&)
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabOnPeerLeft)
+
+ld.lld: error: undefined symbol: ReverieCore::collabOnHostChanged(QString const&)
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabOnHostChanged)
+
+ld.lld: error: undefined symbol: ReverieCore::collabOnRemoteSignal(QString const&, QString const&)
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabOnRemoteSignal)
+
+ld.lld: error: undefined symbol: ReverieCore::collabSyncOnReconnect(QString const&, QString const&, QString const&)
+>>> referenced by C:/rp/obj/03-reverie_jni_collab.o:(Java_com_reverie_paint_core_ReverieCoreBridge_collabSyncOnReconnect)
+
+ld.lld: error: too many errors emitted, stopping now (use --error-limit=0 to see all errors)
 clang-21: error: linker command failed with exit code 1 (use -v to see invocation)
