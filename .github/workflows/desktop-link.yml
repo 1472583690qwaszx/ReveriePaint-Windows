@@ -150,49 +150,41 @@ jobs:
           & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-compile.ps1
           if ($LASTEXITCODE -ne 0) { throw ('compile failures: ' + $LASTEXITCODE) }
 
-      - name: Link reverie_core.dll
-        shell: pwsh
-        run: |
-          New-Item -ItemType Directory -Force logs | Out-Null
-          $tel = 'logs/link-console.txt'
-          ('--- link step start ' + (Get-Date).ToString('o')) | Out-File -FilePath $tel -Encoding utf8
-          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-link.ps1 *>&1 | Tee-Object -FilePath $tel -Append
-          $rc = $LASTEXITCODE
-          ('link rc: ' + $rc) | Out-File -FilePath $tel -Append -Encoding utf8
-          $hasLog = $false
-          if (Test-Path 'logs/engine-link.txt') { if ((Get-Item 'logs/engine-link.txt').Length -gt 60) { $hasLog = $true } }
-          if (-not $hasLog) {
-            ('LOG-PLACEHOLDER: run-link.ps1 did not write engine-link.txt; step console below') | Out-File -FilePath 'logs/engine-link.txt' -Encoding utf8
-            Get-Content $tel -Tail 60 | Out-File -FilePath 'logs/engine-link.txt' -Append -Encoding utf8
-          }
-          Get-Content $tel -Tail 30
-          if ($rc -ne 0) { throw ('link failures: ' + $rc) }
-
-      - name: Publish link report
+      - name: Link and publish report
         if: always()
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Continue'
           New-Item -ItemType Directory -Force logs | Out-Null
-          foreach ($n in @('engine-link','link-console','engine-compile','03-build','apply-patches','01-bootstrap')) {
+          $tel = 'logs/link-console.txt'
+          ('--- link step start ' + (Get-Date).ToString('o')) | Out-File -FilePath $tel -Encoding utf8
+          ('diag: pwsh=' + [string]$PSVersionTable.PSVersion + ' linkScript=' + (Test-Path 'desktop-port/engine/run-link.ps1') + ' objDir=' + (Test-Path 'C:/rp/obj') + ' cwd=' + (Get-Location).Path) | Out-File -FilePath $tel -Append -Encoding utf8
+          & pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File desktop-port/engine/run-link.ps1 *>&1 | Tee-Object -FilePath $tel -Append
+          $rc = $LASTEXITCODE
+          ('link rc: ' + $rc) | Out-File -FilePath $tel -Append -Encoding utf8
+          if (-not (Test-Path 'logs/engine-link.txt')) {
+            ('LOG-MISSING: run-link.ps1 未写日志，控制台见 link-console.txt') | Out-File -FilePath 'logs/engine-link.txt' -Encoding utf8
+            Get-Content $tel -Tail 60 | Out-File -FilePath 'logs/engine-link.txt' -Append -Encoding utf8
+          }
+          foreach ($n in @('link-console','engine-compile','03-build','apply-patches','01-bootstrap')) {
             $p = Join-Path 'logs' ($n + '.txt')
             if (-not (Test-Path $p)) { Set-Content $p -Value ($n + ' log missing') -Encoding utf8 }
           }
+          Get-Content $tel -Tail 40
           git config user.email 'ci@users.noreply.github.com'
           git config user.name 'CI'
-          git add -A logs
-          git diff --cached --quiet
-          if ($LASTEXITCODE -ne 0) {
-            git commit -m 'ci: engine link report'
-            for ($i = 1; $i -le 3; $i++) {
-              git pull --rebase --autostash -q
-              git push
-              if ($LASTEXITCODE -eq 0) { 'pushed attempt ' + $i; break }
-              'push attempt ' + $i + ' failed, retry'
-              Start-Sleep -Seconds (5 * $i)
-            }
-          } else { 'logs unchanged, nothing to commit' }
-          exit 0
+          $ok = $false
+          for ($i = 1; $i -le 3; $i++) {
+            git fetch -q origin main
+            git reset --soft FETCH_HEAD
+            git add -A logs
+            git commit -q -m 'ci: engine link report' 2>$null
+            git push -q
+            if ($LASTEXITCODE -eq 0) { ('pushed attempt ' + $i); $ok = $true; break }
+            ('push attempt ' + $i + ' failed'); Start-Sleep -Seconds (3 * $i)
+          }
+          if (-not $ok) { 'WARN: logs push failed' }
+          if ($rc -ne 0) { throw ('link failures: ' + $rc) }
 
       - uses: actions/upload-artifact@v4
         if: always()
