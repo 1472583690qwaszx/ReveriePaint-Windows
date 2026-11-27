@@ -2,6 +2,8 @@
 // ReverieCoreCollab.cpp depends on libdatachannel (rtc/rtc.hpp) which is not shipped on Windows.
 // In non-collab mode the engine only calls these guards/notifiers; they must behave as
 // "everything allowed, nothing to sync" so that normal single-user editing is unaffected.
+// 注意：collabSyncAddedLayerPlacement / collabAdjustProtectedInsertPosition 在 ReverieCoreLayers.cpp
+// 里已有非协作分支的实现，这里不能重复定义，否则链接期 duplicate symbol。
 #include "ReverieCore.h"
 
 bool ReverieCore::collabCanEditLayerIndex(int) const { return true; }
@@ -30,8 +32,6 @@ void ReverieCore::collabRecordLayerPixelBatch(const QVector<QPair<int, KisPaintD
 void ReverieCore::collabEmitLayerOp(int, int, const QString &, double, int) {}
 void ReverieCore::collabEmitLayerTreeAdded(int) {}
 void ReverieCore::collabEmitLayerMoved(const QVector<KisNode *> &) {}
-void ReverieCore::collabSyncAddedLayerPlacement(int, int, const QString &, int) {}
-void ReverieCore::collabAdjustProtectedInsertPosition(KisImageSP, KisNodeSP &, KisNodeSP &) const {}
 void ReverieCore::collabResetDocumentState() {}
 void ReverieCore::collabOnLocalStrokeBegin(int) {}
 void ReverieCore::collabOnLocalStrokeEnd(const QRect &) {}

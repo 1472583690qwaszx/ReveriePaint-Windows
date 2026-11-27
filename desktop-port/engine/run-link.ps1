@@ -84,14 +84,20 @@ $summary = @('--- link diag ---', ('extras=' + $extraSrc.Count), ('objects=' + $
 if (Test-Path $out) { $summary += ('dll=' + [int]((Get-Item $out).Length / 1024) + ' KB') } else { $summary += 'dll=missing' }
 $undef = @($lo | Where-Object { ([string]$_) -match 'undefined symbol' })
 $summary += ('undefined symbols: ' + $undef.Count)
+$diagRoots = @()
+foreach ($base in $scanRoots) { $diagRoots += (([string]$base).Replace($bs, '/') + '=' + (Test-Path $base)) }
+$summary += ('scan roots: ' + ($diagRoots -join ' ; '))
+$summary += ('implibs(first 25): ' + (($use | ForEach-Object { [System.IO.Path]::GetFileName($_) } | Select-Object -First 25) -join ','))
+$qtFiles = @(Get-ChildItem -Path $root -Recurse -Filter 'Qt6Core*' -File -ErrorAction SilentlyContinue | Select-Object -First 6)
+$summary += ('Qt6Core files: ' + (($qtFiles | ForEach-Object { $_.FullName }) -join ' | '))
 if ($undef.Count -gt 0) {
   $names = @{}
   foreach ($u in $undef) {
     $m = [regex]::Match(([string]$u), 'undefined symbol: (.+)$')
     if ($m.Success) {
       $n = $m.Groups[1].Value.Trim()
-      $n = ($n -replace '^__declspec\\(dllimport\\) ', '')
-      $n = ($n -replace '\\(.*$', '').Trim()
+      $n = ($n -replace '^__declspec\(dllimport\) ', '')
+      $n = ($n -replace '\(.*$', '').Trim()
       if ($names.ContainsKey($n)) { $names[$n]++ } else { $names[$n] = 1 }
     }
   }
