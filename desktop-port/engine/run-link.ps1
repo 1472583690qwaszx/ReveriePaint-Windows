@@ -19,6 +19,30 @@ $build = Join-Path $root 'b_krita'
 $inst = Join-Path $root '_install'
 $rp = 'C:/rp'
 $objDir = Join-Path $rp 'obj'
+$clang = Join-Path $env:LLVM_MINGW 'bin/clang++.exe'
+$extraSrc = @(Get-ChildItem (Join-Path $env:GITHUB_WORKSPACE 'desktop-port/engine/src') -Filter '*.cpp' -File -ErrorAction SilentlyContinue | Sort-Object Name)
+$cRsp = Join-Path $rp 'compile.rsp'
+$extraLog = @()
+if ($extraSrc.Count -gt 0) {
+  New-Item -ItemType Directory -Force $objDir | Out-Null
+  if (Test-Path $cRsp) {
+    $eng = Join-Path $rp 'app/src/main/cpp'
+    $extraRsp = Join-Path $rp 'compile-extra.rsp'
+    $txt = (Get-Content -Path $cRsp -Raw) + [char]10 + ('-I' + $eng.Replace($bs, '/')) + [char]10
+    [System.IO.File]::WriteAllText($extraRsp, $txt, (New-Object System.Text.UTF8Encoding($false)))
+    foreach ($f in $extraSrc) {
+      $xo = Join-Path $objDir ('xx-' + $f.BaseName + '.o')
+      $xo2 = & $clang ('@' + $extraRsp) ($f.FullName.Replace($bs, '/')) '-o' ($xo.Replace($bs, '/')) 2>&1
+      if ($LASTEXITCODE -ne 0) {
+        $extraLog += ('EXTRA COMPILE FAILED: ' + $f.Name)
+        $extraLog += @($xo2 | Where-Object { ([string]$_) -match 'error' } | Select-Object -First 5 | ForEach-Object { ([string]$_).Trim() })
+        Set-Content -Path $log -Value $extraLog -Encoding utf8
+        exit 1
+      }
+      $extraLog += ('extra ok: ' + $f.Name)
+    }
+  }
+}
 $objs = @(Get-ChildItem -Path $objDir -Filter '*.o' -File -ErrorAction SilentlyContinue | Sort-Object Name)
 if ($objs.Count -eq 0) {
   Set-Content -Path $log -Value 'link: no objects in C:/rp/obj (run-compile 未产出)' -Encoding utf8
@@ -27,7 +51,8 @@ if ($objs.Count -eq 0) {
 }
 $implibs = @()
 $statics = @()
-foreach ($base in @($build, (Join-Path $inst 'lib'))) {
+$scanRoots = @($build, $inst, (Join-Path $root 'deps'), (Join-Path $root '_deps'))
+foreach ($base in $scanRoots) {
   if (Test-Path $base) {
     $implibs += @(Get-ChildItem -Path $base -Recurse -Filter '*.dll.a' -File -ErrorAction SilentlyContinue | Sort-Object FullName)
   }
@@ -42,7 +67,6 @@ foreach ($base in @($build, (Join-Path $inst 'lib'))) {
     $statics += @(Get-ChildItem -Path $base -Recurse -Filter 'libkritaglobal.a' -File -ErrorAction SilentlyContinue | Select-Object -First 1)
   }
 }
-$clang = Join-Path $env:LLVM_MINGW 'bin/clang++.exe'
 $out = Join-Path $rp 'reverie_core.dll'
 $outImplib = Join-Path $rp 'reverie_core.dll.a'
 $lines = @('-shared', '-o', ($out.Replace($bs, '/')), ('-Wl,--out-implib=' + $outImplib.Replace($bs, '/')))
@@ -56,7 +80,7 @@ $t0 = Get-Date
 $lo = & $clang ('@' + $rsp) 2>&1
 $rc = $LASTEXITCODE
 $sec = [int]((Get-Date) - $t0).TotalSeconds
-$summary = @('--- link diag ---', ('objects=' + $objs.Count + ' implibs=' + $use.Count + ' statics=' + $statics.Count + ' rc=' + $rc + ' time=' + $sec + 's'))
+$summary = @('--- link diag ---', ('extras=' + $extraSrc.Count), ('objects=' + $objs.Count + ' implibs=' + $use.Count + ' statics=' + $statics.Count + ' rc=' + $rc + ' time=' + $sec + 's'))
 if (Test-Path $out) { $summary += ('dll=' + [int]((Get-Item $out).Length / 1024) + ' KB') } else { $summary += 'dll=missing' }
 $undef = @($lo | Where-Object { ([string]$_) -match 'undefined symbol' })
 $summary += ('undefined symbols: ' + $undef.Count)
@@ -66,7 +90,8 @@ if ($undef.Count -gt 0) {
     $m = [regex]::Match(([string]$u), 'undefined symbol: (.+)$')
     if ($m.Success) {
       $n = $m.Groups[1].Value.Trim()
-      $n = ($n -replace '\(.*$', '').Trim()
+      $n = ($n -replace '^__declspec\\(dllimport\\) ', '')
+      $n = ($n -replace '\\(.*$', '').Trim()
       if ($names.ContainsKey($n)) { $names[$n]++ } else { $names[$n] = 1 }
     }
   }
