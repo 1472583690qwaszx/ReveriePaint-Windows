@@ -8,6 +8,12 @@ Set-Location $env:GITHUB_WORKSPACE
 $bs = [char]92
 New-Item -ItemType Directory -Force logs | Out-Null
 $log = 'logs/engine-link.txt'
+trap {
+  $msg = 'EXCEPTION: ' + $_.Exception.Message + [char]10 + $_.ScriptStackTrace
+  try { Set-Content -Path $log -Value $msg -Encoding utf8 } catch { }
+  Write-Host $msg
+  exit 1
+}
 $root = $env:KRITA_ROOT
 $build = Join-Path $root 'b_krita'
 $inst = Join-Path $root '_install'
